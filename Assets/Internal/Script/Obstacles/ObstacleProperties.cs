@@ -35,8 +35,11 @@ public abstract class ObstacleProperties : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             DealDamageToPlayer(_objectDamage);
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
     }
+
+
 
     public void SetDirection(Vector3 newDirection)
     {
