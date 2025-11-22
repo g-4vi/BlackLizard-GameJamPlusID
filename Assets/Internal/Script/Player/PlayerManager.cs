@@ -1,6 +1,5 @@
 using UnityEngine;
 
-public class PlayerManager : Singleton<PlayerManager>
 public class PlayerManager : Singleton<PlayerManager> {
     [SerializeField] GameObject playerPrefab;
 
