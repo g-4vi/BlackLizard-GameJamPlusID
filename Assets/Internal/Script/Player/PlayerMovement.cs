@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void OnDamaged(Vector2 direction, float force, float duration)
     {
-        if(PlayerManager.Instance.player.GetComponent<Player>().IsInvisible && !isKnockedback) return;
+        if(PlayerManager.Instance.playerInstance.IsInvisible && !isKnockedback) return;
         StartCoroutine(KnockBack(direction, force, duration));
     }
 

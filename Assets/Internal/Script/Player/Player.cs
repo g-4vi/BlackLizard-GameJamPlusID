@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
         playerProperties.onManaChanged = null;
     }
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
     [ContextMenu("Decrease Health by 1")]
     void DecreaseHealth() {
         playerProperties.UpdateHealth(-1);

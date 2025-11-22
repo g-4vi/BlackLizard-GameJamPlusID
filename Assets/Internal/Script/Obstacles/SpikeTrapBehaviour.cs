@@ -41,12 +41,12 @@ public class SpikeTrapBehaviour : MonoBehaviour
     {
         // Access Player Health Component
         // Subtract Damage from Player Health
-        
-        Player player = PlayerManager.Instance.player.GetComponent<Player>();
+
+        Player player = PlayerManager.Instance.playerInstance;
         if (!player.IsInvisible)
         {
             Debug.Log("Ouch! GOt hit");
-            player.playerProperties.UpdateHealth(-damage);
+            PlayerManager.Instance.TakeDamage(damage);
         }
     }
 
