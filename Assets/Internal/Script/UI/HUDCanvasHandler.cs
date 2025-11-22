@@ -15,23 +15,20 @@ namespace GameJamPlus {
         [Header("Skill Cooldown Settings")]
         [SerializeField] Image skillCooldownImage;
 
-        bool isInitialized = false;
+        Player player;
 
-        void LateUpdate() {
-            if (!isInitialized) { // TODO: Player and SkillController references should be cached better, maybe via PlayerManager/GameManager
-                var player = FindFirstObjectByType<Player>();
-                var skillController = player.GetComponent<PlayerSkillController>();
+        void Start() {
+            player = PlayerManager.Instance.playerInstance;
+            var skillController = player.GetComponent<PlayerSkillController>();
 
-                player.playerProperties.onHealthChanged += UpdateVisualHealth;
-                player.playerProperties.onManaChanged += UpdateVisualMana;
-                skillController.onSkillCooldownUpdate += UpdateVisualSkillCooldown;
+            player.playerProperties.onHealthChanged += UpdateVisualHealth;
+            player.playerProperties.onManaChanged += UpdateVisualMana;
+            skillController.onSkillCooldownUpdate += UpdateVisualSkillCooldown;
 
-                UpdateVisualHealth(player.playerProperties.health);
-                UpdateVisualMana(player.playerProperties.mana);
-                UpdateVisualSkillCooldown(1f, 1f);
+            UpdateVisualHealth(player.playerProperties.health);
+            UpdateVisualMana(player.playerProperties.mana);
+            UpdateVisualSkillCooldown(1f, 1f);
 
-                isInitialized = true;
-            }
         }
 
         public void UpdateVisualHealth(int health) {

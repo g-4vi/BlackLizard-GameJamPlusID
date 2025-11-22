@@ -33,6 +33,11 @@ public class Player : MonoBehaviour {
         isInvisible = false;
     }
 
+    void OnDestroy() {
+        playerProperties.onHealthChanged = null;
+        playerProperties.onManaChanged = null;
+    }
+
 #if UNITY_EDITOR
     [ContextMenu("Decrease Health by 1")]
     void DecreaseHealth() {
