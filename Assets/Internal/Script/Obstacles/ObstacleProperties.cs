@@ -36,6 +36,16 @@ public abstract class ObstacleProperties : MonoBehaviour
         {
             DealDamageToPlayer(_objectDamage);
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }  
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fireball"))
+        {
+            Debug.Log("Fireball hit!");
+            Destroy(collision.gameObject);
+            _objectHealth--;
         }
     }
 
