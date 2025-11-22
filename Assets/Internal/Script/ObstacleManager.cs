@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+//spaghetti code ges maap, nanti kupisah jadi spawner masing masing
 public class ObstacleManager : MonoBehaviour
 {
     List<GameObject> _existingObstacles;
@@ -67,31 +68,57 @@ public class ObstacleManager : MonoBehaviour
     void SpawnRandomObstacle()
     {
         Debug.Log("Spawning random obstacle...");
-        int randNum = Random.Range(1, 5);
+        
 
-        switch (randNum)
+        GameObject obj;
+        while (true)
         {
-            case (1):
-                Debug.Log("Spawning bat!");
-                StartCoroutine(SpawnBat(_batSpawnArea[Random.Range(0, _batSpawnArea.Count)].transform.position));
-                break;
-            case (2):
-                Debug.Log("Spawning spider!");
-                StartCoroutine(SpawnSpider(_spiderStayPoints[Random.Range(0, _spiderStayPoints.Count)].transform.position));
-                break;
-            case (3):
-                Debug.Log("Spawning boulder!");
-                StartCoroutine(SpawnBoulder(_boulderSpawnArea[Random.Range(0, _boulderSpawnArea.Count)].transform.position));
-                break;
-            case (4):
-                Debug.Log("Spawning spike trap!");
-                StartCoroutine(SpawnSpike(_spikeSpawnArea[Random.Range(0, _spikeSpawnArea.Count)].transform.position));
-                break;
+            int randNum = Random.Range(1, 5);
+            switch (randNum)
+            {
+                case (1):
+                    Debug.Log("Spawning bat!");
+                    obj = _batSpawnArea[Random.Range(0, _batSpawnArea.Count)];
+                    if (obj.TryGetComponent<ObstacleSlot>(out ObstacleSlot obsA) && obsA.OccupiedStatus) continue;
+
+                    // Bat gaperlu ubah slot obstacle
+                    StartCoroutine(SpawnBat(obj.transform.position));
+                    ;
+                    break;
+                case (2):
+                    Debug.Log("Spawning spider!");
+                    obj = _spiderStayPoints[Random.Range(0, _spiderStayPoints.Count)];
+                    if (obj.TryGetComponent<ObstacleSlot>(out ObstacleSlot obsB) && obsB.OccupiedStatus) continue;
+
+                    obsB.ChangeOccupyStatus(true);
+                    // TODO : Add a logic to reference spawned spider, so we can call the assignSlot function
+                    StartCoroutine(SpawnSpider(obj.transform.position));
+                    break;
+                case (3):
+                    Debug.Log("Spawning boulder!");
+                    obj = _boulderSpawnArea[Random.Range(0, _boulderSpawnArea.Count)];
+                    if (obj.TryGetComponent<ObstacleSlot>(out ObstacleSlot obsC) && obsC.OccupiedStatus) continue;
+
+                    // Boulder gaperlu ubah slot obstacle
+                    StartCoroutine(SpawnBoulder(obj.transform.position));
+                    break;
+                case (4):
+                    Debug.Log("Spawning spike trap!");
+                    obj = _spikeSpawnArea[Random.Range(0, _spikeSpawnArea.Count)];
+                    if (obj.TryGetComponent<ObstacleSlot>(out ObstacleSlot obsD) && obsD.OccupiedStatus) continue;
+
+                    obsD.ChangeOccupyStatus(true);
+                    // TODO : Add a logic to reference spawned spike, so we can call the assignSlot function
+                    StartCoroutine(SpawnSpike(obj.transform.position));
+                    break;
+            }
+            break;
         }
+        
     }
 
     /*NOTE: Spider berbeda, karena targetPoint nya bukan tempat spawn awalnya. Tapi spawnnya di titik dipaling atas diatas targetPoint, 
-     * dan targetPointnya adalah tempat akhir dari spidernya */
+     dan targetPointnya adalah tempat akhir dari spidernya */
     IEnumerator SpawnSpider(Vector3 targetPoint) 
     {
         GameObject indicator = SpawnIndicator(_indicatorObject, targetPoint);
@@ -100,30 +127,20 @@ public class ObstacleManager : MonoBehaviour
         Destroy(indicator);
         //
         GameObject obj;
-        if (targetPoint.x < 0)
-        {
-            obj = Instantiate(_spiderPrefab, _spiderSpawnArea[0].transform.position, Quaternion.identity);    
-        }
-        else
-        {
-            obj = Instantiate(_spiderPrefab, _spiderSpawnArea[1].transform.position, Quaternion.identity);
-        }
+        Vector3 spawnPos = targetPoint.x < 0 ? _spiderSpawnArea[0].transform.position
+                                             : _spiderSpawnArea[1].transform.position;
+
+        obj = Instantiate(_spiderPrefab, spawnPos, Quaternion.identity);
         while (Vector3.Distance(obj.transform.position, targetPoint) > 0.1f)
         {
             obj.transform.position = Vector3.MoveTowards(obj.transform.position, targetPoint, Time.deltaTime * 3f);
             yield return null;
         }
 
-
         SpiderBehaviour spider = obj.GetComponent<SpiderBehaviour>();
-        if (targetPoint.x < 0)
-            {
-                spider.SetDirection(Vector3.right);
-            }
-            else
-            {
-                spider.SetDirection(Vector3.left);
-            }
+        spider.SetDirection(
+            targetPoint.x < 0 ? Vector3.right : Vector3.left
+        );
 
         spider.ActivateShooting();
         }
@@ -133,6 +150,8 @@ public class ObstacleManager : MonoBehaviour
 
     IEnumerator SpawnBat(Vector3 targetPoint)
     {
+
+
         GameObject indicator;
         if (targetPoint.x < 0)
         {

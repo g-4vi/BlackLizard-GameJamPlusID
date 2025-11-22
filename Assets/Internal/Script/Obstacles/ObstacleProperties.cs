@@ -9,12 +9,13 @@ public abstract class ObstacleProperties : MonoBehaviour
     [SerializeField] protected float _objectHealth = 1f;
     [SerializeField] protected float _objectDamage = 1f;
     protected Vector3 direction;
+    protected ObstacleSlot obstacleSlot;
 
     protected void Update()
     {
         if (this._objectHealth <= 0 || OutOfScreen())
         {
-            Destroy(this.gameObject);
+            DestroyObstacle();
         }
     }
 
@@ -24,35 +25,39 @@ public abstract class ObstacleProperties : MonoBehaviour
         return screenPoint.x < -0.3 || screenPoint.x > 1.3 || screenPoint.y < -0.3 || screenPoint.y > 1.3;
     }
 
+    void DestroyObstacle()
+    {
+        // TODO: Play destroy anim
+        if (obstacleSlot != null) obstacleSlot.ChangeOccupyStatus(false);
+        Destroy(this.gameObject);
+    }
+
     void DealDamageToPlayer(float damage)
     {
-        // Access Player Health Component
-        // Subtract Damage from Player Health
+        // TODO: Access Player Health Component
+        // TODO: Subtract Damage from Player Health
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            DealDamageToPlayer(_objectDamage);
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-        }  
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Fireball"))
         {
             Debug.Log("Fireball hit!");
             Destroy(collision.gameObject);
             _objectHealth--;
+        } else if (collision.gameObject.CompareTag("Player"))
+        {
+            DealDamageToPlayer(_objectDamage);
+            Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>());
         }
     }
-
-
 
     public void SetDirection(Vector3 newDirection)
     {
         direction = newDirection;
+    }
+    public void AssignSlot(ObstacleSlot slotObj)
+    {
+        obstacleSlot = slotObj;
     }
 }

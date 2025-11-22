@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5513628223713998912}
   - component: {fileID: 1563771603926318441}
   - component: {fileID: 2706883553541287853}
+  - component: {fileID: -126058630377896340}
   m_Layer: 8
   m_Name: Spike Trap
   m_TagString: Untagged
@@ -150,3 +151,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00996e959057b0742abf37fe404ec967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpikeTrapBehaviour
+  _persistTime: 2
+--- !u!95 &-126058630377896340
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5221237775554164286}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
