@@ -11,14 +11,6 @@ public class Player : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (obstacleLayer == (obstacleLayer | (1 << collision.gameObject.layer)) && !IsInvisible)//not invisible & is obstacle
         {
-            //playerProperties.UpdateHealth(-1);
-
-            /*if (playerProperties.health <= 0)//Game over
-            {
-                playerProperties.health = 0;
-                GameManager.Instance.EndGame();
-                return;
-            }*/
             IsInvisible = true;
             StartCoroutine(StartInvisibleTimerCountdown());
         }

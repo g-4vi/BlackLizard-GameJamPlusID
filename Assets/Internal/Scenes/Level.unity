@@ -2151,6 +2151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   playerPrefab: {fileID: 8091249570889933946, guid: 775562ffa5dbab54ca5eb4f471ce6ba1, type: 3}
   spawnPoint: {fileID: 1809700215}
+  player: {fileID: 0}
 --- !u!4 &632593111
 Transform:
   m_ObjectHideFlags: 0
@@ -6496,7 +6497,7 @@ GameObject:
   - component: {fileID: 2136263286}
   m_Layer: 3
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
