@@ -10,30 +10,27 @@ namespace GameJamPlus {
         [Header("Audio Settings")]
         [SerializeField] AudioMixer audioMixer;
         [SerializeField] Slider masterVolumeSlider;
+        [SerializeField] Slider musicVolumeSlider;
+        [SerializeField] Slider sfxVolumeSlider;
 
         [Header("Graphics Settings")]
         [SerializeField] TMP_Dropdown resolutionDropdown;
         Resolution[] resolutions;
 
-        const string PREF_VOLUME = "masterVolume";
-        const string PREF_RESOLUTION = "resolutionIndex";
+        const string PREF_MASTER_VOLUME = "MasterVolume";
+        const string PREF_MUSIC_VOLUME = "MusicVolume";
+        const string PREF_SFX_VOLUME = "SFXVolume";
+        const string PREF_RESOLUTION = "ResolutionIndex";
 
         void Start() {
             InitializeResolutionsSettings();
             InitializeAudioSettings();
+            WireEvents();
         }
 
-        public void SetVolume(float volume) {
-            float dbVolume = Mathf.Log10(volume) * 20;
-            if (volume == 0) dbVolume = -80f;
-
-            // TODO: Ensure the name of the parameter matches the one in the AudioMixer
-            audioMixer.SetFloat("MasterVolume", dbVolume);
-            // TODO: Consider adding audio feedback for volume change
-
-            PlayerPrefs.SetFloat(PREF_VOLUME, volume);
-            PlayerPrefs.Save();
-        }
+        public void SetMasterVolume(float volume) => SetVolume(volume, PREF_MASTER_VOLUME);
+        public void SetMusicVolume(float volume) => SetVolume(volume, PREF_MUSIC_VOLUME);
+        public void SetSFXVolume(float volume) => SetVolume(volume, PREF_SFX_VOLUME);
 
         public void SetResolution(int resolutionIndex) {
             Resolution resolution = resolutions[resolutionIndex];
@@ -42,6 +39,18 @@ namespace GameJamPlus {
             // TODO: Audio?
 
             PlayerPrefs.SetInt(PREF_RESOLUTION, resolutionIndex);
+            PlayerPrefs.Save();
+        }
+
+        void SetVolume(float volume, string parameterName) {
+            float dbVolume = Mathf.Log10(volume) * 20;
+            if (volume == 0) dbVolume = -80f;
+
+            // TODO: Ensure the name of the parameter matches the one in the AudioMixer
+            audioMixer.SetFloat(parameterName, dbVolume);
+            // TODO: Consider adding audio feedback for volume change
+
+            PlayerPrefs.SetFloat(parameterName, volume);
             PlayerPrefs.Save();
         }
 
@@ -75,9 +84,31 @@ namespace GameJamPlus {
         }
 
         void InitializeAudioSettings() {
-            float savedVolume = PlayerPrefs.GetFloat(PREF_VOLUME, 1f);
-            masterVolumeSlider.value = savedVolume;
-            SetVolume(savedVolume);
+            float savedMasterVolume = PlayerPrefs.GetFloat(PREF_MASTER_VOLUME, 0.5f);
+            masterVolumeSlider.value = savedMasterVolume;
+            SetMasterVolume(savedMasterVolume);
+
+            float savedMusicVolume = PlayerPrefs.GetFloat(PREF_MUSIC_VOLUME, 0.5f);
+            musicVolumeSlider.value = savedMusicVolume;
+            SetMusicVolume(savedMusicVolume);
+
+            float savedSFXVolume = PlayerPrefs.GetFloat(PREF_SFX_VOLUME, 0.5f);
+            sfxVolumeSlider.value = savedSFXVolume;
+            SetSFXVolume(savedSFXVolume);
+        }
+
+        void WireEvents() {
+            masterVolumeSlider.onValueChanged.AddListener(SetMasterVolume);
+            musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
+            sfxVolumeSlider.onValueChanged.AddListener(SetSFXVolume);
+            resolutionDropdown.onValueChanged.AddListener(SetResolution);
+        }
+
+        void OnDestroy() {
+            masterVolumeSlider.onValueChanged.RemoveListener(SetMasterVolume);
+            musicVolumeSlider.onValueChanged.RemoveListener(SetMusicVolume);
+            sfxVolumeSlider.onValueChanged.RemoveListener(SetSFXVolume);
+            resolutionDropdown.onValueChanged.RemoveListener(SetResolution);
         }
 
     }

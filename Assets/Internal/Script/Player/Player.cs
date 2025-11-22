@@ -27,7 +27,12 @@ public class Player : MonoBehaviour {
         IsInvisible = false;
     }
 
-/*#if UNITY_EDITOR
+    void OnDestroy() {
+        playerProperties.onHealthChanged = null;
+        playerProperties.onManaChanged = null;
+    }
+
+#if UNITY_EDITOR
     [ContextMenu("Decrease Health by 1")]
     void DecreaseHealth() {
         playerProperties.UpdateHealth(-1);

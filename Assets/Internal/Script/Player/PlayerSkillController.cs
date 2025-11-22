@@ -36,5 +36,9 @@ namespace GameJamPlus {
                 Debug.Log($"[{name}] Skill is on cooldown for {currentSkillCooldown} more seconds.");
             }
         }
+
+        void OnDestroy() {
+            onSkillCooldownUpdate = null;
+        }
     }
 }

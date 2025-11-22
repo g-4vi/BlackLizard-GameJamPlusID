@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
     public bool IsGameOver { get; private set; }
-    void Start() {
+    protected override void Awake() {
+        base.Awake();
         StartGame();
     }
 
