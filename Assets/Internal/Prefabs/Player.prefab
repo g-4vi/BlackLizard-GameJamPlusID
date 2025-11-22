@@ -196,7 +196,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 64206751f1557044bb59e906a3a39735, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -220,7 +220,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.8289027}
+  m_Offset: {x: 0, y: -0.8841534}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -230,7 +230,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.29753965}
+  m_Size: {x: 1, y: 0.1870383}
   m_EdgeRadius: 0
 --- !u!70 &3959246906236215320
 CapsuleCollider2D:
@@ -267,7 +267,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.005364716}
-  m_Size: {x: 1.0155108, y: 1.9697417}
+  m_Size: {x: 0.97897977, y: 1.9697417}
   m_Direction: 0
 --- !u!114 &8422254937372858903
 MonoBehaviour:
@@ -303,7 +303,7 @@ MonoBehaviour:
     health: 3
     speed: 8
     jumpForce: 12
-    invisiblePeriod: 0.5
+    invisiblePeriod: 1
     mana: 0
   obstacleLayer:
     serializedVersion: 2

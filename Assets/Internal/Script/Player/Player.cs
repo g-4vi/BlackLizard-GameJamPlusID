@@ -1,23 +1,25 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
     public PlayerProperties playerProperties;
     public LayerMask obstacleLayer;
 
-    bool isInvisible;
+    public bool IsInvisible { get; set; }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (obstacleLayer == (obstacleLayer | (1 << collision.gameObject.layer)) && !isInvisible)//not invisible & is obstacle
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (obstacleLayer == (obstacleLayer | (1 << collision.gameObject.layer)) && !IsInvisible)//not invisible & is obstacle
         {
-            playerProperties.UpdateHealth(-1);
+            //playerProperties.UpdateHealth(-1);
 
-            if (playerProperties.health <= 0)//Game over
+            /*if (playerProperties.health <= 0)//Game over
             {
+                playerProperties.health = 0;
                 GameManager.Instance.EndGame();
                 return;
-            }
-            isInvisible = true;
+            }*/
+            IsInvisible = true;
             StartCoroutine(StartInvisibleTimerCountdown());
         }
     }
@@ -30,13 +32,13 @@ public class Player : MonoBehaviour {
             yield return null;
         }
 
-        isInvisible = false;
+        IsInvisible = false;
     }
 
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
     [ContextMenu("Decrease Health by 1")]
     void DecreaseHealth() {
         playerProperties.UpdateHealth(-1);
     }
-#endif
+#endif*/
 }
