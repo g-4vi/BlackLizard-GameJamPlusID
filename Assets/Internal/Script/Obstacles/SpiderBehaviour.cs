@@ -8,12 +8,6 @@ public class SpiderBehaviour : ObstacleProperties
     [SerializeField] GameObject _spiderWebPrefab;
     [SerializeField] float _webShootInterval = 2f;
 
-
-    private void Start()
-    {
-        StartCoroutine(ShootWeb());
-    }
-
     void SpawnProjectile()
     {
         GameObject projectile = Instantiate(_spiderWebPrefab, transform.position, Quaternion.identity);
@@ -32,4 +26,9 @@ public class SpiderBehaviour : ObstacleProperties
             yield return new WaitForSeconds(_webShootInterval);
         }
     } 
+
+    public void ActivateShooting()
+    {
+        StartCoroutine(ShootWeb());
+    }
 }
