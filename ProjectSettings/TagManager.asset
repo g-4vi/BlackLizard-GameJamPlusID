@@ -3,18 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - Obstacle
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Obstacles
+  - Foreground
   - 
   - 
   - 
@@ -41,6 +40,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obs_Back
+    uniqueID: 1985897727
+    locked: 0
+  - name: Obs_Front
+    uniqueID: 3632492995
     locked: 0
   m_RenderingLayers:
   - Default
