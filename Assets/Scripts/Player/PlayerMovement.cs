@@ -4,23 +4,31 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed = 5f;
+    float moveSpeed = 5f;
     public float wallCheckDistance = 1.1f;
     float moveInput;
 
     [Header("Jump")]
-    public float jumpForce = 10f;
+    float jumpForce = 10f;
     public float groundCheckDistance = 1.1f;
     public float groundCheckDiff = 0.3f;
     public LayerMask groundLayer;
     bool jumpPress;
 
+    Player player;
     Rigidbody2D rb;
     bool isGrounded = true;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
+
+        if(player != null )
+        {
+            moveSpeed = player.playerProperties.speed;
+            jumpForce = player.playerProperties.jumpForce;
+        }
     }
 
     public void OnMove(InputValue value)
@@ -38,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(GameManager.Instance.IsGameOver) { return; }
+
         CheckGrounded();
         Movement();
         if (isGrounded)
