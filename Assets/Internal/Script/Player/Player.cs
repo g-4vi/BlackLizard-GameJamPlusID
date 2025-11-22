@@ -32,4 +32,11 @@ public class Player : MonoBehaviour {
 
         isInvisible = false;
     }
+
+#if UNITY_EDITOR
+    [ContextMenu("Decrease Health by 1")]
+    void DecreaseHealth() {
+        playerProperties.UpdateHealth(-1);
+    }
+#endif
 }

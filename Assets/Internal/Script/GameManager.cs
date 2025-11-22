@@ -1,20 +1,16 @@
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
-{
+public class GameManager : Singleton<GameManager> {
     public bool IsGameOver { get; private set; }
-    void Start()
-    {
+    void Start() {
         StartGame();
     }
 
-    void StartGame()
-    {
+    void StartGame() {
         PlayerManager.Instance.SpawnPlayer();
     }
 
-    public void EndGame()
-    {
+    public void EndGame() {
         IsGameOver = true;
     }
 }

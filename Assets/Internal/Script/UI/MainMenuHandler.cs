@@ -13,10 +13,12 @@ namespace GameJamPlus {
             foreach (var obj in gameObjectsToHide) obj.SetActive(false);
         }
 
+        // load the specified scene
         public void StartGame(string targetSceneName) {
             SceneManager.LoadScene(targetSceneName);
         }
 
+        // when running in editor, stop play mode, otherwise quit application
         public void ExitGame() {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

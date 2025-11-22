@@ -1,8 +1,11 @@
+using GameJamPlus.SkillModules.Common;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace GameJamPlus.SkillModules.Common {
+namespace GameJamPlus {
     public class PlayerSkillController : MonoBehaviour {
+
+        public System.Action<float, float> onSkillCooldownUpdate;
 
         [SerializeField] Skill currentSkill;
 
@@ -10,6 +13,7 @@ namespace GameJamPlus.SkillModules.Common {
 
         void Update() {
             if (currentSkillCooldown > 0f) {
+                onSkillCooldownUpdate?.Invoke(currentSkillCooldown, currentSkill.cooldown);
                 currentSkillCooldown -= Time.deltaTime;
             }
         }

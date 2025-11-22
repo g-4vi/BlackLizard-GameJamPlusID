@@ -29,6 +29,7 @@ namespace GameJamPlus {
 
             // TODO: Ensure the name of the parameter matches the one in the AudioMixer
             audioMixer.SetFloat("MasterVolume", dbVolume);
+            // TODO: Consider adding audio feedback for volume change
 
             PlayerPrefs.SetFloat(PREF_VOLUME, volume);
             PlayerPrefs.Save();
@@ -37,6 +38,8 @@ namespace GameJamPlus {
         public void SetResolution(int resolutionIndex) {
             Resolution resolution = resolutions[resolutionIndex];
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+
+            // TODO: Audio?
 
             PlayerPrefs.SetInt(PREF_RESOLUTION, resolutionIndex);
             PlayerPrefs.Save();
