@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool TouchingWall()
     {
-        bool touchingWall = Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, groundLayer);
+        bool touchingWall = Physics2D.Raycast(transform.position, new Vector3(Mathf.Sign(transform.localScale.x), 0, 0), wallCheckDistance, groundLayer);
 
         return touchingWall;
     }
