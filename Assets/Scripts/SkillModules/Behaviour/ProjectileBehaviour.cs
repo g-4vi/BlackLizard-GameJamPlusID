@@ -23,7 +23,7 @@ namespace GameJamPlus.SkillModules.Behaviour {
 
         // Destroy the projectile when it goes off-screen
         // Notes; scene view counts as visible area
-        private void OnBecameInvisible() {
+        void OnBecameInvisible() {
             Destroy(gameObject);
             Debug.Log($"[{name}] Projectile went off-screen and is destroyed.");
         }

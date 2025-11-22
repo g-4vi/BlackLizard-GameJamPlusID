@@ -9,12 +9,12 @@ namespace GameJamPlus.SkillModules {
         [SerializeField] GameObject prefab;
         [SerializeField] float speed = 5f;
 
-        public override void Execute(GameObject caster) {
-            GameObject fireball = Instantiate(prefab, caster.transform.position, Quaternion.identity);
+        public override void Execute(GameObject user) {
+            GameObject fireball = Instantiate(prefab, user.transform.position, Quaternion.identity);
 
             ProjectileBehaviour projectile = fireball.GetComponent<ProjectileBehaviour>();
             if (projectile != null) {
-                Vector2 lastMovementInput = caster.GetComponent<PlayerController>().lastMovementInput;
+                Vector2 lastMovementInput = user.GetComponent<PlayerController>().lastMovementInput;
                 projectile.SetDirection(lastMovementInput);
                 projectile.SetSpeed(speed);
             }

@@ -7,7 +7,7 @@ namespace GameJamPlus.SkillModules.Common {
         public string skillName;
         public float cooldown;
 
-        public abstract void Execute(GameObject caster);
+        public abstract void Execute(GameObject user);
 
     }
 
