@@ -4,42 +4,33 @@ using UnityEngine;
 
 public class BoulderBehaviour : ObstacleProperties
 {
-    //[SerializeField] float _objectSpeed = 5f;
-    //[SerializeField] float _objectHealth = 1f;
-    //[SerializeField] float _objectDamage = 1f;
+    float _rotationSpeed = 200f;
+
 
     [Header("Refereneces")]
     [SerializeField] Animator _animator;
 
-    void Update()
+    private void Start()
     {
-        transform.position = new Vector3(transform.position.x + _objectSpeed * Time.deltaTime, transform.position.y , transform.position.z);
+        StartCoroutine(RollToRight());
     }
 
     IEnumerator RollToRight()
     {
         // Play Roll Animation
-        // Move Object to the Right
+        
+        while (true)
+        {
 
-        yield return null;
+            transform.position = new Vector3(transform.position.x + _objectSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+            transform.Rotate(0, 0, -_rotationSpeed * Time.deltaTime);
+            yield return null;
+        }
+        
     }
 
     public void RollToLeft()
     {
 
-    }
-
-    void DealDamageToPlayer(float damage)
-    {
-        // Access Player Health Component
-        // Subtract Damage from Player Health
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            DealDamageToPlayer(_objectDamage);
-        }
     }
 }

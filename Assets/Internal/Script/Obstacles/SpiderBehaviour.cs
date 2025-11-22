@@ -1,16 +1,34 @@
+using System.Collections;
 using UnityEngine;
 
-public class SpiderBehaviour : MonoBehaviour
+public class SpiderBehaviour : ObstacleProperties
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [Header("References")]
+    [SerializeField] GameObject _spiderWebPrefab;
+    [SerializeField] float _webShootInterval = 2f;
+
+
+    private void Start()
     {
-        
+        StartCoroutine(ShootWeb());
     }
 
     // Update is called once per frame
-    void Update()
+
+
+    
+    void SpawnWeb()
     {
-        
+        Instantiate(_spiderWebPrefab, transform.position, Quaternion.identity);
     }
+
+    IEnumerator ShootWeb()
+    {
+        while (true)
+        {
+            SpawnWeb();
+            yield return new WaitForSeconds(_webShootInterval);
+        }
+    } 
 }
