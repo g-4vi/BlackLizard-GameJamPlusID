@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3947375065852003701}
   - component: {fileID: 525719112209845558}
+  - component: {fileID: 6574441398847431841}
   m_Layer: 8
   m_Name: Bat
   m_TagString: Untagged
@@ -78,9 +79,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1254902, g: 0.41662508, b: 0.41662508, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -90,3 +91,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6574441398847431841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278976888990548987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85102a70fb414d479fb1e229eea60e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BatBehaviour
+  _objectSpeed: 5
+  _objectHealth: 1
+  _objectDamage: 1
+  _animator: {fileID: 0}
+  _pathPoints: []

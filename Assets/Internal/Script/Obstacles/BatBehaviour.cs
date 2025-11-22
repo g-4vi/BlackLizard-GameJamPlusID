@@ -24,6 +24,11 @@ public class BatBehaviour : ObstacleProperties
         //}
     }
 
+    public void EditPathPoint(List<GameObject> newPathPoints)
+    {
+        _pathPoints = newPathPoints;
+    }
+
     IEnumerator FlyStraight(Vector3 direction)
     {
         // Play Fly Animation

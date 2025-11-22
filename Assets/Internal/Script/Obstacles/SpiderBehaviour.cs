@@ -14,20 +14,21 @@ public class SpiderBehaviour : ObstacleProperties
         StartCoroutine(ShootWeb());
     }
 
-    // Update is called once per frame
-
-
-    
-    void SpawnWeb()
+    void SpawnProjectile()
     {
-        Instantiate(_spiderWebPrefab, transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(_spiderWebPrefab, transform.position, Quaternion.identity);
+        if (projectile.TryGetComponent<ObstacleProperties>(out ObstacleProperties obs))
+        {
+            obs.SetDirection(direction);
+        }
     }
 
     IEnumerator ShootWeb()
     {
+        yield return new WaitForSeconds(_webShootInterval);
         while (true)
         {
-            SpawnWeb();
+            SpawnProjectile();
             yield return new WaitForSeconds(_webShootInterval);
         }
     } 

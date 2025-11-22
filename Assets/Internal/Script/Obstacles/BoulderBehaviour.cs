@@ -12,25 +12,21 @@ public class BoulderBehaviour : ObstacleProperties
 
     private void Start()
     {
-        StartCoroutine(RollToRight());
+
+        StartCoroutine(Roll(direction));
     }
 
-    IEnumerator RollToRight()
+
+    IEnumerator Roll(Vector3 direction)
     {
-        // Play Roll Animation
-        
         while (true)
         {
-
-            transform.position = new Vector3(transform.position.x + _objectSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + direction.x * _objectSpeed * Time.deltaTime, transform.position.y, transform.position.z);
             transform.Rotate(0, 0, -_rotationSpeed * Time.deltaTime);
             yield return null;
         }
-        
     }
 
-    public void RollToLeft()
-    {
 
-    }
+    
 }

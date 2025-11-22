@@ -8,6 +8,7 @@ public abstract class ObstacleProperties : MonoBehaviour
     [SerializeField] protected float _objectSpeed = 5f;
     [SerializeField] protected float _objectHealth = 1f;
     [SerializeField] protected float _objectDamage = 1f;
+    protected Vector3 direction;
 
     protected void Update()
     {
@@ -35,5 +36,10 @@ public abstract class ObstacleProperties : MonoBehaviour
         {
             DealDamageToPlayer(_objectDamage);
         }
+    }
+
+    public void SetDirection(Vector3 newDirection)
+    {
+        direction = newDirection;
     }
 }
