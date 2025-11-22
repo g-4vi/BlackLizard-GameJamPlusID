@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
     [Header("Movement")]
     float moveSpeed = 5f;
     public float wallCheckDistance = 1.1f;
@@ -19,47 +18,39 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     bool isGrounded = true;
 
-    private void Awake()
-    {
+    private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
 
-        if(player != null )
-        {
+        if (player != null) {
             moveSpeed = player.playerProperties.speed;
             jumpForce = player.playerProperties.jumpForce;
         }
     }
 
-    public void OnMove(InputValue value)
-    {
+    public void OnMove(InputValue value) {
         moveInput = value.Get<Vector2>().x;//get x input
 
         FlipSprite();
     }
 
-    public void OnJump(InputValue value)
-    {
+    public void OnJump(InputValue value) {
         if (value.isPressed && isGrounded)
             jumpPress = true;
     }
 
-    private void FixedUpdate()
-    {
-        if(GameManager.Instance.IsGameOver) { return; }
+    private void FixedUpdate() {
+        if (GameManager.Instance.IsGameOver) { return; }
 
         CheckGrounded();
         Movement();
-        if (isGrounded)
-        {
+        if (isGrounded) {
             Jump();
         }
     }
 
-    void FlipSprite()
-    {
-        if (moveInput != 0)
-        {
+    void FlipSprite() {
+        if (moveInput != 0) {
             transform.localScale = new Vector3(
                 Mathf.Sign(moveInput) * Mathf.Abs(transform.localScale.x),
                 transform.localScale.y,
@@ -68,38 +59,31 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Movement()
-    {
+    void Movement() {
         //Control Player Horizontal Movement
-        if (TouchingWall())
-        {
+        if (TouchingWall()) {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-        }
-        else
-        { 
+        } else {
             rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
             //Play walk SFX
         }
-       
+
     }
 
-    void Jump()
-    {
-        if(jumpPress && rb.linearVelocity.y < 0.1f)
-        {
+    void Jump() {
+        if (jumpPress && rb.linearVelocity.y < 0.1f) {
             jumpPress = false;
             //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             rb.AddForce(jumpForce * Vector3.up, ForceMode2D.Impulse);
 
             //Play Jump SFX
-        } 
+        }
     }
 
-    void CheckGrounded()
-    {
+    void CheckGrounded() {
         bool midRay = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
-        bool leftRay = Physics2D.Raycast(transform.position + 
+        bool leftRay = Physics2D.Raycast(transform.position +
             new Vector3(-groundCheckDiff, 0, 0), Vector2.down, groundCheckDistance, groundLayer);
         bool rightRay = Physics2D.Raycast(transform.position +
             new Vector3(groundCheckDiff, 0, 0), Vector2.down, groundCheckDistance, groundLayer);
@@ -107,22 +91,18 @@ public class PlayerMovement : MonoBehaviour
         if (midRay || leftRay || rightRay)//collision with ground
         {
             isGrounded = true;
-        }
-        else
-        {
+        } else {
             isGrounded = false;
         }
     }
 
-    bool TouchingWall()
-    {
+    bool TouchingWall() {
         bool touchingWall = Physics2D.Raycast(transform.position, new Vector3(Mathf.Sign(transform.localScale.x), 0, 0), wallCheckDistance, groundLayer);
 
         return touchingWall;
     }
 
-    private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         Gizmos.color = Color.red;
 
         //ground rays
@@ -130,9 +110,9 @@ public class PlayerMovement : MonoBehaviour
             transform.position + new Vector3(-groundCheckDiff, 0, 0) + Vector3.down * groundCheckDistance);
         Gizmos.DrawLine(transform.position + new Vector3(groundCheckDiff, 0, 0),
             transform.position + new Vector3(groundCheckDiff, 0, 0) + Vector3.down * groundCheckDistance);
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckDistance );//midray
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckDistance);//midray
 
 
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(Mathf.Sign(transform.localScale.x),0,0) * wallCheckDistance);
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(Mathf.Sign(transform.localScale.x), 0, 0) * wallCheckDistance);
     }
 }

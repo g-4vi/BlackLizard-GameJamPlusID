@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 3959246906236215320}
   - component: {fileID: 8422254937372858903}
   - component: {fileID: 3685985206264721560}
+  - component: {fileID: 6544336437857567718}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -307,3 +308,16 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &6544336437857567718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091249570889933946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fac3d6b9cc08eb4a8200daeb0185f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.Common.PlayerSkillController
+  currentSkill: {fileID: 11400000, guid: fc69f58e76090a840a4ec9d86c99ec1a, type: 2}

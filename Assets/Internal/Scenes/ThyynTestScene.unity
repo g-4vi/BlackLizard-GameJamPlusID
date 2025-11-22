@@ -274,8 +274,9 @@ GameObject:
   - component: {fileID: 820404674}
   - component: {fileID: 820404678}
   - component: {fileID: 820404679}
-  - component: {fileID: 820404677}
   - component: {fileID: 820404676}
+  - component: {fileID: 820404681}
+  - component: {fileID: 820404680}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -370,19 +371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.Common.PlayerSkillController
   currentSkill: {fileID: 11400000, guid: fc69f58e76090a840a4ec9d86c99ec1a, type: 2}
---- !u!114 &820404677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820404673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c133f49e7d67f0439692a2803dd2ed8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.PlayerController
-  lastMovementInput: {x: 0, y: 0}
 --- !u!58 &820404678
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -446,6 +434,45 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &820404680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820404673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2fa0a9d9b291d45b96db2fe695b1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  wallCheckDistance: 1.1
+  groundCheckDistance: 1.1
+  groundCheckDiff: 0.3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &820404681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820404673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71deadc0ced64a5428b5ec9fc052fcd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  playerProperties:
+    health: 3
+    speed: 8
+    jumpForce: 12
+    invisiblePeriod: 0.5
+    mana: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &868542890
 GameObject:
   m_ObjectHideFlags: 0
