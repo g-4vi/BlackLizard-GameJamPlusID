@@ -36,8 +36,8 @@ public class PlayerProperties {
             Debug.Log("Game Over!");
             return;
         }
+
         if (HurtSound != SfxID.None) AudioManager.Instance.PlaySFX(HurtSound);
-        onHealthChanged?.Invoke(health);
     }
 
     public void UpdateMana(int incrementMana) {
