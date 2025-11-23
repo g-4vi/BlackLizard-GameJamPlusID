@@ -1984,7 +1984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleManager
   _indicatorObject: {fileID: 4329619606127853903, guid: 2a6bf08cc4a064146bd5a3fc9da89f0e, type: 3}
   _spawnInterval: 6
-  _indicatorWarning: 0
+  _indicatorWarning: 6
   _spiderPrefab: {fileID: 1591064056805395018, guid: 2cefe046fc2f39640be13c3aebbf0e3f, type: 3}
   _spiderSpawnArea:
   - {fileID: 1005837727}
@@ -10517,8 +10517,8 @@ MonoBehaviour:
   musics:
   - {fileID: 11400000, guid: 74234c591dd77c645a1e50df9bfff641, type: 2}
   - {fileID: 11400000, guid: 2c414d1c900b46841a35a5af24ca3ee2, type: 2}
-  BGM: 0
-  buttonSFX: 0
+  BGM: 2
+  buttonSFX: 14
 --- !u!4 &1755608460
 Transform:
   m_ObjectHideFlags: 0

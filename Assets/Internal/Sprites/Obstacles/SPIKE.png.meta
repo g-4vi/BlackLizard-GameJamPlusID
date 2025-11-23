@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 4fbc509e894a19341b0aebe6896055e1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4963991507351105940
+    second: SPIKE_0
+  - first:
+      213: 4638794554345987949
+    second: SPIKE_1
+  - first:
+      213: 8392624717296191578
+    second: SPIKE_2
+  - first:
+      213: 2268546284724187732
+    second: SPIKE_3
+  - first:
+      213: -8258449517806417692
+    second: SPIKE_4
+  - first:
+      213: -8233792410995524520
+    second: SPIKE_5
+  - first:
+      213: -6143649609840041955
+    second: SPIKE_6
+  - first:
+      213: 1171681931344050833
+    second: SPIKE_7
+  - first:
+      213: 4602495237038567811
+    second: SPIKE_8
+  - first:
+      213: 5586712352533545855
+    second: SPIKE_9
+  - first:
+      213: 6048320492957818413
+    second: SPIKE_10
+  - first:
+      213: -9215899122197714073
+    second: SPIKE_11
+  - first:
+      213: 2674659886985458551
+    second: SPIKE_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 350
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SPIKE_0
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 5300
+        width: 280
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 491f7bfb9f3a3e440800000000000000
+      internalID: 4963991507351105940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_1
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 5300
+        width: 304
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6f1fcdd11f406040800000000000000
+      internalID: 4638794554345987949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_2
+      rect:
+        serializedVersion: 2
+        x: 3352
+        y: 5300
+        width: 328
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a584a9fd6b7987470800000000000000
+      internalID: 8392624717296191578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_3
+      rect:
+        serializedVersion: 2
+        x: 4859
+        y: 5300
+        width: 352
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4527481a3de7b7f10800000000000000
+      internalID: 2268546284724187732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_4
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 3744
+        width: 376
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e807af2be7146d80800000000000000
+      internalID: -8258449517806417692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_5
+      rect:
+        serializedVersion: 2
+        x: 1795
+        y: 3744
+        width: 400
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85cfd4c3d61bbbd80800000000000000
+      internalID: -8233792410995524520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_6
+      rect:
+        serializedVersion: 2
+        x: 3302
+        y: 3744
+        width: 426
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d106405fa3f5dbaa0800000000000000
+      internalID: -6143649609840041955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_7
+      rect:
+        serializedVersion: 2
+        x: 4808
+        y: 3744
+        width: 454
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19a718b3286a24010800000000000000
+      internalID: 1171681931344050833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_8
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 2188
+        width: 480
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3817c1478095fdf30800000000000000
+      internalID: 4602495237038567811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_9
+      rect:
+        serializedVersion: 2
+        x: 1742
+        y: 2188
+        width: 506
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f738c03f84df78d40800000000000000
+      internalID: 5586712352533545855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_10
+      rect:
+        serializedVersion: 2
+        x: 3262
+        y: 2188
+        width: 506
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2e57766173ffe350800000000000000
+      internalID: 6048320492957818413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_11
+      rect:
+        serializedVersion: 2
+        x: 4782
+        y: 2188
+        width: 506
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76b2297839c8a1080800000000000000
+      internalID: -9215899122197714073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPIKE_12
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 632
+        width: 506
+        height: 431
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77331ca0ffc4e1520800000000000000
+      internalID: 2674659886985458551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SPIKE_0: 4963991507351105940
+      SPIKE_1: 4638794554345987949
+      SPIKE_10: 6048320492957818413
+      SPIKE_11: -9215899122197714073
+      SPIKE_12: 2674659886985458551
+      SPIKE_2: 8392624717296191578
+      SPIKE_3: 2268546284724187732
+      SPIKE_4: -8258449517806417692
+      SPIKE_5: -8233792410995524520
+      SPIKE_6: -6143649609840041955
+      SPIKE_7: 1171681931344050833
+      SPIKE_8: 4602495237038567811
+      SPIKE_9: 5586712352533545855
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
