@@ -7,9 +7,14 @@ public abstract class ObstacleProperties : MonoBehaviour
     [Header("Properties")]
     [SerializeField] protected float _objectSpeed = 5f;
     [SerializeField] protected float _objectHealth = 1f;
-    [SerializeField] protected float _objectDamage = 1f;
+    [SerializeField] protected int _objectDamage = 1;
     protected Vector3 direction;
     protected ObstacleSlot obstacleSlot;
+
+    [Header("Knockback")]
+    [SerializeField] protected float knockbackForce = 5f;
+    [SerializeField] protected float knockbackDuration = 0.2f;
+
 
     protected void Update()
     {
@@ -32,13 +37,29 @@ public abstract class ObstacleProperties : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void DealDamageToPlayer(float damage)
+
+    void DealDamageToPlayer(int damage)
     {
-        // TODO: Access Player Health Component
-        // TODO: Subtract Damage from Player Health
+        // Access Player Health Component
+        // Subtract Damage from Player Health
+        Player player = PlayerManager.Instance.playerInstance;
+        if (!player.IsInvisible)
+        {
+            Debug.Log("Ouch! GOt hit");
+            PlayerManager.Instance.TakeDamage(damage);
+        }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))//for boulders
+        {
+            GetComponent<Collider2D>().isTrigger = true;
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Fireball"))
         {
@@ -50,7 +71,24 @@ public abstract class ObstacleProperties : MonoBehaviour
             DealDamageToPlayer(_objectDamage);
             Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>());
         }
+        else if(collision.gameObject.CompareTag("Player"))
+        {
+            DealDamageToPlayer(_objectDamage);
+            Collider2D[] playerColliders = collision.GetComponentsInParent<Collider2D>();
+            foreach (var col in playerColliders)
+                Physics2D.IgnoreCollision(col, GetComponent<Collider2D>());
+
+            Transform player = collision.gameObject.transform;
+            Vector2 direction = (player.position - transform.position).normalized;//direction of obstacle, + is from left
+            direction = new Vector2(Mathf.Sign(direction.x), 0);//only horizontal knockback
+            player.GetComponent<PlayerMovement>().OnDamaged(direction, knockbackForce, knockbackDuration);
+
+            if (gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+                Destroy(gameObject);
+        }
     }
+
+   
 
     public void SetDirection(Vector3 newDirection)
     {

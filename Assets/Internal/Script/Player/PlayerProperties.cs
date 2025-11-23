@@ -14,6 +14,14 @@ public class PlayerProperties {
 
     public void UpdateHealth(int incrementHealth) {
         health += incrementHealth;
+
+        if (health <= 0)//Game over
+        {
+            health = 0;
+            GameManager.Instance.EndGame();
+            return;
+        }
+
         onHealthChanged?.Invoke(health);
     }
 
