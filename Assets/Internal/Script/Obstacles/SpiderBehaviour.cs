@@ -7,7 +7,15 @@ public class SpiderBehaviour : ObstacleProperties
     [Header("References")]
     [SerializeField] GameObject _spiderWebPrefab;
     [SerializeField] float _webShootInterval = 2f;
+    public Animator anim;
+    public SpriteRenderer _spiderSpriteRenderer;
+   
+    public int AttackHash {  get; set; }
 
+    private void Awake()
+    {
+        AttackHash = Animator.StringToHash("attack");
+    }
     void SpawnProjectile()
     {
         if (_specialSound != SfxID.None) AudioManager.Instance.PlaySFX(_specialSound);
