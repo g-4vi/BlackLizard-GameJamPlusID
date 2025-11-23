@@ -8,10 +8,31 @@ public class Player : MonoBehaviour {
 
     public bool IsInvisible { get; set; }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (obstacleLayer == (obstacleLayer | (1 << collision.gameObject.layer)) && !IsInvisible)//not invisible & is obstacle
+    [HideInInspector] public Animator anim;
+    public int MoveHash { get; set; }
+    public int JumpHash { get; set; }
+    public int IsDamagedHash {  get; set; }
+    public int AttackHash {  get; set; }
+
+    private void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+        MoveHash = Animator.StringToHash("move");
+        JumpHash = Animator.StringToHash("jump");
+        IsDamagedHash = Animator.StringToHash("isDamaged");
+        AttackHash = Animator.StringToHash("attack");
+    }
+
+    public void TriggerInvisibility()
+    {
+        if (!IsInvisible)//not invisible & is obstacle
         {
+            Debug.Log("Invisible trigger");
             IsInvisible = true;
+
+            //Hurt animation
+            anim.SetBool(IsDamagedHash, true);
+
             StartCoroutine(StartInvisibleTimerCountdown());
         }
     }
@@ -25,6 +46,8 @@ public class Player : MonoBehaviour {
         }
 
         IsInvisible = false;
+        anim.SetBool(IsDamagedHash, false);
+        Debug.Log("Damage off");
     }
 
     void OnDestroy() {
