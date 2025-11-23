@@ -117,8 +117,7 @@ public abstract class ObstacleProperties : MonoBehaviour
             direction = new Vector2(Mathf.Sign(direction.x), 0);//only horizontal knockback
             player.GetComponent<PlayerMovement>().OnDamaged(direction, knockbackForce, knockbackDuration);
 
-            if (gameObject.layer == LayerMask.NameToLayer("Obstacles"))
-                Destroy(gameObject);
+            if (gameObject.layer == LayerMask.NameToLayer("Obstacles"))DestroyObstacle();
         }
     }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
 
@@ -9,9 +10,18 @@ public class GameManager : Singleton<GameManager> {
     public bool IsGameOver { get; private set; }
     protected override void Awake() {
         base.Awake();
-        StartGame();
     }
 
+    private void Start()
+    {
+        StartGame();
+    }
+    public void LoadScene(string targetSceneName)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(targetSceneName);
+
+    }
     void StartGame() {
         PlayerManager.Instance.SpawnPlayer();
         PlayerManager.Instance.SetInputActionMap("Player");

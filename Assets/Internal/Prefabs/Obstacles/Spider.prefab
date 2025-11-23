@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 298106256603381452}
   - component: {fileID: 6523421263477183395}
   - component: {fileID: 5348192660125207645}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 4751362505379196114}
   - component: {fileID: 7380744754663704092}
   - component: {fileID: 1473206837269419168}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Spider
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4660358841832821939}
   - component: {fileID: 705164546956403439}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Webrope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
