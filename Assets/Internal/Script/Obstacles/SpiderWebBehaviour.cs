@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class SpiderWebBehaviour : ObstacleProperties
 {
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(FlyToDirection(_direction));
     }
     IEnumerator FlyToDirection(Vector3 direction)

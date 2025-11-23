@@ -9,6 +9,8 @@ namespace GameJamPlus {
 
         [SerializeField] Skill currentSkill;
 
+        [SerializeField] SfxID _fireballSkill;
+
         float currentSkillCooldown;
 
         void Update() {
@@ -36,6 +38,8 @@ namespace GameJamPlus {
 
                 currentSkillCooldown = currentSkill.cooldown;
                 // TODO: call sound effect when casting skill
+                if (_fireballSkill != SfxID.None) AudioManager.Instance.PlaySFX(_fireballSkill);
+                
             } else {
                 Debug.Log($"[{name}] Skill is on cooldown for {currentSkillCooldown} more seconds.");
             }

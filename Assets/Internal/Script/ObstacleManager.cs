@@ -58,10 +58,11 @@ public class ObstacleManager : MonoBehaviour
 
     IEnumerator AutoSpawnObstacles()
     {
+        yield return new WaitForSeconds(_spawnInterval);
         while (true)
         {
             SpawnRandomObstacle();
-            yield return new WaitForSeconds(_spawnInterval+3.2f);
+            yield return new WaitForSeconds(_spawnInterval);
         }
     }
     

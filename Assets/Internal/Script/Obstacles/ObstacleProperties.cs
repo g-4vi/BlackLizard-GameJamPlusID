@@ -65,6 +65,8 @@ public abstract class ObstacleProperties : MonoBehaviour
     {
         // TODO: Play destroy anim
         // TODO: Play destroy SFX
+        AudioManager.Instance.StopSFX(_entrySound);
+        ;
         if (_destroyedSound != SfxID.None) AudioManager.Instance.PlaySFX(_destroyedSound);
 
 
