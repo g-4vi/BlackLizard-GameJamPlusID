@@ -14,6 +14,8 @@ public class PlayerManager : Singleton<PlayerManager> {
     public void TakeDamage(int damage) {
         if (playerInstance != null) {
             playerInstance.playerProperties.UpdateHealth(-damage);
+
+            playerInstance.TriggerInvisibility();
         }
     }
 

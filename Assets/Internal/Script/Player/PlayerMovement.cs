@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour {
     bool isGrounded = true;
     bool isKnockedback = false;
 
+
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
@@ -28,6 +30,8 @@ public class PlayerMovement : MonoBehaviour {
             moveSpeed = player.playerProperties.speed;
             jumpForce = player.playerProperties.jumpForce;
         }
+
+        
     }
 
     public void OnMove(InputValue value) {
@@ -71,6 +75,8 @@ public class PlayerMovement : MonoBehaviour {
             //Play walk SFX
         }
 
+        //Float/Walk animation
+        player.anim.SetFloat(player.MoveHash, Mathf.Abs(rb.linearVelocity.x));
     }
 
     void Jump() {
@@ -78,6 +84,9 @@ public class PlayerMovement : MonoBehaviour {
             jumpPress = false;
             //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             rb.AddForce(jumpForce * Vector3.up, ForceMode2D.Impulse);
+
+            //Jump Animation
+            player.anim.SetTrigger(player.JumpHash);
 
             //Play Jump SFX
         }
@@ -106,7 +115,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void OnDamaged(Vector2 direction, float force, float duration)
     {
-        if(PlayerManager.Instance.playerInstance.IsInvisible && !isKnockedback) return;
+        if (isKnockedback) return;
         StartCoroutine(KnockBack(direction, force, duration));
     }
 
