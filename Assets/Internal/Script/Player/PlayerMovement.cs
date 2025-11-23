@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Movement() {
+        
         //Control Player Horizontal Movement
         if (TouchingWall()) {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
@@ -73,6 +74,7 @@ public class PlayerMovement : MonoBehaviour {
             rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
             //Play walk SFX
+            //if (player.playerProperties.MoveSound != SfxID.None) AudioManager.Instance.PlaySFX(player.playerProperties.MoveSound);
         }
 
         //Float/Walk animation
@@ -80,6 +82,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Jump() {
+        
         if (jumpPress && rb.linearVelocity.y < 0.1f) {
             jumpPress = false;
             //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -89,6 +92,7 @@ public class PlayerMovement : MonoBehaviour {
             player.anim.SetTrigger(player.JumpHash);
 
             //Play Jump SFX
+            if (player.playerProperties.JumpSound != SfxID.None) AudioManager.Instance.PlaySFX(player.playerProperties.JumpSound);
         }
     }
 

@@ -6,19 +6,18 @@ public class BoulderBehaviour : ObstacleProperties
 {
     float _rotationSpeed = 200f;
 
+    
 
-    [Header("Refereneces")]
-    [SerializeField] Animator _animator;
-
-    private void Start()
+    protected override void Start()
     {
-
-        StartCoroutine(Roll(direction));
+        base.Start();
+        StartCoroutine(Roll(_direction));
     }
 
 
     IEnumerator Roll(Vector3 direction)
     {
+        
         while (true)
         {
             transform.position = new Vector3(transform.position.x + direction.x * _objectSpeed * Time.deltaTime, transform.position.y, transform.position.z);

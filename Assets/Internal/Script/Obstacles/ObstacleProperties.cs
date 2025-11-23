@@ -4,20 +4,52 @@ using UnityEngine;
 
 public abstract class ObstacleProperties : MonoBehaviour
 {
+    public System.Action<float> onHealthChanged;
+
     [Header("Properties")]
     [SerializeField] protected float _objectSpeed = 5f;
     [SerializeField] protected float _objectHealth = 1f;
     [SerializeField] protected int _objectDamage = 1;
-    protected Vector3 direction;
+    protected Vector3 _direction;
+    protected ObstacleSlot _obstacleSlot;
 
     [Header("Knockback")]
     [SerializeField] protected float knockbackForce = 5f;
     [SerializeField] protected float knockbackDuration = 0.2f;
 
+    [Header("Sound Effects")]
+    [SerializeField] protected SfxID _destroyedSound;
+    [SerializeField] protected SfxID _entrySound;
+
+    [Tooltip("Unique Sound Effects (I.e Spider Shooting)")]
+    [SerializeField] protected SfxID _specialSound; // spider shooting sound, etc.
+
+    [Header("Animation")]
+    [SerializeField] protected Animator _animator;
+
+
+    public void UpdateHealth(int incrementHealth) {
+        _objectHealth += incrementHealth;
+
+        if (_objectHealth <= 0)//Game over
+        {
+            _objectHealth = 0;
+            DestroyObstacle();
+            return;
+        }
+
+        onHealthChanged?.Invoke(_objectHealth);
+    }
+
+    protected virtual void Start()
+    {
+        if (_entrySound != SfxID.None) AudioManager.Instance.PlaySFX(_entrySound);
+
+    }
 
     protected void Update()
     {
-        if (this._objectHealth <= 0 || OutOfScreen())
+        if (OutOfScreen())
         {
             Destroy(this.gameObject);
         }
@@ -28,6 +60,18 @@ public abstract class ObstacleProperties : MonoBehaviour
         Vector3 screenPoint = Camera.main.WorldToViewportPoint(transform.position);
         return screenPoint.x < -0.3 || screenPoint.x > 1.3 || screenPoint.y < -0.3 || screenPoint.y > 1.3;
     }
+
+    void DestroyObstacle()
+    {
+        // TODO: Play destroy anim
+        // TODO: Play destroy SFX
+        if (_destroyedSound != SfxID.None) AudioManager.Instance.PlaySFX(_destroyedSound);
+
+
+        if (_obstacleSlot != null) _obstacleSlot.ChangeOccupyStatus(false);
+        Destroy(this.gameObject);
+    }
+
 
     void DealDamageToPlayer(int damage)
     {
@@ -56,10 +100,11 @@ public abstract class ObstacleProperties : MonoBehaviour
         {
             Debug.Log("Fireball hit!");
             Destroy(collision.gameObject);
-            _objectHealth--;
+            UpdateHealth(-1);
         }
         else if(collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Player hit obstacle!");
             DealDamageToPlayer(_objectDamage);
             Collider2D[] playerColliders = collision.GetComponentsInParent<Collider2D>();
             foreach (var col in playerColliders)
@@ -75,10 +120,12 @@ public abstract class ObstacleProperties : MonoBehaviour
         }
     }
 
-   
-
     public void SetDirection(Vector3 newDirection)
     {
-        direction = newDirection;
+        _direction = newDirection;
+    }
+    public void AssignSlot(ObstacleSlot slotObj)
+    {
+        _obstacleSlot = slotObj;
     }
 }

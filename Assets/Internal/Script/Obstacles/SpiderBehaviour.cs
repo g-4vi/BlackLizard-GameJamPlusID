@@ -10,15 +10,17 @@ public class SpiderBehaviour : ObstacleProperties
 
     void SpawnProjectile()
     {
+        AudioManager.Instance.PlaySFX(_specialSound);
         GameObject projectile = Instantiate(_spiderWebPrefab, transform.position, Quaternion.identity);
         if (projectile.TryGetComponent<ObstacleProperties>(out ObstacleProperties obs))
         {
-            obs.SetDirection(direction);
+            obs.SetDirection(_direction);
         }
     }
 
     IEnumerator ShootWeb()
     {
+        
         yield return new WaitForSeconds(_webShootInterval);
         while (true)
         {

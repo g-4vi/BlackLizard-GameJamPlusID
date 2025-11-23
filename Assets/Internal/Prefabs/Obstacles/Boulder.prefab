@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3194548571758342056}
   - component: {fileID: 174060924015404362}
   - component: {fileID: 9218154019947485191}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Boulder
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -662474301
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.335849, g: 0.335849, b: 0.335849, a: 1}
@@ -110,6 +110,9 @@ MonoBehaviour:
   _objectDamage: 1
   knockbackForce: 7
   knockbackDuration: 0.2
+  _destroyedSound: 0
+  _entrySound: 3
+  _specialSound: 0
   _animator: {fileID: 0}
 --- !u!50 &174060924015404362
 Rigidbody2D:

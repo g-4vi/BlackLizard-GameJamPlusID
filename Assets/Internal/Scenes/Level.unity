@@ -178,7 +178,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1591064056805395018, guid: 2cefe046fc2f39640be13c3aebbf0e3f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1799293671}
   m_SourcePrefab: {fileID: 100100000, guid: 2cefe046fc2f39640be13c3aebbf0e3f, type: 3}
 --- !u!1 &37270273
 GameObject:
@@ -275,7 +278,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7602394830709586636, guid: 8e352533c6fee994bab003845a073629, type: 3}
+  m_Sprite: {fileID: 2711422814808916929, guid: f1217198b5652924786db3734fef3a4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -295,9 +298,9 @@ Transform:
   m_GameObject: {fileID: 58712762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.22411437, y: 0.22411437, z: 0.22411437}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.1, y: 0.05622, z: 0}
+  m_LocalScale: {x: 0.24, y: 0.24, z: 0.24}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -309,6 +312,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2027811612}
     m_Modifications:
+    - target: {fileID: -126058630377896340, guid: facfdbb238bb6b04c9c07f0d45dfdcc5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4d060c71a41d02b4a82336fffa998756, type: 2}
     - target: {fileID: 2186261486762299269, guid: facfdbb238bb6b04c9c07f0d45dfdcc5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.83
@@ -407,6 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 139285394}
   - component: {fileID: 139285395}
+  - component: {fileID: 139285396}
   m_Layer: 0
   m_Name: RightPoin4
   m_TagString: Untagged
@@ -487,6 +495,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &139285396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139285393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &150988455
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 150988456}
   - component: {fileID: 150988457}
+  - component: {fileID: 150988458}
   m_Layer: 0
   m_Name: Point2
   m_TagString: Untagged
@@ -577,6 +598,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &150988458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150988455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &163792347
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 163792348}
   - component: {fileID: 163792349}
+  - component: {fileID: 163792350}
   m_Layer: 0
   m_Name: LeftPoint3Indicator
   m_TagString: Untagged
@@ -667,6 +701,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &163792350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163792347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &195625044
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265314221}
   - component: {fileID: 265314222}
+  - component: {fileID: 265314223}
   m_Layer: 0
   m_Name: RightPoint3
   m_TagString: Untagged
@@ -885,6 +932,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &265314223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265314220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!4 &266837447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4751362505379196114, guid: 2cefe046fc2f39640be13c3aebbf0e3f, type: 3}
@@ -1037,7 +1096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292279361}
   m_Layer: 0
-  m_Name: ========================
+  m_Name: ==========================
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1068,6 +1127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 324802169}
   - component: {fileID: 324802170}
+  - component: {fileID: 324802171}
   m_Layer: 0
   m_Name: RightPoint3Indicator
   m_TagString: Untagged
@@ -1148,6 +1208,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &324802171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324802168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &346723114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 346723115}
   - component: {fileID: 346723116}
+  - component: {fileID: 346723117}
   m_Layer: 0
   m_Name: MiddlePoint
   m_TagString: Untagged
@@ -1238,6 +1311,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &346723117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346723114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1001 &394930426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1301,8 +1386,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6159126449350080958, guid: 07f7604b33551cf4b9cf919d21c07806, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1740778735}
   m_SourcePrefab: {fileID: 100100000, guid: 07f7604b33551cf4b9cf919d21c07806, type: 3}
+--- !u!1 &402351807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8671886985526728196, guid: 7bace997aacd44443a5f4470d4f2957c, type: 3}
+  m_PrefabInstance: {fileID: 537835983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &405782328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,6 +1406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 405782329}
   - component: {fileID: 405782330}
+  - component: {fileID: 405782331}
   m_Layer: 0
   m_Name: Point8
   m_TagString: Untagged
@@ -1393,6 +1487,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &405782331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405782328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &428632060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,6 +1561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleManager
   _indicatorObject: {fileID: 4329619606127853903, guid: 2a6bf08cc4a064146bd5a3fc9da89f0e, type: 3}
   _spawnInterval: 6
+  _indicatorWarning: 6
   _spiderPrefab: {fileID: 1591064056805395018, guid: 2cefe046fc2f39640be13c3aebbf0e3f, type: 3}
   _spiderSpawnArea:
   - {fileID: 1005837727}
@@ -1548,6 +1655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 512663360}
   - component: {fileID: 512663361}
+  - component: {fileID: 512663362}
   m_Layer: 0
   m_Name: LeftPoint1Indicator
   m_TagString: Untagged
@@ -1628,6 +1736,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &512663362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512663359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &519833396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519833397}
   - component: {fileID: 519833398}
+  - component: {fileID: 519833399}
   m_Layer: 0
   m_Name: LeftPoint2
   m_TagString: Untagged
@@ -1718,6 +1839,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &519833399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519833396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &526845894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,8 +1994,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1925,7 +2058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5776940531868150713, guid: 7bace997aacd44443a5f4470d4f2957c, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5776940531868150713, guid: 7bace997aacd44443a5f4470d4f2957c, type: 3}
       propertyPath: m_SortingOrder
@@ -1946,7 +2079,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8671886985526728196, guid: 7bace997aacd44443a5f4470d4f2957c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1745343616}
   m_SourcePrefab: {fileID: 100100000, guid: 7bace997aacd44443a5f4470d4f2957c, type: 3}
 --- !u!1 &575759457
 GameObject:
@@ -2167,8 +2303,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2280,6 +2416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 680372425}
   - component: {fileID: 680372426}
+  - component: {fileID: 680372427}
   m_Layer: 0
   m_Name: RightPointSpawn
   m_TagString: Untagged
@@ -2360,6 +2497,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &680372427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680372424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &701524529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,6 +2519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 701524530}
   - component: {fileID: 701524531}
+  - component: {fileID: 701524532}
   m_Layer: 0
   m_Name: Point4
   m_TagString: Untagged
@@ -2450,6 +2600,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &701524532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701524529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &764436234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,6 +2951,11 @@ Transform:
   - {fileID: 428632061}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &892402432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8278976888990548987, guid: 7d656a59e3a401a4eba88641d11bb2e6, type: 3}
+  m_PrefabInstance: {fileID: 1427648746}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &909778858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3032,6 +3199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1005837728}
   - component: {fileID: 1005837729}
+  - component: {fileID: 1005837730}
   m_Layer: 0
   m_Name: LeftPointSpawn
   m_TagString: Untagged
@@ -3112,6 +3280,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1005837730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005837727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &1022441261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,6 +3344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1037683111}
   - component: {fileID: 1037683112}
+  - component: {fileID: 1037683113}
   m_Layer: 0
   m_Name: RightPoint4Indicator
   m_TagString: Untagged
@@ -3244,6 +3425,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1037683113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037683110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1001 &1049374328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3351,6 +3544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101212334}
   - component: {fileID: 1101212335}
+  - component: {fileID: 1101212336}
   m_Layer: 0
   m_Name: Point7
   m_TagString: Untagged
@@ -3431,6 +3625,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1101212336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101212333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &1155915952
 GameObject:
   m_ObjectHideFlags: 0
@@ -3574,8 +3780,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3603,6 +3809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1175229146}
   - component: {fileID: 1175229147}
+  - component: {fileID: 1175229148}
   m_Layer: 0
   m_Name: LeftPoint4Indicator
   m_TagString: Untagged
@@ -3683,6 +3890,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1175229148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175229145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &1290001130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3693,6 +3912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1290001131}
   - component: {fileID: 1290001132}
+  - component: {fileID: 1290001133}
   m_Layer: 0
   m_Name: Point5
   m_TagString: Untagged
@@ -3773,6 +3993,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1290001133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290001130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!4 &1321683324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3787978280911004918, guid: 07f7604b33551cf4b9cf919d21c07806, type: 3}
@@ -4023,7 +4255,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8278976888990548987, guid: 7d656a59e3a401a4eba88641d11bb2e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494564504}
   m_SourcePrefab: {fileID: 100100000, guid: 7d656a59e3a401a4eba88641d11bb2e6, type: 3}
 --- !u!1 &1446400097
 GameObject:
@@ -4035,6 +4270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1446400098}
   - component: {fileID: 1446400099}
+  - component: {fileID: 1446400100}
   m_Layer: 0
   m_Name: RightPoint2Indicator
   m_TagString: Untagged
@@ -4115,6 +4351,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1446400100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446400097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &1457906599
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,6 +4373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1457906600}
   - component: {fileID: 1457906601}
+  - component: {fileID: 1457906602}
   m_Layer: 0
   m_Name: Point6
   m_TagString: Untagged
@@ -4205,6 +4454,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1457906602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457906599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &1464353237
 GameObject:
   m_ObjectHideFlags: 0
@@ -4246,6 +4507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1468438636}
   - component: {fileID: 1468438637}
+  - component: {fileID: 1468438638}
   m_Layer: 0
   m_Name: RightPoint1
   m_TagString: Untagged
@@ -4326,11 +4588,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1468438638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468438635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!4 &1494564500 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3947375065852003701, guid: 7d656a59e3a401a4eba88641d11bb2e6, type: 3}
   m_PrefabInstance: {fileID: 1427648746}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1494564504
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892402432}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c16b1c3ccb2875f428bd9b80c4a49311, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1509332567
 GameObject:
   m_ObjectHideFlags: 0
@@ -4504,8 +4800,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4528,6 +4824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1578101789}
   - component: {fileID: 1578101790}
+  - component: {fileID: 1578101791}
   m_Layer: 0
   m_Name: LeftPoint3
   m_TagString: Untagged
@@ -4608,6 +4905,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1578101791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578101788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &1581830953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4731,8 +5040,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4760,6 +5069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1634965213}
   - component: {fileID: 1634965214}
+  - component: {fileID: 1634965215}
   m_Layer: 0
   m_Name: LeftPoint4
   m_TagString: Untagged
@@ -4840,6 +5150,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1634965215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634965212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &1637755545
 GameObject:
   m_ObjectHideFlags: 0
@@ -5014,8 +5336,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5072,11 +5394,146 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1740778730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6159126449350080958, guid: 07f7604b33551cf4b9cf919d21c07806, type: 3}
+  m_PrefabInstance: {fileID: 394930426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1740778735
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740778730}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 659d544afa5ad1346adc8f9f0ffebf05, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1745343612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3231018207579264163, guid: 7bace997aacd44443a5f4470d4f2957c, type: 3}
   m_PrefabInstance: {fileID: 537835983}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1745343616
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402351807}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 009232aff2ee5e346a1786318619d82b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1755608458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1755608460}
+  - component: {fileID: 1755608459}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1755608459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755608458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e4f64df51337c4ab02afd67be6ee15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  sfxs:
+  - {fileID: 11400000, guid: 78d7cf617540d50439be697a4f501fb7, type: 2}
+  - {fileID: 11400000, guid: fa8e4daf5d7ab93439d66b4c4612e838, type: 2}
+  - {fileID: 11400000, guid: 05ad938885e0d344aa3303385ac4c9ef, type: 2}
+  - {fileID: 11400000, guid: c132179bb1b43e945a6e81cc43eadea7, type: 2}
+  - {fileID: 11400000, guid: 60d0746de508a514d90654444660bb7b, type: 2}
+  - {fileID: 11400000, guid: 7116dbf2dc4af1e4097428449878b656, type: 2}
+  - {fileID: 11400000, guid: eb5cc18d320fb3945b80d5cb5e396229, type: 2}
+  - {fileID: 11400000, guid: df624103e83f8d74f81dc7bf1c9b6559, type: 2}
+  - {fileID: 11400000, guid: c20b00fc8691a674fba1328cb21756a5, type: 2}
+  - {fileID: 11400000, guid: cb47266fc4d7d43439f5344f0ded9f43, type: 2}
+  - {fileID: 11400000, guid: c0985e6e0007407498b0990a9079c290, type: 2}
+  - {fileID: 11400000, guid: aa7d186378fbd6041adca1797bcc1cb1, type: 2}
+  musics:
+  - {fileID: 11400000, guid: 74234c591dd77c645a1e50df9bfff641, type: 2}
+--- !u!4 &1755608460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755608458}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1799293667 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1591064056805395018, guid: 2cefe046fc2f39640be13c3aebbf0e3f, type: 3}
+  m_PrefabInstance: {fileID: 867143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1799293671
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799293667}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f70febbcdc01ac749a1d1198bfd066db, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1808555582
 GameObject:
   m_ObjectHideFlags: 0
@@ -5220,8 +5677,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5408,8 +5865,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5603,6 +6060,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1912527845}
   - component: {fileID: 1912527846}
+  - component: {fileID: 1912527847}
   m_Layer: 0
   m_Name: Point3
   m_TagString: Untagged
@@ -5683,6 +6141,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1912527847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912527844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &1924630439
 GameObject:
   m_ObjectHideFlags: 0
@@ -5857,8 +6327,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5881,6 +6351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2012752312}
   - component: {fileID: 2012752313}
+  - component: {fileID: 2012752314}
   m_Layer: 0
   m_Name: RightPoint1Indicator
   m_TagString: Untagged
@@ -5961,6 +6432,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2012752314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012752311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &2019708193
 GameObject:
   m_ObjectHideFlags: 0
@@ -6104,8 +6587,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6164,6 +6647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2053074254}
   - component: {fileID: 2053074255}
+  - component: {fileID: 2053074256}
   m_Layer: 0
   m_Name: LeftPoint2Indicator
   m_TagString: Untagged
@@ -6244,6 +6728,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2053074256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053074253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &2077600604
 GameObject:
   m_ObjectHideFlags: 0
@@ -6375,6 +6871,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2092380938}
   - component: {fileID: 2092380939}
+  - component: {fileID: 2092380940}
   m_Layer: 0
   m_Name: RightPoint2
   m_TagString: Untagged
@@ -6455,6 +6952,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2092380940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092380937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
 --- !u!1 &2123730751
 GameObject:
   m_ObjectHideFlags: 0
@@ -6465,6 +6974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2123730752}
   - component: {fileID: 2123730753}
+  - component: {fileID: 2123730754}
   m_Layer: 0
   m_Name: LeftPoint1
   m_TagString: Untagged
@@ -6545,6 +7055,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2123730754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123730751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ed434b923cc5e468373479a6ea8e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSlot
+--- !u!1 &2123992085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2123992086}
+  m_Layer: 0
+  m_Name: ========Managers===========
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2123992086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123992085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136263283
 GameObject:
   m_ObjectHideFlags: 0
@@ -6607,8 +7160,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 432153479
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6688,17 +7241,18 @@ SceneRoots:
   m_Roots:
   - {fileID: 279166516}
   - {fileID: 1022441262}
-  - {fileID: 1737479421}
-  - {fileID: 632593111}
   - {fileID: 1809700215}
-  - {fileID: 292279361}
   - {fileID: 575759458}
   - {fileID: 1379936541}
   - {fileID: 641212466}
   - {fileID: 2027811612}
-  - {fileID: 474394517}
-  - {fileID: 1850049211}
   - {fileID: 58712764}
   - {fileID: 2077600609}
   - {fileID: 841520629}
-  - {fileID: 582879673}
+  - {fileID: 2123992086}
+  - {fileID: 1737479421}
+  - {fileID: 632593111}
+  - {fileID: 474394517}
+  - {fileID: 1755608460}
+  - {fileID: 292279361}
+  - {fileID: 1850049211}
