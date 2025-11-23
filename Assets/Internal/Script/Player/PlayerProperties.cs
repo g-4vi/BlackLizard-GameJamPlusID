@@ -14,6 +14,7 @@ public class PlayerProperties {
 
     public void UpdateHealth(int incrementHealth) {
         health += incrementHealth;
+        onHealthChanged?.Invoke(health);
 
         if (health <= 0)//Game over
         {
@@ -22,8 +23,6 @@ public class PlayerProperties {
             Debug.Log("Game Over!");
             return;
         }
-
-        onHealthChanged?.Invoke(health);
     }
 
     public void UpdateMana(int incrementMana) {
