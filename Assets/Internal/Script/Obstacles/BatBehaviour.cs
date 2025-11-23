@@ -9,8 +9,9 @@ public class BatBehaviour : ObstacleProperties
 
     [SerializeField] List<Vector3> _pathPoints;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         int pattern = Random.Range(0, 10);
         StartCoroutine(FlyFixedPath(_pathPoints));
     }
