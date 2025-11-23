@@ -6,7 +6,7 @@ using UnityEngine;
 public class BatBehaviour : ObstacleProperties
 {
     [Header("References")]
-    [SerializeField] Animator _animator;
+
     [SerializeField] List<Vector3> _pathPoints;
 
     private void Start()

@@ -36,6 +36,7 @@ public class ObstacleManager : MonoBehaviour
 
     Animator _animator;
     private float _elapsedTime = 0f;
+    ObstacleProperties lastObsSpawned;
 
     private void Start()
     {
@@ -71,9 +72,10 @@ public class ObstacleManager : MonoBehaviour
         
 
         GameObject obj;
-        while (true)
+        for (int i = 0;i<10;i++) // Try 10 times to find a free slot, else
         {
             int randNum = Random.Range(1, 5);
+            lastObsSpawned = null;
             switch (randNum)
             {
                 case (1):
@@ -92,7 +94,8 @@ public class ObstacleManager : MonoBehaviour
 
                     obsB.ChangeOccupyStatus(true);
                     // TODO : Add a logic to reference spawned spider, so we can call the assignSlot function
-                    StartCoroutine(SpawnSpider(obj.transform.position));
+                    StartCoroutine(SpawnSpider(obj.transform.position, obsB));
+                    
                     break;
                 case (3):
                     Debug.Log("Spawning boulder!");
@@ -109,7 +112,8 @@ public class ObstacleManager : MonoBehaviour
 
                     obsD.ChangeOccupyStatus(true);
                     // TODO : Add a logic to reference spawned spike, so we can call the assignSlot function
-                    StartCoroutine(SpawnSpike(obj.transform.position));
+                    StartCoroutine(SpawnSpike(obj.transform.position,obsD));
+                    
                     break;
             }
             break;
@@ -119,7 +123,7 @@ public class ObstacleManager : MonoBehaviour
 
     /*NOTE: Spider berbeda, karena targetPoint nya bukan tempat spawn awalnya. Tapi spawnnya di titik dipaling atas diatas targetPoint, 
      dan targetPointnya adalah tempat akhir dari spidernya */
-    IEnumerator SpawnSpider(Vector3 targetPoint) 
+    IEnumerator SpawnSpider(Vector3 targetPoint, ObstacleSlot obsSlot) 
     {
         GameObject indicator = SpawnIndicator(_indicatorObject, targetPoint);
         indicator.GetComponent<Animator>().SetTrigger("BlinkEffect");
@@ -131,6 +135,7 @@ public class ObstacleManager : MonoBehaviour
                                              : _spiderSpawnArea[1].transform.position;
 
         obj = Instantiate(_spiderPrefab, spawnPos, Quaternion.identity);
+        lastObsSpawned = obj.GetComponent<SpiderBehaviour>();
         while (Vector3.Distance(obj.transform.position, targetPoint) > 0.1f)
         {
             obj.transform.position = Vector3.MoveTowards(obj.transform.position, targetPoint, Time.deltaTime * 3f);
@@ -141,18 +146,35 @@ public class ObstacleManager : MonoBehaviour
         spider.SetDirection(
             targetPoint.x < 0 ? Vector3.right : Vector3.left
         );
-
+        spider.AssignSlot(obsSlot);
         spider.ActivateShooting();
         }
 
+    //FOR DEBUGGING PURPOSES
+    [ContextMenu("Spawn Spider")]
+    void SpawnRandomSpider()
+    {
+        GameObject obj;
+        for (int i = 0; i < 10; i++)
+        {
+            obj = _spiderStayPoints[Random.Range(0, _spiderStayPoints.Count)];
+            if (obj.TryGetComponent<ObstacleSlot>(out ObstacleSlot obsSlot) && obsSlot.OccupiedStatus) continue;
+            obsSlot.ChangeOccupyStatus(true);
+            Debug.Log("Spawning spider manually!");
+            StartCoroutine(SpawnSpider(obj.transform.position, obsSlot));
+            
+            break;
+        }
+        
+    }
 
-   
 
     IEnumerator SpawnBat(Vector3 targetPoint)
     {
 
 
         GameObject indicator;
+        
         if (targetPoint.x < 0)
         {
             indicator = SpawnIndicator(_indicatorObject, new Vector3(targetPoint.x+1.5f,targetPoint.y,targetPoint.z));
@@ -166,8 +188,8 @@ public class ObstacleManager : MonoBehaviour
         Destroy(indicator);
         GameObject obj;
         obj = Instantiate(_batPrefab, targetPoint, Quaternion.identity);
+        lastObsSpawned = obj.GetComponent<BatBehaviour>();
 
-        
         if (obj.TryGetComponent<BatBehaviour>(out BatBehaviour batBehaviour))
         {
             Shuffle<Vector3>(_batPathPoints);
@@ -195,23 +217,15 @@ public class ObstacleManager : MonoBehaviour
 
         GameObject obj;
         obj = Instantiate(_boulderPrefab, targetPoint, Quaternion.identity);
+        lastObsSpawned = obj.GetComponent<BoulderBehaviour>();
 
         BoulderBehaviour boulder = obj.GetComponent<BoulderBehaviour>();
-            if (targetPoint.x < 0)
-            {
-                Debug.Log("Going right + " + targetPoint);
-            boulder.SetDirection(Vector3.right);
-            }
-            else
-            {
-                Debug.Log("Going left + "+targetPoint);
-            boulder.SetDirection(Vector3.left);
-            }
-        
-
+        boulder.SetDirection(
+            targetPoint.x < 0 ? Vector3.right : Vector3.left
+        );
     }
 
-    IEnumerator SpawnSpike(Vector3 targetPoint) {
+    IEnumerator SpawnSpike(Vector3 targetPoint, ObstacleSlot obsSlot) {
 
         GameObject indicator = SpawnIndicator(_indicatorObject , targetPoint);
         indicator.GetComponent<Animator>().SetTrigger("BlinkEffect");
@@ -220,6 +234,8 @@ public class ObstacleManager : MonoBehaviour
 
         GameObject obj;
         obj = Instantiate(_spikePrefab, targetPoint, Quaternion.identity);
+        lastObsSpawned = obj.GetComponent<SpikeTrapBehaviour>();
+        lastObsSpawned.AssignSlot(obsSlot);
     }
 
    

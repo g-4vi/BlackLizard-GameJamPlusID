@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObstacleSlot 
+public class ObstacleSlot : MonoBehaviour
 {
     
     bool _occupied;

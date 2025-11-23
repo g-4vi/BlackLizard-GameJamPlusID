@@ -13,7 +13,7 @@ public class BoulderBehaviour : ObstacleProperties
     private void Start()
     {
 
-        StartCoroutine(Roll(direction));
+        StartCoroutine(Roll(_direction));
     }
 
 

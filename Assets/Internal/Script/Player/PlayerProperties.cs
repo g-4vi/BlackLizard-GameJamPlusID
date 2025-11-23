@@ -19,6 +19,7 @@ public class PlayerProperties {
         {
             health = 0;
             GameManager.Instance.EndGame();
+            Debug.Log("Game Over!");
             return;
         }
 

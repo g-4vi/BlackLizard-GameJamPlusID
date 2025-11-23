@@ -13,7 +13,7 @@ public class SpiderBehaviour : ObstacleProperties
         GameObject projectile = Instantiate(_spiderWebPrefab, transform.position, Quaternion.identity);
         if (projectile.TryGetComponent<ObstacleProperties>(out ObstacleProperties obs))
         {
-            obs.SetDirection(direction);
+            obs.SetDirection(_direction);
         }
     }
 

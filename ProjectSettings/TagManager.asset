@@ -44,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Play Area
+    uniqueID: 432153479
+    locked: 0
   - name: Obs_Back
     uniqueID: 1985897727
     locked: 0

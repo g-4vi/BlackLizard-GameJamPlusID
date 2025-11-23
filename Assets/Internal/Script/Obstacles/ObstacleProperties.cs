@@ -4,23 +4,45 @@ using UnityEngine;
 
 public abstract class ObstacleProperties : MonoBehaviour
 {
+    public System.Action<float> onHealthChanged;
+
     [Header("Properties")]
     [SerializeField] protected float _objectSpeed = 5f;
     [SerializeField] protected float _objectHealth = 1f;
     [SerializeField] protected int _objectDamage = 1;
-    protected Vector3 direction;
-    protected ObstacleSlot obstacleSlot;
+    protected Vector3 _direction;
+    protected ObstacleSlot _obstacleSlot;
 
     [Header("Knockback")]
     [SerializeField] protected float knockbackForce = 5f;
     [SerializeField] protected float knockbackDuration = 0.2f;
 
+    [Header("Sound Effects")]
+    [SerializeField] protected AudioClip _destroyedSound;
+    [SerializeField] protected AudioClip _entrySound;
+    [SerializeField] protected AudioClip _specialSound; // spider shooting sound, etc.
 
+    [Header("Animation")]
+    [SerializeField] protected Animator _animator;
+
+
+    public void UpdateHealth(int incrementHealth) {
+        _objectHealth += incrementHealth;
+
+        if (_objectHealth <= 0)//Game over
+        {
+            _objectHealth = 0;
+            DestroyObstacle();
+            return;
+        }
+
+        onHealthChanged?.Invoke(_objectHealth);
+    }
     protected void Update()
     {
-        if (this._objectHealth <= 0 || OutOfScreen())
+        if (OutOfScreen())
         {
-            DestroyObstacle();
+            Destroy(this.gameObject);
         }
     }
 
@@ -33,7 +55,9 @@ public abstract class ObstacleProperties : MonoBehaviour
     void DestroyObstacle()
     {
         // TODO: Play destroy anim
-        if (obstacleSlot != null) obstacleSlot.ChangeOccupyStatus(false);
+        // TODO: Play destroy SFX
+        
+        if (_obstacleSlot != null) _obstacleSlot.ChangeOccupyStatus(false);
         Destroy(this.gameObject);
     }
 
@@ -65,14 +89,11 @@ public abstract class ObstacleProperties : MonoBehaviour
         {
             Debug.Log("Fireball hit!");
             Destroy(collision.gameObject);
-            _objectHealth--;
-        } else if (collision.gameObject.CompareTag("Player"))
-        {
-            DealDamageToPlayer(_objectDamage);
-            Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>());
+            UpdateHealth(-1);
         }
         else if(collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Player hit obstacle!");
             DealDamageToPlayer(_objectDamage);
             Collider2D[] playerColliders = collision.GetComponentsInParent<Collider2D>();
             foreach (var col in playerColliders)
@@ -88,14 +109,12 @@ public abstract class ObstacleProperties : MonoBehaviour
         }
     }
 
-   
-
     public void SetDirection(Vector3 newDirection)
     {
-        direction = newDirection;
+        _direction = newDirection;
     }
     public void AssignSlot(ObstacleSlot slotObj)
     {
-        obstacleSlot = slotObj;
+        _obstacleSlot = slotObj;
     }
 }
