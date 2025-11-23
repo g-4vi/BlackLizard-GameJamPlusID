@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e05d864aeec76d5419ef7fea69f1909a
+guid: 7296e88d3b73a0147be718a16c4452d4
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -49,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,12 +106,12 @@ TextureImporter:
       name: Bintang ultimate 1_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 49
-        width: 166
-        height: 159
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -124,33 +124,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Bintang ultimate 1_1
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 0
-        width: 152
-        height: 255
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 23224406738cd2070800000000000000
-      internalID: 8083337046363742770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: ec4884210d794264a8176b2a88b36303
     internalID: 0
     vertices: []
     indices: 

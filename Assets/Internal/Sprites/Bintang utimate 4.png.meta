@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4f279187f5c00984193fc0e2054d069f
+guid: f2b3b6ac860ef9e48bd17f8ce1aed4aa
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -52,12 +52,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,37 +106,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bintang utimate 4_0
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 90
-        width: 8
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 394c79ae14b9f3330800000000000000
-      internalID: 3692840926878090387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Bintang utimate 4_1
       rect:
         serializedVersion: 2
-        x: 8
-        y: 38
-        width: 169
-        height: 159
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -149,33 +127,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Bintang utimate 4_2
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 3
-        width: 145
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c57b5f9a80f28870800000000000000
-      internalID: 8683767509693461961
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 2669838a4fbdaf84da18f73d3e134856
     internalID: 0
     vertices: []
     indices: 
