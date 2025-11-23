@@ -10517,8 +10517,8 @@ MonoBehaviour:
   musics:
   - {fileID: 11400000, guid: 74234c591dd77c645a1e50df9bfff641, type: 2}
   - {fileID: 11400000, guid: 2c414d1c900b46841a35a5af24ca3ee2, type: 2}
-  BGM: 2
-  buttonSFX: 14
+  BGM: 0
+  buttonSFX: 0
 --- !u!4 &1755608460
 Transform:
   m_ObjectHideFlags: 0

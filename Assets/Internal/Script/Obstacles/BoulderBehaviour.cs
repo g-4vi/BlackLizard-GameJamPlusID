@@ -21,7 +21,7 @@ public class BoulderBehaviour : ObstacleProperties
         while (true)
         {
             transform.position = new Vector3(transform.position.x + direction.x * _objectSpeed * Time.deltaTime, transform.position.y, transform.position.z);
-            transform.Rotate(0, 0, -_rotationSpeed * Time.deltaTime);
+            transform.Rotate(0, 0, -(_rotationSpeed*direction.x) * Time.deltaTime);
             yield return null;
         }
     }
