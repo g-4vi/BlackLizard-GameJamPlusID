@@ -5,10 +5,7 @@ using UnityEngine;
 public class BoulderBehaviour : ObstacleProperties
 {
     float _rotationSpeed = 200f;
-
-
-    [Header("Refereneces")]
-    [SerializeField] Animator _animator;
+   
 
     private void Start()
     {
