@@ -6,22 +6,13 @@ using UnityEngine;
 public class BatBehaviour : ObstacleProperties
 {
     [Header("References")]
-    [SerializeField] Animator _animator;
+
     [SerializeField] List<Vector3> _pathPoints;
 
     private void Start()
     {
         int pattern = Random.Range(0, 10);
         StartCoroutine(FlyFixedPath(_pathPoints));
-
-        //if (pattern > 5)
-        //{
-        //    StartCoroutine(FlyStraight(Vector3.left));
-        //}
-        //else
-        //{
-        //    StartCoroutine(FlyRandomZigZag(Vector3.left));
-        //}
     }
 
     public void EditPathPoint(List<Vector3> newPathPoints)
@@ -31,7 +22,7 @@ public class BatBehaviour : ObstacleProperties
 
     IEnumerator FlyStraight(Vector3 direction)
     {
-        // Play Fly Animation
+        // TODO: play fly Animation
         while (true)
         {
             transform.position = new Vector3(transform.position.x + direction.x * _objectSpeed * Time.deltaTime,
@@ -41,37 +32,13 @@ public class BatBehaviour : ObstacleProperties
         }
     }
 
-    IEnumerator FlyRandomZigZag(Vector3 startingDirection)
-    {
-        float elapsedTime = 0f;
-        while (true)
-        {
-            float zigzagThreshold = 2f; // Adjust this value to change the zig-zag frequency
-            transform.position = new Vector3(transform.position.x + startingDirection.x * _objectSpeed * Time.deltaTime,
-                                             transform.position.y + startingDirection.y * _objectSpeed * Time.deltaTime,
-                                             transform.position.z + startingDirection.z * _objectSpeed * Time.deltaTime);
-            elapsedTime += Time.deltaTime;
-
-            if (elapsedTime >= zigzagThreshold)
-            {
-                elapsedTime = 0f; // Reset elapsed time to create continuous zig-zag
-                startingDirection = new Vector3(-startingDirection.x, Random.Range(-1, 1), transform.position.z);
-                yield return new WaitForSeconds(1.5f);
-            } else
-            {
-                yield return null;
-            }
-                
-        }
-    }
-
     IEnumerator FlyFixedPath(List<Vector3> pathPoints)
     {
         int idx = 0;
 
         Vector3 heading = pathPoints[idx] - transform.position;
         Vector3 direction = heading / heading.magnitude;
-        // Play Fly Animation
+        // TODO: play fly Animation
         while (true)
         {
             transform.Translate(direction*_objectSpeed * Time.deltaTime);

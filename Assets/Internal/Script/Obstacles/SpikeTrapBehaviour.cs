@@ -1,11 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpikeTrapBehaviour : MonoBehaviour
+public class SpikeTrapBehaviour : ObstacleProperties
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    [SerializeField] protected int _objectDamage = 1;
     [SerializeField] private float _persistTime = 2f;
     Collider2D _objectCollider;
     Animator _objectAnimator;
@@ -37,27 +35,29 @@ public class SpikeTrapBehaviour : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    void DealDamageToPlayer(int damage)
-    {
-        // Access Player Health Component
-        // Subtract Damage from Player Health
+    // Ini engga kepake soalnya udah di handle di ObstacleProperties
 
-        Player player = PlayerManager.Instance.playerInstance;
-        if (!player.IsInvisible)
-        {
-            Debug.Log("Ouch! GOt hit");
-            PlayerManager.Instance.TakeDamage(damage);
-        }
-    }
+    //void DealDamageToPlayer(int damage)
+    //{
+    //    // Access Player Health Component
+    //    // Subtract Damage from Player Health
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            DealDamageToPlayer(_objectDamage);
-            Physics2D.IgnoreCollision(collision.GetComponent<CapsuleCollider2D>(), GetComponent<Collider2D>());
-        }
-    }
+    //    Player player = PlayerManager.Instance.playerInstance;
+    //    if (!player.IsInvisible)
+    //    {
+    //        Debug.Log("Ouch! GOt hit");
+    //        PlayerManager.Instance.TakeDamage(damage);
+    //    }
+    //}
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        DealDamageToPlayer(_objectDamage);
+    //        Physics2D.IgnoreCollision(collision.GetComponent<CapsuleCollider2D>(), GetComponent<Collider2D>());
+    //    }
+    //}
 
 
 }
