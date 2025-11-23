@@ -103,7 +103,7 @@ public class AudioManager : Singleton<AudioManager> {
         source.Play();
     }
 
-   
+
 
     // Play by enum ID
     public void PlaySFX(SfxID sfxID, Vector2 position = default) {
@@ -134,6 +134,38 @@ public class AudioManager : Singleton<AudioManager> {
         if (musicMap.TryGetValue(musicID, out SoundData musicData)) {
             PlayMusic(musicData);
         }
+    }
+
+    // Stop specific SFX
+    public void StopSFX(SfxID sfxID) {
+        if (sfxID == SfxID.None) return;
+        if (sfxMap.TryGetValue(sfxID, out SoundData soundData)) {
+            foreach (var source in sfxSources) {
+                if (source.clip == soundData.GetAudioClip() && source.isPlaying) {
+                    source.Stop();
+                }
+            }
+        }
+    }
+
+    // Stop all SFX
+    public void StopAllSFX() {
+        foreach (var source in sfxSources) {
+            source.Stop();
+        }
+    }
+
+    // Stop Music
+    public void StopMusic() {
+        musicSource.Stop();
+    }
+
+    // Stop all audio
+    public void StopAllAudio() {
+        foreach (var source in sfxSources) {
+            source.Stop();
+        }
+        musicSource.Stop();
     }
 
     AudioSource GetAvailableSource() {
