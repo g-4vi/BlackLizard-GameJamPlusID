@@ -13,8 +13,11 @@ public enum SfxID {
 	SFX_PlayerMove,
 	SFX_SpiderShoot,
 	SFX_Spikes,
+	SFX_CollectMana,
+	SFX_Click,
 }
 public enum MusicID {
 	None,
-	Music,
+	MainMenu,
+	InGame,
 }
