@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
             jumpForce = player.playerProperties.jumpForce;
         }
 
-        
+
     }
 
     public void OnMove(InputValue value) {
@@ -43,6 +43,18 @@ public class PlayerMovement : MonoBehaviour {
     public void OnJump(InputValue value) {
         if (value.isPressed && isGrounded)
             jumpPress = true;
+    }
+
+    public void OnCancel(InputValue value) {
+        if (value.isPressed) {
+            if (GameManager.Instance.IsGameOver) return;
+
+            if (Time.timeScale == 1f) {
+                GameManager.Instance.PauseGame();
+            } else {
+                GameManager.Instance.ResumeGame();
+            }
+        }
     }
 
     private void FixedUpdate() {
@@ -66,7 +78,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Movement() {
-        
+
         //Control Player Horizontal Movement
         if (TouchingWall()) {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
@@ -82,7 +94,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Jump() {
-        
+
         if (jumpPress && rb.linearVelocity.y < 0.1f) {
             jumpPress = false;
             //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -117,22 +129,20 @@ public class PlayerMovement : MonoBehaviour {
         return touchingWall;
     }
 
-    public void OnDamaged(Vector2 direction, float force, float duration)
-    {
+    public void OnDamaged(Vector2 direction, float force, float duration) {
         if (isKnockedback) return;
         StartCoroutine(KnockBack(direction, force, duration));
     }
 
-    IEnumerator KnockBack(Vector2 direction, float knockForce, float knockDuration)
-    {
+    IEnumerator KnockBack(Vector2 direction, float knockForce, float knockDuration) {
         isKnockedback = true;
 
         rb.linearVelocity = Vector2.zero; //reset velocity
         rb.AddForce(direction * knockForce, ForceMode2D.Impulse);//knockback player based on direction
-        
+
         yield return new WaitForSeconds(knockDuration);
 
-        isKnockedback=false;
+        isKnockedback = false;
     }
 
     private void OnDrawGizmos() {
