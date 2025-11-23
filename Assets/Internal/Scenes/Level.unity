@@ -2221,6 +2221,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 8091249570889933946, guid: 775562ffa5dbab54ca5eb4f471ce6ba1, type: 3}
   spawnPoint: {fileID: 1809700215}
   playerInstance: {fileID: 0}
+  playerInput: {fileID: 0}
 --- !u!4 &632593111
 Transform:
   m_ObjectHideFlags: 0
@@ -5703,7 +5704,7 @@ SpriteRenderer:
   m_SortingLayerID: 432153479
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5711,7 +5712,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!224 &1583137806 stripped
@@ -5981,6 +5982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ee83ba6e97e8b48ace95fa87f08300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  pauseMenuUI: {fileID: 0}
+  gameOverUI: {fileID: 0}
 --- !u!4 &1737479421
 Transform:
   m_ObjectHideFlags: 0

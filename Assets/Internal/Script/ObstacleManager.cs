@@ -1,4 +1,4 @@
-using Mono.Cecil;
+//using Mono.Cecil;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -142,18 +142,22 @@ public class ObstacleManager : MonoBehaviour
 
         obj = Instantiate(_spiderPrefab, spawnPos, Quaternion.identity);
         lastObsSpawned = obj.GetComponent<SpiderBehaviour>();
+
+        SpiderBehaviour spider = obj.GetComponent<SpiderBehaviour>();
+        spider._spiderSpriteRenderer.flipY = targetPoint.x < 0? true: false;//flip spider sprite
         while (Vector3.Distance(obj.transform.position, targetPoint) > 0.1f)
         {
             obj.transform.position = Vector3.MoveTowards(obj.transform.position, targetPoint, Time.deltaTime * 3f);
             yield return null;
         }
-
-        SpiderBehaviour spider = obj.GetComponent<SpiderBehaviour>();
+        
         spider.SetDirection(
             targetPoint.x < 0 ? Vector3.right : Vector3.left
         );
         spider.AssignSlot(obsSlot);
-        spider.ActivateShooting();
+
+        spider.anim.SetTrigger(spider.AttackHash);
+        //spider.ActivateShooting();
         }
 
     //FOR DEBUGGING PURPOSES
