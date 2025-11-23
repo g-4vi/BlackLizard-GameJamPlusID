@@ -6,9 +6,7 @@ public class BoulderBehaviour : ObstacleProperties
 {
     float _rotationSpeed = 200f;
 
-
-    [Header("Refereneces")]
-    [SerializeField] Animator _animator;
+    
 
     protected override void Start()
     {
