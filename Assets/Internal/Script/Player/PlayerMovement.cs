@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour {
     Player player;
     Rigidbody2D rb;
     bool isGrounded = true;
+    bool isKnockedback = false;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -40,7 +42,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (GameManager.Instance.IsGameOver) { return; }
+        if (GameManager.Instance.IsGameOver || isKnockedback) { return; }
 
         CheckGrounded();
         Movement();
@@ -100,6 +102,24 @@ public class PlayerMovement : MonoBehaviour {
         bool touchingWall = Physics2D.Raycast(transform.position, new Vector3(Mathf.Sign(transform.localScale.x), 0, 0), wallCheckDistance, groundLayer);
 
         return touchingWall;
+    }
+
+    public void OnDamaged(Vector2 direction, float force, float duration)
+    {
+        if(PlayerManager.Instance.playerInstance.IsInvisible && !isKnockedback) return;
+        StartCoroutine(KnockBack(direction, force, duration));
+    }
+
+    IEnumerator KnockBack(Vector2 direction, float knockForce, float knockDuration)
+    {
+        isKnockedback = true;
+
+        rb.linearVelocity = Vector2.zero; //reset velocity
+        rb.AddForce(direction * knockForce, ForceMode2D.Impulse);//knockback player based on direction
+        
+        yield return new WaitForSeconds(knockDuration);
+
+        isKnockedback=false;
     }
 
     private void OnDrawGizmos() {

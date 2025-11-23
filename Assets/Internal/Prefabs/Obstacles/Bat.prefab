@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 525719112209845558}
   - component: {fileID: 6574441398847431841}
   - component: {fileID: 4098217227199401950}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,6 +107,8 @@ MonoBehaviour:
   _objectSpeed: 5
   _objectHealth: 1
   _objectDamage: 1
+  knockbackForce: 7
+  knockbackDuration: 0.2
   _animator: {fileID: 0}
   _pathPoints: []
 --- !u!61 &4098217227199401950

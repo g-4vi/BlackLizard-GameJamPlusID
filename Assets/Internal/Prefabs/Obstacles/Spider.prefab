@@ -108,6 +108,8 @@ MonoBehaviour:
   _objectSpeed: 5
   _objectHealth: 1
   _objectDamage: 1
+  knockbackForce: 7
+  knockbackDuration: 0.2
   _spiderWebPrefab: {fileID: 8671886985526728196, guid: 7bace997aacd44443a5f4470d4f2957c, type: 3}
   _webShootInterval: 2
 --- !u!61 &1473206837269419168

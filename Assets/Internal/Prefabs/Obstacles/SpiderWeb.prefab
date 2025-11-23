@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5776940531868150713}
   - component: {fileID: 6245055701391606705}
   - component: {fileID: 2111999256233896987}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: SpiderWeb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,6 +107,8 @@ MonoBehaviour:
   _objectSpeed: 5
   _objectHealth: 1
   _objectDamage: 1
+  knockbackForce: 10
+  knockbackDuration: 0.2
 --- !u!61 &2111999256233896987
 BoxCollider2D:
   m_ObjectHideFlags: 0
