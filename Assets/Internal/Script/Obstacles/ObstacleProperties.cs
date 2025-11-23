@@ -18,9 +18,11 @@ public abstract class ObstacleProperties : MonoBehaviour
     [SerializeField] protected float knockbackDuration = 0.2f;
 
     [Header("Sound Effects")]
-    [SerializeField] protected AudioClip _destroyedSound;
-    [SerializeField] protected AudioClip _entrySound;
-    [SerializeField] protected AudioClip _specialSound; // spider shooting sound, etc.
+    [SerializeField] protected SfxID _destroyedSound;
+    [SerializeField] protected SfxID _entrySound;
+
+    [Tooltip("Unique Sound Effects (I.e Spider Shooting)")]
+    [SerializeField] protected SfxID _specialSound; // spider shooting sound, etc.
 
     [Header("Animation")]
     [SerializeField] protected Animator _animator;
@@ -38,6 +40,13 @@ public abstract class ObstacleProperties : MonoBehaviour
 
         onHealthChanged?.Invoke(_objectHealth);
     }
+
+    protected virtual void Start()
+    {
+        if (_entrySound != SfxID.None) AudioManager.Instance.PlaySFX(_entrySound);
+
+    }
+
     protected void Update()
     {
         if (OutOfScreen())
@@ -56,7 +65,9 @@ public abstract class ObstacleProperties : MonoBehaviour
     {
         // TODO: Play destroy anim
         // TODO: Play destroy SFX
-        
+        if (_destroyedSound != SfxID.None) AudioManager.Instance.PlaySFX(_destroyedSound);
+
+
         if (_obstacleSlot != null) _obstacleSlot.ChangeOccupyStatus(false);
         Destroy(this.gameObject);
     }

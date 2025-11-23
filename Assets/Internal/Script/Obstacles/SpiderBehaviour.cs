@@ -10,6 +10,7 @@ public class SpiderBehaviour : ObstacleProperties
 
     void SpawnProjectile()
     {
+        AudioManager.Instance.PlaySFX(_specialSound);
         GameObject projectile = Instantiate(_spiderWebPrefab, transform.position, Quaternion.identity);
         if (projectile.TryGetComponent<ObstacleProperties>(out ObstacleProperties obs))
         {
@@ -19,6 +20,7 @@ public class SpiderBehaviour : ObstacleProperties
 
     IEnumerator ShootWeb()
     {
+        
         yield return new WaitForSeconds(_webShootInterval);
         while (true)
         {

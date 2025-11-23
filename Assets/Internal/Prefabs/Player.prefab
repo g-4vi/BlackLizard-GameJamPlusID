@@ -305,6 +305,10 @@ MonoBehaviour:
     jumpForce: 12
     invisiblePeriod: 1
     mana: 0
+    _deathSound: 8
+    _jumpSound: 9
+    _hurtSound: 7
+    _moveSound: 10
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128

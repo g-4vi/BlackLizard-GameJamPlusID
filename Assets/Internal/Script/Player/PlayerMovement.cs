@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Movement() {
+        
         //Control Player Horizontal Movement
         if (TouchingWall()) {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
@@ -69,17 +70,20 @@ public class PlayerMovement : MonoBehaviour {
             rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
             //Play walk SFX
+            //if (player.playerProperties.MoveSound != SfxID.None) AudioManager.Instance.PlaySFX(player.playerProperties.MoveSound);
         }
 
     }
 
     void Jump() {
+        
         if (jumpPress && rb.linearVelocity.y < 0.1f) {
             jumpPress = false;
             //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             rb.AddForce(jumpForce * Vector3.up, ForceMode2D.Impulse);
 
             //Play Jump SFX
+            if (player.playerProperties.JumpSound != SfxID.None) AudioManager.Instance.PlaySFX(player.playerProperties.JumpSound);
         }
     }
 
@@ -107,6 +111,7 @@ public class PlayerMovement : MonoBehaviour {
     public void OnDamaged(Vector2 direction, float force, float duration)
     {
         if(PlayerManager.Instance.playerInstance.IsInvisible && !isKnockedback) return;
+        
         StartCoroutine(KnockBack(direction, force, duration));
     }
 

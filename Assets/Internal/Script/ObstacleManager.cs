@@ -14,6 +14,7 @@ public class ObstacleManager : MonoBehaviour
     [Header("Properties")]
     [SerializeField] GameObject _indicatorObject;
     [SerializeField] float _spawnInterval = 6f;
+    [SerializeField] SfxID _indicatorWarning;
 
     [Header("References")]
     [Header("Spiders")]
@@ -126,8 +127,13 @@ public class ObstacleManager : MonoBehaviour
     IEnumerator SpawnSpider(Vector3 targetPoint, ObstacleSlot obsSlot) 
     {
         GameObject indicator = SpawnIndicator(_indicatorObject, targetPoint);
-        indicator.GetComponent<Animator>().SetTrigger("BlinkEffect");
-        yield return new WaitForSeconds(3.2f);
+        Animator anim = indicator.GetComponent<Animator>();
+        anim.SetTrigger("BlinkEffect");
+        yield return new WaitUntil(() =>
+       anim.GetCurrentAnimatorStateInfo(0).IsName("IndicatorBlink")
+   );
+        float clipLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(clipLength);
         Destroy(indicator);
         //
         GameObject obj;
@@ -183,8 +189,13 @@ public class ObstacleManager : MonoBehaviour
         {
             indicator = SpawnIndicator(_indicatorObject, new Vector3(targetPoint.x - 1.5f, targetPoint.y, targetPoint.z));
         }
-        indicator.GetComponent<Animator>().SetTrigger("BlinkEffect");
-        yield return new WaitForSeconds(3.2f);
+        Animator anim = indicator.GetComponent<Animator>();
+        anim.SetTrigger("BlinkEffect");
+        yield return new WaitUntil(() =>
+       anim.GetCurrentAnimatorStateInfo(0).IsName("IndicatorBlink")
+   );
+        float clipLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(clipLength);
         Destroy(indicator);
         GameObject obj;
         obj = Instantiate(_batPrefab, targetPoint, Quaternion.identity);
@@ -211,8 +222,13 @@ public class ObstacleManager : MonoBehaviour
         {
             indicator = SpawnIndicator(_indicatorObject, new Vector3(targetPoint.x - 1.5f, targetPoint.y, targetPoint.z));
         }
-        indicator.GetComponent<Animator>().SetTrigger("BlinkEffect");
-        yield return new WaitForSeconds(3.2f);
+        Animator anim = indicator.GetComponent<Animator>();
+        anim.SetTrigger("BlinkEffect");
+        yield return new WaitUntil(() =>
+       anim.GetCurrentAnimatorStateInfo(0).IsName("IndicatorBlink")
+   );
+        float clipLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(clipLength);
         Destroy(indicator);
 
         GameObject obj;
@@ -228,8 +244,13 @@ public class ObstacleManager : MonoBehaviour
     IEnumerator SpawnSpike(Vector3 targetPoint, ObstacleSlot obsSlot) {
 
         GameObject indicator = SpawnIndicator(_indicatorObject , targetPoint);
-        indicator.GetComponent<Animator>().SetTrigger("BlinkEffect");
-        yield return new WaitForSeconds(3.2f);
+        Animator anim = indicator.GetComponent<Animator>();
+        anim.SetTrigger("BlinkEffect");
+        yield return new WaitUntil(() =>
+       anim.GetCurrentAnimatorStateInfo(0).IsName("IndicatorBlink")
+   );
+        float clipLength = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(clipLength);
         Destroy(indicator);
 
         GameObject obj;
@@ -242,7 +263,8 @@ public class ObstacleManager : MonoBehaviour
 
     GameObject SpawnIndicator(GameObject indicatorPrefab, Vector3 spawnPosition)
     {
-          return Instantiate(indicatorPrefab, spawnPosition, Quaternion.identity);
+        if (_indicatorWarning!= SfxID.None) AudioManager.Instance.PlaySFX(_indicatorWarning);
+        return Instantiate(indicatorPrefab, spawnPosition, Quaternion.identity);
     }
 
     // Algoritma Fisher-Yates Shuffle 
