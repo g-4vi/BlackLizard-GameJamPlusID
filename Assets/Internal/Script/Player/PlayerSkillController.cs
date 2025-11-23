@@ -28,13 +28,22 @@ namespace GameJamPlus {
 
             if (currentSkillCooldown <= 0f) {
                 Debug.Log($"[{name}] Attack input detected, executing current skill.");
-                currentSkill.Execute(gameObject);
+                //currentSkill.Execute(gameObject);
+
+                //Attack animation
+                Player player = PlayerManager.Instance.playerInstance;
+                player.anim.SetTrigger(player.AttackHash);
 
                 currentSkillCooldown = currentSkill.cooldown;
                 // TODO: call sound effect when casting skill
             } else {
                 Debug.Log($"[{name}] Skill is on cooldown for {currentSkillCooldown} more seconds.");
             }
+        }
+
+        public void ExecuteSkill()
+        {
+            currentSkill.Execute(gameObject);
         }
 
         void OnDestroy() {

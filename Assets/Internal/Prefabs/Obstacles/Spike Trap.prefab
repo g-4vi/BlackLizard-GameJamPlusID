@@ -156,6 +156,10 @@ MonoBehaviour:
   _objectDamage: 1
   knockbackForce: 5
   knockbackDuration: 0.2
+  _destroyedSound: 0
+  _entrySound: 12
+  _specialSound: 0
+  _animator: {fileID: 0}
   _persistTime: 2
 --- !u!95 &-126058630377896340
 Animator:

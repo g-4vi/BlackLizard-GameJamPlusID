@@ -12,6 +12,18 @@ public class PlayerProperties {
     public float invisiblePeriod = 0.5f;
     public int mana = 0;
 
+    [Header("Sound Effects")]
+    [SerializeField] private SfxID _deathSound;
+    [SerializeField] private SfxID _jumpSound;
+    [SerializeField] private SfxID _hurtSound;
+    [SerializeField] private SfxID _moveSound;
+
+    public SfxID DeathSound => _deathSound;
+    public SfxID JumpSound => _jumpSound;
+    public SfxID HurtSound => _hurtSound;
+    public SfxID MoveSound => _moveSound;
+
+
     public void UpdateHealth(int incrementHealth) {
         health += incrementHealth;
         onHealthChanged?.Invoke(health);
@@ -20,9 +32,12 @@ public class PlayerProperties {
         {
             health = 0;
             GameManager.Instance.EndGame();
+            if (DeathSound != SfxID.None) AudioManager.Instance.PlaySFX(DeathSound);
             Debug.Log("Game Over!");
             return;
         }
+        if (HurtSound != SfxID.None) AudioManager.Instance.PlaySFX(HurtSound);
+        onHealthChanged?.Invoke(health);
     }
 
     public void UpdateMana(int incrementMana) {

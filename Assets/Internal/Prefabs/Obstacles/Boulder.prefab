@@ -110,6 +110,9 @@ MonoBehaviour:
   _objectDamage: 1
   knockbackForce: 7
   knockbackDuration: 0.2
+  _destroyedSound: 0
+  _entrySound: 3
+  _specialSound: 0
   _animator: {fileID: 0}
 --- !u!50 &174060924015404362
 Rigidbody2D:

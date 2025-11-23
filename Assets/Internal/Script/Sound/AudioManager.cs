@@ -90,6 +90,8 @@ public class AudioManager : Singleton<AudioManager> {
         source.Play();
     }
 
+   
+
     // Play by enum ID
     public void PlaySFX(SfxID sfxID, Vector2 position = default) {
         if (sfxID == SfxID.None) return;

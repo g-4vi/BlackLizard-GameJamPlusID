@@ -110,6 +110,10 @@ MonoBehaviour:
   _objectDamage: 1
   knockbackForce: 7
   knockbackDuration: 0.2
+  _destroyedSound: 0
+  _entrySound: 0
+  _specialSound: 11
+  _animator: {fileID: 0}
   _spiderWebPrefab: {fileID: 8671886985526728196, guid: 7bace997aacd44443a5f4470d4f2957c, type: 3}
   _webShootInterval: 2
 --- !u!61 &1473206837269419168

@@ -109,6 +109,9 @@ MonoBehaviour:
   _objectDamage: 1
   knockbackForce: 7
   knockbackDuration: 0.2
+  _destroyedSound: 1
+  _entrySound: 2
+  _specialSound: 0
   _animator: {fileID: 0}
   _pathPoints: []
 --- !u!61 &4098217227199401950
