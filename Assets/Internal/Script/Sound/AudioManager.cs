@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using GameJamPlus;
 using UnityEngine;
 
@@ -16,6 +17,12 @@ public class AudioManager : Singleton<AudioManager> {
     public List<SoundData> sfxs;
     public List<SoundData> musics;
 
+    [SerializeField] MusicID BGM;
+    [SerializeField] SfxID buttonSFX;
+
+    public SfxID ButtonSFX => buttonSFX;
+
+
     // Pool
     List<AudioSource> sfxSources = new List<AudioSource>();
     AudioSource musicSource;
@@ -26,9 +33,15 @@ public class AudioManager : Singleton<AudioManager> {
 
     protected override void Awake() {
         base.Awake();
+        
         InitializePool();
         InitializeMaps();
+        StopAllAudio();
+        if (BGM != MusicID.None)
+            PlayMusic(BGM);
     }
+
+ 
 
     void InitializePool() {
         sfxSources = new List<AudioSource>();
@@ -99,6 +112,8 @@ public class AudioManager : Singleton<AudioManager> {
             PlaySFX(soundData, position);
         }
     }
+
+
 
     // Play Music by SoundData
     public void PlayMusic(SoundData musicData) {

@@ -6,6 +6,7 @@ namespace GameJamPlus.SkillModules.Behaviour {
 
         Vector2 direction = Vector2.right;
         float speed = 5f;
+        [SerializeField] SfxID _impactSFX;
 
         protected virtual void Update() {
             transform.Translate(direction * speed * Time.deltaTime, Space.World);
@@ -14,6 +15,7 @@ namespace GameJamPlus.SkillModules.Behaviour {
         protected virtual void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.CompareTag("Obstacle")) { // Hit object with tag "Obstacle"
                 // TODO: Call something when hit an obstacle
+                if (_impactSFX != SfxID.None) AudioManager.Instance.PlaySFX(_impactSFX);
                 // e.g., play sound effect, spawn particle effect, etc.
                 Destroy(collision.gameObject);
                 Destroy(gameObject);

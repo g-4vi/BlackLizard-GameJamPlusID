@@ -30,8 +30,8 @@ public class PlayerProperties {
         if (health <= 0)//Game over
         {
             health = 0;
-            GameManager.Instance.EndGame();
             if (DeathSound != SfxID.None) AudioManager.Instance.PlaySFX(DeathSound);
+            GameManager.Instance.EndGame();
             Debug.Log("Game Over!");
             return;
         }

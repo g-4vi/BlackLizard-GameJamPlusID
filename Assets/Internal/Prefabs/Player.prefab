@@ -325,3 +325,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.Common.PlayerSkillController
   currentSkill: {fileID: 11400000, guid: fc69f58e76090a840a4ec9d86c99ec1a, type: 2}
+  _fireballSkill: 4

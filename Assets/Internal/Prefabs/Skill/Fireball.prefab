@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe5256d6ab40034d98217f455821d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.Behaviour.ProjectileBehaviour
+  _impactSFX: 5
 --- !u!50 &2455094046006611477
 Rigidbody2D:
   serializedVersion: 5
