@@ -15,4 +15,4 @@ MonoBehaviour:
   skillName: Fireball
   cooldown: 3
   prefab: {fileID: 3195378703863212997, guid: 45dd1b4dd7f0b174bb491150660d5885, type: 3}
-  speed: 10
+  speed: 15

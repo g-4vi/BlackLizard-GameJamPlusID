@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 680667051264699129}
   - component: {fileID: 8659851885180383926}
   - component: {fileID: 4937667520072197985}
-  - component: {fileID: 6431398202421642326}
   m_Layer: 8
   m_Name: ManaItem
   m_TagString: Untagged
@@ -84,28 +83,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.ManaModules.ManaItem
   _collectSFX: 13
---- !u!95 &6431398202421642326
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558863544412593706}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 226aceceb1940b24a8de23ebddb60605, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7587843199209389647
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,9 +160,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -662474301
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayerID: 1985897727
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 789176191414556671, guid: 41354ac18782709408a756df89230170, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
