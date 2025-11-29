@@ -854,7 +854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 293.26
+      value: 350.25
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_SizeDelta.y
@@ -890,11 +890,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 90.735
+      value: 122.44501
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -310.15002
+      value: -361.625
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1005,6 +1005,10 @@ PrefabInstance:
       value: Credits
       objectReference: {fileID: 0}
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
+      propertyPath: m_fontSize
+      value: 72.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 4a43111134e0cb640bb0700eed1e97f6, type: 2}
@@ -1019,6 +1023,10 @@ PrefabInstance:
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_fontColor.r
       value: 0.4867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72.18
       objectReference: {fileID: 0}
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_sharedMaterial
@@ -5220,7 +5228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 315.47
+      value: 378.89
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_SizeDelta.y
@@ -5256,11 +5264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 90.735
+      value: 122.44501
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -178.89001
+      value: -209.77501
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5371,6 +5379,10 @@ PrefabInstance:
       value: Options
       objectReference: {fileID: 0}
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
+      propertyPath: m_fontSize
+      value: 72.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 4a43111134e0cb640bb0700eed1e97f6, type: 2}
@@ -5385,6 +5397,10 @@ PrefabInstance:
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_fontColor.r
       value: 0.4867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72.18
       objectReference: {fileID: 0}
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_sharedMaterial
@@ -5648,7 +5664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 196.85
+      value: 225.99
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_SizeDelta.y
@@ -5684,11 +5700,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 90.735
+      value: 122.44501
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -441.41003
+      value: -513.47504
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5791,6 +5807,10 @@ PrefabInstance:
       value: Exit
       objectReference: {fileID: 0}
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
+      propertyPath: m_fontSize
+      value: 72.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 4a43111134e0cb640bb0700eed1e97f6, type: 2}
@@ -5805,6 +5825,10 @@ PrefabInstance:
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_fontColor.r
       value: 0.4867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72.18
       objectReference: {fileID: 0}
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_sharedMaterial
@@ -6254,7 +6278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 210.09
+      value: 243.05
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6290,11 +6314,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 90.735
+      value: 122.44501
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -47.63
+      value: -57.925
       objectReference: {fileID: 0}
     - target: {fileID: 810855520447879385, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6405,6 +6429,10 @@ PrefabInstance:
       value: Play
       objectReference: {fileID: 0}
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
+      propertyPath: m_fontSize
+      value: 72.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 4a43111134e0cb640bb0700eed1e97f6, type: 2}
@@ -6419,6 +6447,10 @@ PrefabInstance:
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_fontColor.r
       value: 0.4867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 72.18
       objectReference: {fileID: 0}
     - target: {fileID: 8284648666297198068, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_sharedMaterial
