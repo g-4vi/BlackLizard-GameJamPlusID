@@ -14,6 +14,14 @@ public class PlayerManager : Singleton<PlayerManager> {
         playerInput = go.GetComponent<PlayerInput>();
     }
 
+    public void SpawnPlayerLimitMovement()
+    {
+        SpawnPlayer();
+        SetInputActionMap("Player");
+
+        playerInstance.GetComponent<PlayerMovement>().LimitMovement(true);
+    }
+
     public void TakeDamage(int damage) {
         if (playerInstance != null) {
             playerInstance.playerProperties.UpdateHealth(-damage);
