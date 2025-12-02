@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     float moveSpeed = 5f;
     public float wallCheckDistance = 1.1f;
     float moveInput;
+    float yMoveInput;
 
     [Header("Jump")]
     float jumpForce = 10f;
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     Rigidbody2D rb;
     bool isGrounded = true;
     bool isKnockedback = false;
-
+    public bool limitMovement = false;
 
 
     private void Awake() {
@@ -30,12 +31,11 @@ public class PlayerMovement : MonoBehaviour {
             moveSpeed = player.playerProperties.speed;
             jumpForce = player.playerProperties.jumpForce;
         }
-
-
     }
 
     public void OnMove(InputValue value) {
         moveInput = value.Get<Vector2>().x;//get x input
+        yMoveInput = value.Get<Vector2>().y;//get y input
 
         FlipSprite();
     }
@@ -58,10 +58,17 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (GameManager.Instance.IsGameOver || isKnockedback) { return; }
+        if (GameManager.Instance && GameManager.Instance.IsGameOver || isKnockedback) { return; }
+
+        Movement();
+
+        if(limitMovement)
+        { 
+            VerticalMovement();
+            return; 
+        }
 
         CheckGrounded();
-        Movement();
         if (isGrounded) {
             Jump();
         }
@@ -108,6 +115,18 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    void VerticalMovement()
+    {
+        //Control Player Vertical Movement
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, yMoveInput * moveSpeed);
+
+        //Play walk SFX
+        //if (player.playerProperties.MoveSound != SfxID.None) AudioManager.Instance.PlaySFX(player.playerProperties.MoveSound);
+        
+        //Float/Walk animation
+        player.anim.SetFloat(player.MoveHash, Mathf.Abs(rb.linearVelocity.y));
+    }
+
     void CheckGrounded() {
         bool midRay = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
         bool leftRay = Physics2D.Raycast(transform.position +
@@ -143,6 +162,15 @@ public class PlayerMovement : MonoBehaviour {
         yield return new WaitForSeconds(knockDuration);
 
         isKnockedback = false;
+    }
+
+    public void LimitMovement(bool isLimited)
+    {
+        limitMovement = isLimited;
+        if (limitMovement)
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        else
+            rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void OnDrawGizmos() {
