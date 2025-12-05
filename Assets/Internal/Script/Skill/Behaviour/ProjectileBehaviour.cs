@@ -1,6 +1,10 @@
 using UnityEngine;
 
 namespace GameJamPlus.SkillModules.Behaviour {
+    /// <summary>
+    /// Handles the behavior of a projectile skill.
+    /// This scrript attached to the projectile prefab. It behaves like normal projectile.
+    /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class ProjectileBehaviour : MonoBehaviour {
 
@@ -9,7 +13,8 @@ namespace GameJamPlus.SkillModules.Behaviour {
         [SerializeField] SfxID _impactSFX;
 
         protected virtual void Update() {
-            transform.Translate(direction * speed * Time.deltaTime, Space.World);
+            if (Time.deltaTime <= 0f) return; // Pause check
+            transform.Translate(direction * speed * Time.unscaledDeltaTime, Space.World);
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D collision) {
@@ -45,6 +50,7 @@ namespace GameJamPlus.SkillModules.Behaviour {
         #endregion
 
         // Visual purpose, rotate the projectile to face its direction
+        // Notes: Visual default direction should be right (1,0) with zero rotation
         void ComputeAngleForRotation() {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);

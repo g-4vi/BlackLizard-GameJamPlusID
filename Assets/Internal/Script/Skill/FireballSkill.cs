@@ -7,16 +7,22 @@ namespace GameJamPlus.SkillModules {
 
         [Header("Fireball Settings")]
         [SerializeField] GameObject prefab;
-        [SerializeField] float speed = 5f;
+        [SerializeField] float projectileSpeed = 5f;
 
-        public override void Execute(GameObject user) {
+        public override void ActivateSpell(GameObject user) {
             GameObject fireball = Instantiate(prefab, user.transform.position, Quaternion.identity);
+            if (fireball == null) {
+                Debug.LogWarning($"[{name}] Failed to instantiate fireball prefab.");
+                return;
+            }
 
-            ProjectileBehaviour projectile = fireball.GetComponent<ProjectileBehaviour>();
-            if (projectile != null) {
+            if (fireball.TryGetComponent(out ProjectileBehaviour projectile)) {
                 Vector2 targetDir = Vector2.right * Mathf.Sign(user.transform.localScale.x);
                 projectile.SetDirection(targetDir);
-                projectile.SetSpeed(speed);
+                projectile.SetSpeed(projectileSpeed);
+            } else {
+                Debug.LogWarning($"[{name}] The prefab does not have a ProjectileBehaviour component.");
+                Destroy(fireball);
             }
         }
 
