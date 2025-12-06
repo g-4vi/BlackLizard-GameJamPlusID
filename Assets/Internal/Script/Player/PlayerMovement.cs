@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour {
     float defaultGravityScale;
     public bool limitMovement = false;
 
-
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
@@ -93,13 +92,16 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Movement() {
-
         //Control Player Horizontal Movement
         if (TouchingWall()) {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         } else {
             float targetMoveSpeed = moveInput * moveSpeed / Time.timeScale;  // adjust movement based on time scale
             rb.linearVelocity = new Vector2(targetMoveSpeed, rb.linearVelocity.y);
+
+            // Debug purpose
+            // float displacement = rb.linearVelocity.x * Time.fixedDeltaTime;
+            // Debug.Log($"Frame: {Time.frameCount} | Velo: {rb.linearVelocity.x} | DT: {Time.fixedDeltaTime} | Pindah: {displacement}");
 
             //Play walk SFX
             //if (player.playerProperties.MoveSound != SfxID.None) AudioManager.Instance.PlaySFX(player.playerProperties.MoveSound);

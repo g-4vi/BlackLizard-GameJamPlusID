@@ -9,53 +9,73 @@ namespace GameJamPlus {
     /// </summary>
     public class PlayerSkillController : MonoBehaviour {
 
-        public System.Action<float, float> onSkillCooldownUpdate;
+        public System.Action<Skill> OnFixedSkillAssigned;
+        public System.Action<Skill> OnSkill1Assigned;
 
-        [SerializeField] Skill currentSkill;
+        [SerializeField] Skill fixedSkill;
+        public Skill FixedSkill => fixedSkill;
+        [SerializeField] Skill skillSlot1;
+        public Skill SkillSlot1 => skillSlot1;
 
-        [SerializeField] SfxID _fireballSkill;
+        // [SerializeField] SfxID _fireballSkill;
 
-        float currentSkillCooldown;
-
-        void Update() {
-            if (currentSkillCooldown > 0f) {
-                if (Time.deltaTime <= 0f) return; // Pause check
-                currentSkillCooldown -= Time.unscaledDeltaTime;
-                onSkillCooldownUpdate?.Invoke(currentSkillCooldown, currentSkill.cooldown);
-            }
+        void Start() {
+            if (fixedSkill != null) OnFixedSkillAssigned?.Invoke(fixedSkill);
+            if (skillSlot1 != null) OnSkill1Assigned?.Invoke(skillSlot1);
         }
 
-        public void OnFire(InputValue value) {
-            if (!value.isPressed) { return; }
+        void Update() {
+            if (Time.deltaTime == 0f) return;
+            fixedSkill?.Tick(Time.unscaledDeltaTime);
+            skillSlot1?.Tick(Time.unscaledDeltaTime);
+        }
 
-            if (currentSkill == null) {
-                Debug.LogWarning($"[{name}] No skill assigned to PlayerSkillController.");
+        #region Input
+        public void OnFire(InputValue value) {
+            if (!value.isPressed || !fixedSkill.IsReady) { return; }
+
+            if (fixedSkill == null) {
+                Debug.LogWarning($"[{name}] No fixed skill assigned to PlayerSkillController.");
                 return;
             }
 
-            if (currentSkillCooldown <= 0f) {
-                Debug.Log($"[{name}] Attack input detected, executing current skill.");
-                // ExecuteSkill();
+            //Attack animation
+            Player player = PlayerManager.Instance.playerInstance;
+            player.anim.SetTrigger(player.AttackHash);              // Skill executed in animation event, right ?
 
-                //Attack animation
-                Player player = PlayerManager.Instance.playerInstance;
-                player.anim.SetTrigger(player.AttackHash);              // Skill executed in animation event, right ?
+            // Moving animation trigger and sfx in skill execution.
+            // Sfx moved to Skill.cs ActivateSpell method, the settings in ScriptableObject
+            // And maybe for animation trigger, we can also set it in individual skill if needed.
+            // - Thyyn
 
-                currentSkillCooldown = currentSkill.cooldown;
-                // TODO: call sound effect when casting skill
-                if (_fireballSkill != SfxID.None) AudioManager.Instance.PlaySFX(_fireballSkill);
-
-            } else {
-                Debug.Log($"[{name}] Skill is on cooldown for {currentSkillCooldown} more seconds.");
-            }
+            // TODO: call sound effect when casting skill
+            // if (_fireballSkill != SfxID.None) AudioManager.Instance.PlaySFX(_fireballSkill);
         }
 
+        public void OnSubFire(InputValue value) { // For now its right click to use skill in slot 1
+            if (!value.isPressed) { return; }
+
+            if (skillSlot1 == null) {
+                Debug.LogWarning($"[{name}] No skill assigned to Skill Slot 1.");
+                return;
+            }
+
+            skillSlot1.ActivateSpell(this.gameObject);
+        }
+        #endregion
+
         public void ExecuteSkill() {
-            currentSkill.ActivateSpell(this.gameObject);
+            fixedSkill.ActivateSpell(this.gameObject);
+        }
+
+        public void AssignSlot1Skill(Skill newSkill) {
+            skillSlot1 = newSkill;
+            OnSkill1Assigned?.Invoke(skillSlot1);
         }
 
         void OnDestroy() {
-            onSkillCooldownUpdate = null;
+            if (fixedSkill != null) fixedSkill.OnSkillCooldownUpdate = null;
+            if (skillSlot1 != null) skillSlot1.OnSkillCooldownUpdate = null;
         }
     }
 }

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b80b86ea4df69d4481cee3a1200b6d5, type: 3}
   m_Name: Slow Time Skill
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.SlowTimeSkill
-  skillName: Slow Time
-  cooldown: 10
-  manaCost: 0
+  CastSfx: 8
+  SkillIcon: {fileID: -7451960222840032586, guid: 97f3d78ee40b085408187457e6d7c64d, type: 3}
+  SkillName: Slow Time
+  Cooldown: 3
+  ManaCost: 0
   slowFactor: 0.1
   slowDuration: 3

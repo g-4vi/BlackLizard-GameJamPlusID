@@ -1,3 +1,4 @@
+using GameJamPlus;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,12 +10,14 @@ public class PlayerManager : Singleton<PlayerManager> {
     [HideInInspector] public PlayerProperties playerProperties;
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public PlayerInput playerInput;
+    [HideInInspector] public PlayerSkillController playerSkillController;
 
     public void SpawnPlayer() {
         GameObject go = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
         playerInstance = go.GetComponent<Player>();
         playerInput = go.GetComponent<PlayerInput>();
         playerMovement = go.GetComponent<PlayerMovement>();
+        playerSkillController = go.GetComponent<PlayerSkillController>();
         playerProperties = playerInstance.playerProperties ?? go.GetComponent<PlayerProperties>();
     }
 

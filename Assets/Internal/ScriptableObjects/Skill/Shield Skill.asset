@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf1be2a39440274c8834a3e4d0691a4, type: 3}
   m_Name: Shield Skill
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.ShieldSkill
-  skillName: Shield
-  cooldown: 10
-  manaCost: 0
+  CastSfx: 0
+  SkillIcon: {fileID: 3682734787062045483, guid: 1034bd9beb34c5248817a4408bbab989, type: 3}
+  SkillName: Shield
+  Cooldown: 10
+  ManaCost: 0
