@@ -20,12 +20,16 @@ public class PlayerMovement : MonoBehaviour {
     Rigidbody2D rb;
     bool isGrounded = true;
     bool isKnockedback = false;
+    float defaultGravityScale;
     public bool limitMovement = false;
-
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+
+        if (rb != null) {
+            defaultGravityScale = rb.gravityScale;
+        }
 
         if (player != null) {
             moveSpeed = player.playerProperties.speed;
@@ -58,14 +62,17 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (GameManager.Instance && GameManager.Instance.IsGameOver || isKnockedback) { return; }
+        if (GameManager.Instance && GameManager.Instance.IsGameOver || isKnockedback || Time.timeScale == 0f) { return; }
 
+        // In movement and vertical movement (include Jump), 
+        // I adjust the velocity based on time scale, so when Slow Time skill activated, movement speed of player is consistent.
+        // when paused I check it in the beginning of FixedUpdate so movement is stopped.
+        // - Thyyn
         Movement();
 
-        if(limitMovement)
-        { 
+        if (limitMovement) {
             VerticalMovement();
-            return; 
+            return;
         }
 
         CheckGrounded();
@@ -85,12 +92,16 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Movement() {
-
         //Control Player Horizontal Movement
         if (TouchingWall()) {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         } else {
-            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+            float targetMoveSpeed = moveInput * moveSpeed / Time.timeScale;  // adjust movement based on time scale
+            rb.linearVelocity = new Vector2(targetMoveSpeed, rb.linearVelocity.y);
+
+            // Debug purpose
+            // float displacement = rb.linearVelocity.x * Time.fixedDeltaTime;
+            // Debug.Log($"Frame: {Time.frameCount} | Velo: {rb.linearVelocity.x} | DT: {Time.fixedDeltaTime} | Pindah: {displacement}");
 
             //Play walk SFX
             //if (player.playerProperties.MoveSound != SfxID.None) AudioManager.Instance.PlaySFX(player.playerProperties.MoveSound);
@@ -105,7 +116,8 @@ public class PlayerMovement : MonoBehaviour {
         if (jumpPress && rb.linearVelocity.y < 0.1f) {
             jumpPress = false;
             //rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            rb.AddForce(jumpForce * Vector3.up, ForceMode2D.Impulse);
+            float compensatedJumpForce = jumpForce / Time.timeScale;
+            rb.AddForce(compensatedJumpForce * Vector3.up, ForceMode2D.Impulse);
 
             //Jump Animation
             player.anim.SetTrigger(player.JumpHash);
@@ -115,14 +127,13 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void VerticalMovement()
-    {
+    void VerticalMovement() {
         //Control Player Vertical Movement
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, yMoveInput * moveSpeed);
 
         //Play walk SFX
         //if (player.playerProperties.MoveSound != SfxID.None) AudioManager.Instance.PlaySFX(player.playerProperties.MoveSound);
-        
+
         //Float/Walk animation
         player.anim.SetFloat(player.MoveHash, Mathf.Abs(rb.linearVelocity.y));
     }
@@ -164,13 +175,22 @@ public class PlayerMovement : MonoBehaviour {
         isKnockedback = false;
     }
 
-    public void LimitMovement(bool isLimited)
-    {
+    public void LimitMovement(bool isLimited) {
         limitMovement = isLimited;
         if (limitMovement)
             rb.bodyType = RigidbodyType2D.Kinematic;
         else
             rb.bodyType = RigidbodyType2D.Dynamic;
+    }
+
+    public void ComputeGravityByTimeScale(float targetTimeScale) {
+        if (targetTimeScale <= 0.001f || rb == null) return;
+        rb.gravityScale = defaultGravityScale * (1f / (targetTimeScale * targetTimeScale));
+    }
+
+    public void RescaleVelocityY(float multiplier) {
+        if (rb == null) return;
+        rb.linearVelocityY *= multiplier;
     }
 
     private void OnDrawGizmos() {

@@ -104,7 +104,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a5c95b2eff1362b49a554667b7aa84f4, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -218,7 +218,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -323,6 +323,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  limitMovement: 0
 --- !u!114 &3685985206264721560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +342,7 @@ MonoBehaviour:
     jumpForce: 12
     invisiblePeriod: 1
     mana: 0
+    hasShield: 0
     _deathSound: 8
     _jumpSound: 9
     _hurtSound: 7
@@ -361,5 +363,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fac3d6b9cc08eb4a8200daeb0185f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.Common.PlayerSkillController
-  currentSkill: {fileID: 11400000, guid: fc69f58e76090a840a4ec9d86c99ec1a, type: 2}
-  _fireballSkill: 4
+  fixedSkill: {fileID: 11400000, guid: fc69f58e76090a840a4ec9d86c99ec1a, type: 2}
+  skillSlot1: {fileID: 0}
