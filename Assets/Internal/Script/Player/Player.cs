@@ -1,6 +1,8 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour {
     public PlayerProperties playerProperties;
@@ -14,12 +16,23 @@ public class Player : MonoBehaviour {
     public int IsDamagedHash { get; set; }
     public int AttackHash { get; set; }
 
+    public Action TriggerInteract;
+    public bool canInteract;
+
     private void Awake() {
         anim = GetComponentInChildren<Animator>();
         MoveHash = Animator.StringToHash("move");
         JumpHash = Animator.StringToHash("jump");
         IsDamagedHash = Animator.StringToHash("isDamaged");
         AttackHash = Animator.StringToHash("attack");
+    }
+
+    public void OnInteract(InputValue value)
+    {
+        if(canInteract && value.isPressed)
+        {
+            TriggerInteract?.Invoke();
+        }
     }
 
     public void TriggerInvisibility() {
