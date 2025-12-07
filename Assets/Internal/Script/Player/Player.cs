@@ -13,14 +13,13 @@ public class Player : MonoBehaviour {
     [HideInInspector] public Animator anim;
     public int MoveHash { get; set; }
     public int JumpHash { get; set; }
-    public int IsDamagedHash {  get; set; }
-    public int AttackHash {  get; set; }
+    public int IsDamagedHash { get; set; }
+    public int AttackHash { get; set; }
 
     public Action TriggerInteract;
     public bool canInteract;
 
-    private void Awake()
-    {
+    private void Awake() {
         anim = GetComponentInChildren<Animator>();
         MoveHash = Animator.StringToHash("move");
         JumpHash = Animator.StringToHash("jump");
@@ -36,8 +35,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void TriggerInvisibility()
-    {
+    public void TriggerInvisibility() {
         if (!IsInvisible)//not invisible & is obstacle
         {
             Debug.Log("Invisible trigger");
@@ -54,7 +52,8 @@ public class Player : MonoBehaviour {
         float invisibleTimer = playerProperties.invisiblePeriod;
 
         while (invisibleTimer > 0) {
-            invisibleTimer -= Time.deltaTime;
+            if (Time.timeScale == 0f) yield return null; // stop countdown when game is paused
+            invisibleTimer -= Time.unscaledDeltaTime;
             yield return null;
         }
 
@@ -68,10 +67,10 @@ public class Player : MonoBehaviour {
         playerProperties.onManaChanged = null;
     }
 
-/*#if UNITY_EDITOR
-    [ContextMenu("Decrease Health by 1")]
-    void DecreaseHealth() {
-        playerProperties.UpdateHealth(-1);
-    }
-#endif*/
+    /*#if UNITY_EDITOR
+        [ContextMenu("Decrease Health by 1")]
+        void DecreaseHealth() {
+            playerProperties.UpdateHealth(-1);
+        }
+    #endif*/
 }
