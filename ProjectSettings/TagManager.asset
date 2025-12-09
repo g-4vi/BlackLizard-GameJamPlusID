@@ -7,7 +7,7 @@ TagManager:
   - Obstacle
   - Fireball
   - Ground
-  - Wall
+  - PlatformCollector
   layers:
   - Default
   - TransparentFX
