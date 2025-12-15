@@ -39,7 +39,7 @@ public class LevelDisplay : MonoBehaviour
         {
             //Display requirements
             //button should display Unlock with call for checkrequirement when clicked
-            StagePanelHandler.Instance.SetupPanel(stageName, stagePreview, requirements[0].requiredNumber, false);
+            StagePanelHandler.Instance.SetupPanel(stageName, stagePreview, requirements[0].requiredNumber, highScore,false);
 
             StagePanelHandler.Instance.OnInteractStage= () =>
             {
@@ -77,7 +77,7 @@ public class LevelDisplay : MonoBehaviour
             SceneManager.LoadScene(stageBuildIndex);
         };
 
-        StagePanelHandler.Instance.SetupPanel(stageName, stagePreview, requirements[0].requiredNumber, true);
+        StagePanelHandler.Instance.SetupPanel(stageName, stagePreview, requirements[0].requiredNumber, highScore, true);
 
     }
 
