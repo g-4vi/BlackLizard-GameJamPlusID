@@ -39,7 +39,7 @@ public class FallingPlatform : SpecialPlatform
 
         gameObject.GetComponent<Collider2D>().enabled = true;
 
-        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+        SpriteRenderer sr = gameObject.GetComponentInChildren<SpriteRenderer>();
         Color currentColor = sr.color;
 
         while (currentColor.a < 1f)
@@ -94,7 +94,7 @@ public class FallingPlatform : SpecialPlatform
         }
         else
         {
-            SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+            SpriteRenderer sr = gameObject.GetComponentInChildren<SpriteRenderer>();
             Color c = sr.color;
 
             while (c.a > 0)
@@ -114,9 +114,7 @@ public class FallingPlatform : SpecialPlatform
     {
         if(collider.CompareTag("PlatformCollector"))
         {
-            
-
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0);
+            gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(1,1,1,0);
             StartCoroutine(ResetPlatform());
         }
     }
