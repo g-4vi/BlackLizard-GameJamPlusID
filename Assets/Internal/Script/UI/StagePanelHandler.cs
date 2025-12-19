@@ -9,6 +9,7 @@ public class StagePanelHandler : Singleton<StagePanelHandler>
     [SerializeField] TextMeshProUGUI stageTitle;
     [SerializeField] Image stageImage;
     [SerializeField] TextMeshProUGUI requirementText;
+    [SerializeField] TextMeshProUGUI highscoreText;
     [SerializeField] Button interactButton;
 
     public UnityAction OnInteractStage;
@@ -24,10 +25,11 @@ public class StagePanelHandler : Singleton<StagePanelHandler>
         interactButton.onClick.RemoveAllListeners();
     }
 
-    public void SetupPanel(string title, Sprite image, int requiredMana, bool isUnlocked)
+    public void SetupPanel(string title, Sprite image, int requiredMana, int highscore, bool isUnlocked)
     {
         stageTitle.text = title;
         stageImage.sprite = image;
+        highscoreText.text = $"High score: {highscore}";
 
         if (isUnlocked)
         {

@@ -178,9 +178,9 @@ public class PlayerMovement : MonoBehaviour {
     public void LimitMovement(bool isLimited) {
         limitMovement = isLimited;
         if (limitMovement)
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            rb.gravityScale = 0;
         else
-            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.gravityScale = defaultGravityScale;
     }
 
     public void ComputeGravityByTimeScale(float targetTimeScale) {
