@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5164662359090813416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4518347985752045666}
+  - component: {fileID: 7340301546605926167}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4518347985752045666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5164662359090813416}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7340301546605926167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5164662359090813416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e4f64df51337c4ab02afd67be6ee15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  sfxs:
+  - {fileID: 11400000, guid: 78d7cf617540d50439be697a4f501fb7, type: 2}
+  - {fileID: 11400000, guid: fa8e4daf5d7ab93439d66b4c4612e838, type: 2}
+  - {fileID: 11400000, guid: 05ad938885e0d344aa3303385ac4c9ef, type: 2}
+  - {fileID: 11400000, guid: c132179bb1b43e945a6e81cc43eadea7, type: 2}
+  - {fileID: 11400000, guid: 60d0746de508a514d90654444660bb7b, type: 2}
+  - {fileID: 11400000, guid: 7116dbf2dc4af1e4097428449878b656, type: 2}
+  - {fileID: 11400000, guid: eb5cc18d320fb3945b80d5cb5e396229, type: 2}
+  - {fileID: 11400000, guid: df624103e83f8d74f81dc7bf1c9b6559, type: 2}
+  - {fileID: 11400000, guid: c20b00fc8691a674fba1328cb21756a5, type: 2}
+  - {fileID: 11400000, guid: cb47266fc4d7d43439f5344f0ded9f43, type: 2}
+  - {fileID: 11400000, guid: c0985e6e0007407498b0990a9079c290, type: 2}
+  - {fileID: 11400000, guid: aa7d186378fbd6041adca1797bcc1cb1, type: 2}
+  - {fileID: 11400000, guid: 300b8df0caabb414a979a3c583f85bc2, type: 2}
+  - {fileID: 11400000, guid: 8a2f35d61a6e1ad4490d103b163e00ab, type: 2}
+  musics:
+  - {fileID: 11400000, guid: 286454f37e40ab14b98fcc9387d1a0e5, type: 2}
+  - {fileID: 11400000, guid: e126c1767c3aafb4096045239bd1917c, type: 2}
+  BGM: 1
+  buttonSFX: 14

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace GameJamPlus {
+namespace GameJamPlus.AudioModules {
     [CreateAssetMenu(fileName = "New Sound Data", menuName = "GameJamPlus/New Sound")]
     public class SoundData : ScriptableObject {
         [Header("Audio Clips")]
