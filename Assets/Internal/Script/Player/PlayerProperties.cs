@@ -25,10 +25,6 @@ public class PlayerProperties {
     public SfxID HurtSound => _hurtSound;
     public SfxID MoveSound => _moveSound;
 
-    // Update how decrease health, so it can absorb damage when hasShield is true before reducing health.
-    // And when health increased, it does not call hurt sfx.
-    // - Thyyn
-
     public void UpdateHealth(int incrementHealth) {
         if (incrementHealth > 0) {
             health += incrementHealth;

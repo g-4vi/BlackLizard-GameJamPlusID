@@ -64,10 +64,6 @@ public class PlayerMovement : MonoBehaviour {
     private void FixedUpdate() {
         if (GameManager.Instance && GameManager.Instance.IsGameOver || isKnockedback || Time.timeScale == 0f) { return; }
 
-        // In movement and vertical movement (include Jump), 
-        // I adjust the velocity based on time scale, so when Slow Time skill activated, movement speed of player is consistent.
-        // when paused I check it in the beginning of FixedUpdate so movement is stopped.
-        // - Thyyn
         Movement();
 
         if (limitMovement) {
@@ -98,13 +94,6 @@ public class PlayerMovement : MonoBehaviour {
         } else {
             float targetMoveSpeed = moveInput * moveSpeed / Time.timeScale;  // adjust movement based on time scale
             rb.linearVelocity = new Vector2(targetMoveSpeed, rb.linearVelocity.y);
-
-            // Debug purpose
-            // float displacement = rb.linearVelocity.x * Time.fixedDeltaTime;
-            // Debug.Log($"Frame: {Time.frameCount} | Velo: {rb.linearVelocity.x} | DT: {Time.fixedDeltaTime} | Pindah: {displacement}");
-
-            //Play walk SFX
-            //if (player.playerProperties.MoveSound != SfxID.None) AudioManager.Instance.PlaySFX(player.playerProperties.MoveSound);
         }
 
         //Float/Walk animation
@@ -183,11 +172,19 @@ public class PlayerMovement : MonoBehaviour {
             rb.gravityScale = defaultGravityScale;
     }
 
+    /// <summary>
+    /// Compute gravity scale based on target time scale
+    /// So that physics behavior remains consistent during time scale changes
+    /// </summary>
     public void ComputeGravityByTimeScale(float targetTimeScale) {
         if (targetTimeScale <= 0.001f || rb == null) return;
         rb.gravityScale = defaultGravityScale * (1f / (targetTimeScale * targetTimeScale));
     }
 
+    /// <summary>
+    /// Rescale the Y velocity of the Rigidbody2D by a given multiplier
+    /// So that vertical movement remains consistent during time scale changes
+    /// </summary>
     public void RescaleVelocityY(float multiplier) {
         if (rb == null) return;
         rb.linearVelocityY *= multiplier;

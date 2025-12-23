@@ -12,8 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf1be2a39440274c8834a3e4d0691a4, type: 3}
   m_Name: Shield Skill
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.ShieldSkill
-  CastSfx: 0
   SkillIcon: {fileID: 3682734787062045483, guid: 1034bd9beb34c5248817a4408bbab989, type: 3}
   SkillName: Shield
-  Cooldown: 10
-  ManaCost: 0
+  SkillDescription: 
+  Progression:
+    levels:
+    - level: 1
+      cooldown: 10
+      duration: 0
+      manaCost: 0
+      upgradeCost: 10
+    - level: 2
+      cooldown: 9
+      duration: 0
+      manaCost: 10
+      upgradeCost: 20
+    - level: 3
+      cooldown: 8
+      duration: 0
+      manaCost: 20
+      upgradeCost: 30
+    - level: 4
+      cooldown: 7
+      duration: 0
+      manaCost: 45
+      upgradeCost: 40
+    - level: 5
+      cooldown: 6
+      duration: 0
+      manaCost: 80
+      upgradeCost: 50
+  CastSfx: 0
