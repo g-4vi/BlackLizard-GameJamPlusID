@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2694141991095108314}
   - component: {fileID: 3061401994814763926}
   m_Layer: 5
-  m_Name: SelectionSkillSlot
+  m_Name: SkillSlotIconButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

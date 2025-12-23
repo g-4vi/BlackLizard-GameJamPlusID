@@ -172,11 +172,19 @@ public class PlayerMovement : MonoBehaviour {
             rb.gravityScale = defaultGravityScale;
     }
 
+    /// <summary>
+    /// Compute gravity scale based on target time scale
+    /// So that physics behavior remains consistent during time scale changes
+    /// </summary>
     public void ComputeGravityByTimeScale(float targetTimeScale) {
         if (targetTimeScale <= 0.001f || rb == null) return;
         rb.gravityScale = defaultGravityScale * (1f / (targetTimeScale * targetTimeScale));
     }
 
+    /// <summary>
+    /// Rescale the Y velocity of the Rigidbody2D by a given multiplier
+    /// So that vertical movement remains consistent during time scale changes
+    /// </summary>
     public void RescaleVelocityY(float multiplier) {
         if (rb == null) return;
         rb.linearVelocityY *= multiplier;

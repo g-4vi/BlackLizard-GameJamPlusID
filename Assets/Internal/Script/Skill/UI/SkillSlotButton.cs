@@ -1,4 +1,3 @@
-using System;
 using GameJamPlus.SkillModules.Common;
 using TMPro;
 using UnityEngine;
@@ -7,10 +6,9 @@ using UnityEngine.UI;
 
 namespace GameJamPlus.SkillModules.UI {
     /// <summary>
-    /// UI component for a single skill slot in the skill selection UI.
-    /// Need SelectionSkillUIHandler to function properly.
+    /// Represents a UI button for a skill slot.
     /// </summary>
-    public class SelectionSkillSlotUI : MonoBehaviour {
+    public class SkillSlotButton : MonoBehaviour {
         Button slotButton;
         Image skillIconImage;
         TMP_Text skillNameText;
@@ -18,21 +16,36 @@ namespace GameJamPlus.SkillModules.UI {
         BaseSkill skill;
         UnityAction<BaseSkill> callback;
 
+        SkillSlot skillSlot;
+        UnityAction<SkillSlot> slotCallback;
+
         void Awake() {
             if (slotButton == null) slotButton = GetComponentInChildren<Button>();
             if (skillIconImage == null) skillIconImage = GetComponentInChildren<Image>();
             if (skillNameText == null) skillNameText = GetComponentInChildren<TMP_Text>();
         }
 
+        void OnEnable() {
+            slotButton.onClick.AddListener(OnClicked);
+        }
+
+        /// <summary>
+        /// Initializes the skill slot button with the given skill and callback.
+        /// </summary>
         public void Initialize(BaseSkill skill, UnityAction<BaseSkill> callback) {
             this.skill = skill;
             this.callback = callback;
             UpdateUI(skill);
-            slotButton.onClick.AddListener(OnClicked);
         }
 
-        void OnClicked() {
-            callback?.Invoke(skill);
+        /// <summary>
+        /// [Overload]
+        /// Initializes the skill slot button with the given skill slot and callback.
+        /// </summary>
+        public void Initialize(SkillSlot skillSlot, UnityAction<SkillSlot> callback) {
+            this.skillSlot = skillSlot;
+            this.slotCallback = callback;
+            Initialize(skillSlot.asset, null);
         }
 
         void UpdateUI(BaseSkill skill) {
@@ -43,6 +56,11 @@ namespace GameJamPlus.SkillModules.UI {
             } else {
                 gameObject.SetActive(false);
             }
+        }
+
+        void OnClicked() {
+            callback?.Invoke(skill);
+            slotCallback?.Invoke(skillSlot);
         }
 
         void OnDisable() {

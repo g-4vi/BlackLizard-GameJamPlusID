@@ -28,35 +28,44 @@ namespace GameJamPlus.SkillModules.UI {
             UpdateSkillSlots();
         }
 
+        /// <summary>
+        /// Opens the skill selection UI.
+        /// </summary>
+        public void OpenSkillSelectionUI() {
+            gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Closes the skill selection UI.
+        /// </summary>
+        public void CloseSkillSelectionUI() {
+            gameObject.SetActive(false);
+        }
+
         void UpdateSkillSlots() {
             foreach (Transform child in skillSlotsContainer) {
                 Destroy(child.gameObject);
             }
 
+            // Populate skill slots, excluding the fixed skill
             foreach (var skill in skillDatabase.allSkills) {
                 if (skill != null && skill == _playerSkillController.FixedSkill.asset) continue;
                 var slotObj = Instantiate(skillSlotPrefab, skillSlotsContainer);
-                var slotUI = slotObj.GetComponent<SelectionSkillSlotUI>();
+                var slotUI = slotObj.GetComponent<SkillSlotButton>();
                 slotUI.Initialize(skill, OnSkillSlotSelected);
             }
         }
 
-        public void OpenSkillSelectionUI() {
-            gameObject.SetActive(true);
-        }
-
-        public void CloseSkillSelectionUI() {
-            gameObject.SetActive(false);
-        }
-
+        // Callback when a skill slot is selected
         public void OnSkillSlotSelected(BaseSkill selectedSkill) {
             _playerSkillController.AssignSlot1Skill(selectedSkill);
             CloseSkillSelectionUI();
         }
 
 #if UNITY_EDITOR
+        // Validate that the skillSlotPrefab has the required component
         void OnValidate() {
-            if (skillSlotPrefab != null && skillSlotPrefab.GetComponent<SelectionSkillSlotUI>() == null) {
+            if (skillSlotPrefab != null && skillSlotPrefab.GetComponent<SkillSlotButton>() == null) {
                 Debug.LogError($"[{nameof(SelectionSkillUIHandler)}] The assigned skillSlotPrefab does not have a SelectionSkillSlotUI component.");
                 skillSlotPrefab = null;
             }

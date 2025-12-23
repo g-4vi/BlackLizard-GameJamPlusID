@@ -10,8 +10,10 @@ namespace GameJamPlus.SkillModules {
 
         protected override void Execute(GameObject owner, SkillSlot slot) {
             if (owner.TryGetComponent(out PlayerMovement pm)) {
+                // Player object
                 pm.StartCoroutine(SlowTimeSkillCourotine(slot, pm));
             } else if (owner.TryGetComponent(out MonoBehaviour mb)) {
+                // Fallback for non-player objects
                 mb.StartCoroutine(SlowTimeSkillCourotine(slot, null));
             }
         }
@@ -19,12 +21,15 @@ namespace GameJamPlus.SkillModules {
         IEnumerator SlowTimeSkillCourotine(SkillSlot slot, PlayerMovement pm) {
             var data = Progression.GetLevel(slot.level);
 
+            // Start slowing time
             yield return new WaitForFixedUpdate();
             pm.RescaleVelocityY(1f / slowFactor);
             SlowTime(slowFactor, pm);
 
+            // Wait for duration
             yield return new WaitForSeconds(data.duration * slowFactor);
 
+            // Restore time
             yield return new WaitForFixedUpdate();
             pm.RescaleVelocityY(slowFactor);
             SlowTime(1f, pm);
@@ -38,11 +43,3 @@ namespace GameJamPlus.SkillModules {
 
     }
 }
-
-/*
-    Ok indo aja kali ya, ini skill slow time nya manfaatin Time.timeScale buat nge-slow nya.
-    Jadi kalau misal mau ada objek yang ga ke slow pergerakannya, pake aja Time.unscaledDeltaTime.
-    Kecuali kalau pakai physics (RigidBody), harus handle manual itungannya.
-    Beberapa script udah ku update dikit buat nyesuain skill ini.
-    - Thyyn
-*/

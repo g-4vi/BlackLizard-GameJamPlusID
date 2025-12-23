@@ -1,6 +1,10 @@
 namespace GameJamPlus.SkillModules.Common {
     public static class SkillUpgradeService {
         // TODO: check again for resource origin
+
+        /// <summary>
+        /// Checks if the skill in the given slot can be leveled up based on the player's resources.
+        /// </summary>
         public static bool CanLevelUp(SkillSlot slot, PlayerProperties resource) {
             if (slot.asset == null) return false;
 
@@ -12,6 +16,9 @@ namespace GameJamPlus.SkillModules.Common {
             return resource.mana >= nextLevel.upgradeCost;
         }
 
+        /// <summary>
+        /// Levels up the skill in the given slot based on the player's resources.
+        /// </summary>
         public static bool LevelUp(SkillSlot slot, PlayerProperties resource) {
             if (!CanLevelUp(slot, resource)) return false;
 
@@ -25,14 +32,15 @@ namespace GameJamPlus.SkillModules.Common {
             return true;
         }
 
+        /// <summary>
+        /// Levels down the skill in the given slot and full refunds the upgrade cost to the player's resources.
+        /// </summary>
         public static bool LevelDown(SkillSlot slot, PlayerProperties resource) {
             if (slot.asset == null) return false;
             if (slot.level <= 1) return false;
 
             var currentLevel = slot.Progression.GetLevel(slot.level);
-            var refundAmount = currentLevel.upgradeCost / 2;
-
-            resource.mana += refundAmount;
+            resource.mana += currentLevel.upgradeCost;
 
             slot.level--;
             slot.cooldownTimer = 0f;
@@ -40,20 +48,13 @@ namespace GameJamPlus.SkillModules.Common {
             return true;
         }
 
+        /// <summary>
+        /// Resets the skill in the given slot to level 1 and fully refunds all upgrade costs to the player's resources.
+        /// </summary>
         public static void ResetSkill(SkillSlot slot, PlayerProperties resource) {
             while (slot.level > 1) {
                 LevelDown(slot, resource);
             }
-        }
-
-        public static SkillLevelData GetCurrentLevel(SkillSlot slot) {
-            if (slot.asset == null) return null;
-            return slot.Progression.GetLevel(slot.level);
-        }
-
-        public static SkillLevelData GetNextLevel(SkillSlot slot) {
-            if (slot.asset == null) return null;
-            return slot.Progression.GetLevel(slot.level + 1);
         }
     }
 }
