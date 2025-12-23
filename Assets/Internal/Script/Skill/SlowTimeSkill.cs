@@ -20,26 +20,20 @@ namespace GameJamPlus.SkillModules {
             var data = Progression.GetLevel(slot.level);
 
             yield return new WaitForFixedUpdate();
-            SlowTimeEffect(pm);
+            pm.RescaleVelocityY(1f / slowFactor);
+            SlowTime(slowFactor, pm);
 
             yield return new WaitForSeconds(data.duration * slowFactor);
 
             yield return new WaitForFixedUpdate();
-            BackToNormalTime(pm);
+            pm.RescaleVelocityY(slowFactor);
+            SlowTime(1f, pm);
         }
 
-        void SlowTimeEffect(PlayerMovement pm) {
-            Time.fixedDeltaTime = 0.02f * slowFactor;
-            Time.timeScale = slowFactor;
-            pm?.ComputeGravityByTimeScale(slowFactor);
-            pm?.RescaleVelocityY(1f / slowFactor);
-        }
-
-        void BackToNormalTime(PlayerMovement pm) {
-            Time.fixedDeltaTime = 0.02f;
-            Time.timeScale = 1f;
-            pm?.ComputeGravityByTimeScale(1f);
-            pm?.RescaleVelocityY(1f);
+        void SlowTime(float targetSlow, PlayerMovement pm = null) {
+            Time.fixedDeltaTime = 0.02f * targetSlow;
+            Time.timeScale = targetSlow;
+            pm?.ComputeGravityByTimeScale(Time.timeScale);
         }
 
     }
