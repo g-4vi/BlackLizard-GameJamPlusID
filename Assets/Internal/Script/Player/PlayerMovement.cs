@@ -175,7 +175,6 @@ public class PlayerMovement : MonoBehaviour {
     public void ComputeGravityByTimeScale(float targetTimeScale) {
         if (targetTimeScale <= 0.001f || rb == null) return;
         rb.gravityScale = defaultGravityScale * (1f / (targetTimeScale * targetTimeScale));
-        Debug.Log($"Gravity Scale: {rb.gravityScale} with current velocity : {rb.linearVelocity}");
     }
 
     public void RescaleVelocityY(float multiplier) {

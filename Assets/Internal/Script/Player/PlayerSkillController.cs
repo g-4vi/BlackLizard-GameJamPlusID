@@ -19,8 +19,8 @@ namespace GameJamPlus {
         void Update() {
             if (Time.deltaTime == 0f) return;
             float dt = Time.unscaledDeltaTime;
-            fixedSkill?.asset?.Tick(fixedSkill, dt);
-            skillSlot1?.asset?.Tick(skillSlot1, dt);
+            fixedSkill?.Tick(dt);
+            skillSlot1?.Tick(dt);
         }
 
         #region Input
@@ -37,18 +37,28 @@ namespace GameJamPlus {
         public void OnSubFire(InputValue value) { // For now its right click to use skill in slot 1
             if (!value.isPressed) { return; }
 
-            skillSlot1?.asset?.ActivateSpell(gameObject, skillSlot1);
+            skillSlot1?.ActivateSpell(gameObject);
         }
         #endregion
 
         public void ExecuteSkill() {
-            fixedSkill?.asset?.ActivateSpell(gameObject, fixedSkill);
+            fixedSkill?.ActivateSpell(gameObject);
         }
 
         public void AssignSlot1Skill(BaseSkill newSkill) {
             skillSlot1 = new SkillSlot { asset = newSkill, level = 1, cooldownTimer = 0f };
             OnSkill1Assigned?.Invoke(newSkill);
         }
+
+        #region Skill Upgrade Service Methods
+        public void DoUpgradeFixedSkill(PlayerProperties resource) {
+            SkillUpgradeService.LevelUp(fixedSkill, resource);
+        }
+
+        public void DoUpgradeSkillSlot1(PlayerProperties resource) {
+            SkillUpgradeService.LevelUp(skillSlot1, resource);
+        }
+        #endregion
 
         void OnDestroy() {
             OnSkill1Assigned = null;

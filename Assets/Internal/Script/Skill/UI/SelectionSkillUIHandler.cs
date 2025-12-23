@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using GameJamPlus.SkillModules.Common;
 using UnityEngine;
 
@@ -38,17 +37,21 @@ namespace GameJamPlus.SkillModules.UI {
                 if (skill != null && skill == _playerSkillController.FixedSkill.asset) continue;
                 var slotObj = Instantiate(skillSlotPrefab, skillSlotsContainer);
                 var slotUI = slotObj.GetComponent<SelectionSkillSlotUI>();
-                slotUI.Initialize(this, skill);
+                slotUI.Initialize(skill, OnSkillSlotSelected);
             }
         }
 
-        public void CloseSkillSelectionUI() {
-            this.gameObject.SetActive(false);
+        public void OpenSkillSelectionUI() {
+            gameObject.SetActive(true);
         }
 
-        // this method is called by SelectionSkillSlotUI when a slot is selected
-        public void OnSkillSlotSelected(BaseSkill skill) {
-            _playerSkillController.AssignSlot1Skill(skill);
+        public void CloseSkillSelectionUI() {
+            gameObject.SetActive(false);
+        }
+
+        public void OnSkillSlotSelected(BaseSkill selectedSkill) {
+            _playerSkillController.AssignSlot1Skill(selectedSkill);
+            CloseSkillSelectionUI();
         }
 
 #if UNITY_EDITOR

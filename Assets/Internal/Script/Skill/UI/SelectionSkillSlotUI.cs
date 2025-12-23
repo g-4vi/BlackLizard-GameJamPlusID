@@ -1,5 +1,8 @@
+using System;
+using GameJamPlus.SkillModules.Common;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace GameJamPlus.SkillModules.UI {
@@ -8,13 +11,12 @@ namespace GameJamPlus.SkillModules.UI {
     /// Need SelectionSkillUIHandler to function properly.
     /// </summary>
     public class SelectionSkillSlotUI : MonoBehaviour {
-
         Button slotButton;
         Image skillIconImage;
         TMP_Text skillNameText;
 
-        SelectionSkillUIHandler _selector;
-        Common.BaseSkill _assignedSkill;
+        BaseSkill skill;
+        UnityAction<BaseSkill> callback;
 
         void Awake() {
             if (slotButton == null) slotButton = GetComponentInChildren<Button>();
@@ -22,30 +24,29 @@ namespace GameJamPlus.SkillModules.UI {
             if (skillNameText == null) skillNameText = GetComponentInChildren<TMP_Text>();
         }
 
-        public void Initialize(SelectionSkillUIHandler sel, Common.BaseSkill skill) {
-            _selector = sel;
-            _assignedSkill = skill;
-
-            UpdateUI();
-            slotButton.onClick.AddListener(OnSlotButtonClicked);
+        public void Initialize(BaseSkill skill, UnityAction<BaseSkill> callback) {
+            this.skill = skill;
+            this.callback = callback;
+            UpdateUI(skill);
+            slotButton.onClick.AddListener(OnClicked);
         }
 
-        void UpdateUI() {
-            if (_assignedSkill != null) {
-                skillIconImage.sprite = _assignedSkill.SkillIcon;
-                skillNameText.text = _assignedSkill.SkillName;
+        void OnClicked() {
+            callback?.Invoke(skill);
+        }
+
+        void UpdateUI(BaseSkill skill) {
+            if (skill != null) {
+                gameObject.SetActive(true);
+                skillIconImage.sprite = skill.SkillIcon;
+                skillNameText.text = skill.SkillName;
             } else {
-                Destroy(this.gameObject);
+                gameObject.SetActive(false);
             }
         }
 
-        void OnSlotButtonClicked() {
-            _selector.OnSkillSlotSelected(_assignedSkill);
-            _selector.CloseSkillSelectionUI();
-        }
-
-        void OnDestroy() {
-            slotButton.onClick.RemoveListener(OnSlotButtonClicked);
+        void OnDisable() {
+            slotButton.onClick.RemoveAllListeners();
         }
 
     }

@@ -27,14 +27,6 @@ namespace GameJamPlus.SkillModules.Common {
             if (CastSfx != SfxID.None) AudioManager.Instance?.PlaySFX(CastSfx);
         }
 
-        /// <summary>
-        /// Updates the skill's internal cooldown timer.
-        /// </summary>
-        public void Tick(SkillSlot slot, float deltaTime) {
-            if (slot.cooldownTimer > 0f)
-                slot.cooldownTimer -= deltaTime;
-        }
-
         // Function to be implemented by derived skill classes to define specific skill behavior
         protected abstract void Execute(GameObject user, SkillSlot slot);
     }

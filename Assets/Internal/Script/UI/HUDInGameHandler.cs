@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace GameJamPlus {
-    public class HUDCanvasHandler : MonoBehaviour {
+    public class HUDInGameHandler : MonoBehaviour {
 
         [Header("Health Settings")]
         [SerializeField] GameObject healthContainer;
@@ -77,9 +77,10 @@ namespace GameJamPlus {
         void UpdateSkillIcons(BaseSkill newSkill) {
             skillSlot1 = skillController.SkillSlot1;
             if (skillSlot1?.asset != null) {
+                skill1CooldownImage.gameObject.SetActive(true);
                 skill1CooldownImage.sprite = skillSlot1.asset.SkillIcon;
             } else {
-                skill1CooldownImage.sprite = null;
+                skill1CooldownImage.gameObject.SetActive(false);
             }
         }
 
