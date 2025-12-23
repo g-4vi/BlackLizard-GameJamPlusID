@@ -20,14 +20,21 @@ namespace GameJamPlus {
         Player player;
         PlayerSkillController skillController;
 
+        SkillSlot fixedSkill;
+        SkillSlot skillSlot1;
+
         bool _isInitialized = false;
 
         void Start() {
             player = PlayerManager.Instance.playerInstance;
             skillController = player.GetComponent<PlayerSkillController>();
-            skillController.OnSkill1Assigned += OnSkill1Assigned;
-            skillController.OnFixedSkillAssigned += OnFixedSkillAssigned;
-            skillController.FixedSkill.OnSkillCooldownUpdate += UpdateVisualFixedSkillCooldown;
+
+            fixedSkill = skillController.FixedSkill;
+            if (fixedSkill?.asset != null) skillCooldownImage.sprite = fixedSkill.asset.SkillIcon;
+
+            skillSlot1 = skillController.SkillSlot1;
+            skillController.OnSkill1Assigned += UpdateSkillIcons;
+
             _isInitialized = true;
             OnEnable();
         }
@@ -38,23 +45,19 @@ namespace GameJamPlus {
 
             player.playerProperties.onHealthChanged += UpdateVisualHealth;
             player.playerProperties.onManaChanged += UpdateVisualMana;
-
-            if (skillController.SkillSlot1 != null)
-                skillController.SkillSlot1.OnSkillCooldownUpdate += UpdateVisualSkill1Cooldown;
-
             UpdateVisualHealth(player.playerProperties.health);
             UpdateVisualMana(player.playerProperties.mana);
-            UpdateVisualFixedSkillCooldown(1f, 1f);
-            UpdateVisualSkill1Cooldown(1f, 1f);
+
+            UpdateSkillIcons(skillSlot1?.asset);
+            skillCooldownImage.fillAmount = 1f;
+            skill1CooldownImage.fillAmount = 1f;
         }
-        void OnDisable() {
-            if (player == null || skillController == null) return;
 
-            player.playerProperties.onHealthChanged -= UpdateVisualHealth;
-            player.playerProperties.onManaChanged -= UpdateVisualMana;
+        void Update() {
+            if (Time.deltaTime == 0f) return;
 
-            if (skillController.SkillSlot1 != null)
-                skillController.SkillSlot1.OnSkillCooldownUpdate -= UpdateVisualSkill1Cooldown;
+            UpdateCooldownVisual(fixedSkill, skillCooldownImage);
+            UpdateCooldownVisual(skillSlot1, skill1CooldownImage);
         }
 
         public void UpdateVisualHealth(int health) {
@@ -71,36 +74,38 @@ namespace GameJamPlus {
             scoreText.text = score.ToString();
         }
 
-        void OnFixedSkillAssigned(Skill skill) {
-            skill.OnSkillCooldownUpdate += UpdateVisualFixedSkillCooldown;
-            UpdateVisualFixedSkillCooldown(1f, 1f);
-            // skillCooldownImage.sprite = skill.SkillIcon; // TODO : change the icon ?
+        void UpdateSkillIcons(BaseSkill newSkill) {
+            skillSlot1 = skillController.SkillSlot1;
+            if (skillSlot1?.asset != null) {
+                skill1CooldownImage.sprite = skillSlot1.asset.SkillIcon;
+            } else {
+                skill1CooldownImage.sprite = null;
+            }
         }
 
-        void OnSkill1Assigned(Skill skill) {
-            skill.OnSkillCooldownUpdate += UpdateVisualSkill1Cooldown;
-            UpdateVisualSkill1Cooldown(1f, 1f);
-            // skill1CooldownImage.sprite = skill.SkillIcon;
+        void UpdateCooldownVisual(SkillSlot slot, Image img) {
+            if (slot == null || slot.asset == null) {
+                img.fillAmount = 1f;
+                return;
+            }
+
+            var data = slot.asset.Progression.GetLevel(slot.level);
+            float maxCooldown = data.cooldown;
+
+            if (maxCooldown <= 0f) {
+                img.fillAmount = 1f;
+                return;
+            }
+
+            float normalized = Mathf.Clamp01(1f - (slot.cooldownTimer / maxCooldown));
+            img.fillAmount = normalized > 0f ? normalized : 1f;
         }
 
-        void UpdateVisualFixedSkillCooldown(float cooldown, float maxCooldown) {
-            UpdateVisualSkillCooldown(skillCooldownImage, cooldown, maxCooldown);
-        }
+        void OnDisable() {
+            if (player == null || skillController == null) return;
 
-        void UpdateVisualSkill1Cooldown(float cooldown, float maxCooldown) {
-            UpdateVisualSkillCooldown(skill1CooldownImage, cooldown, maxCooldown);
-        }
-
-        void UpdateVisualSkillCooldown(Image target, float cooldown, float maxCooldown) {
-            float normalizedCooldown = Mathf.Clamp01(cooldown / maxCooldown);
-            target.fillAmount = normalizedCooldown;
-            if (normalizedCooldown <= 0.01f) target.fillAmount = 1f;
-        }
-
-        void OnDestroy() {
-            skillController.OnSkill1Assigned -= OnSkill1Assigned;
-            skillController.OnFixedSkillAssigned -= OnFixedSkillAssigned;
-            skillController.FixedSkill.OnSkillCooldownUpdate -= UpdateVisualFixedSkillCooldown;
+            player.playerProperties.onHealthChanged -= UpdateVisualHealth;
+            player.playerProperties.onManaChanged -= UpdateVisualMana;
         }
 
     }

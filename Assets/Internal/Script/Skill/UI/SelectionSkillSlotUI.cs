@@ -14,7 +14,7 @@ namespace GameJamPlus.SkillModules.UI {
         TMP_Text skillNameText;
 
         SelectionSkillUIHandler _selector;
-        Common.Skill _assignedSkill;
+        Common.BaseSkill _assignedSkill;
 
         void Awake() {
             if (slotButton == null) slotButton = GetComponentInChildren<Button>();
@@ -22,7 +22,7 @@ namespace GameJamPlus.SkillModules.UI {
             if (skillNameText == null) skillNameText = GetComponentInChildren<TMP_Text>();
         }
 
-        public void Initialize(SelectionSkillUIHandler sel, Common.Skill skill) {
+        public void Initialize(SelectionSkillUIHandler sel, Common.BaseSkill skill) {
             _selector = sel;
             _assignedSkill = skill;
 

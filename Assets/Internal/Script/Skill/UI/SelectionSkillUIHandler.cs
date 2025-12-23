@@ -35,7 +35,7 @@ namespace GameJamPlus.SkillModules.UI {
             }
 
             foreach (var skill in skillDatabase.allSkills) {
-                if (skill != null && skill == _playerSkillController.FixedSkill) continue;
+                if (skill != null && skill == _playerSkillController.FixedSkill.asset) continue;
                 var slotObj = Instantiate(skillSlotPrefab, skillSlotsContainer);
                 var slotUI = slotObj.GetComponent<SelectionSkillSlotUI>();
                 slotUI.Initialize(this, skill);
@@ -47,7 +47,7 @@ namespace GameJamPlus.SkillModules.UI {
         }
 
         // this method is called by SelectionSkillSlotUI when a slot is selected
-        public void OnSkillSlotSelected(Skill skill) {
+        public void OnSkillSlotSelected(BaseSkill skill) {
             _playerSkillController.AssignSlot1Skill(skill);
         }
 

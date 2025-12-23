@@ -8,74 +8,50 @@ namespace GameJamPlus {
     /// This script is responsible for managing the player's skills, including executing skills and handling cooldowns
     /// </summary>
     public class PlayerSkillController : MonoBehaviour {
+        public System.Action<BaseSkill> OnSkill1Assigned;
 
-        public System.Action<Skill> OnFixedSkillAssigned;
-        public System.Action<Skill> OnSkill1Assigned;
-
-        [SerializeField] Skill fixedSkill;
-        public Skill FixedSkill => fixedSkill;
-        [SerializeField] Skill skillSlot1;
-        public Skill SkillSlot1 => skillSlot1;
-
-        // [SerializeField] SfxID _fireballSkill;
-
-        void Start() {
-            if (fixedSkill != null) OnFixedSkillAssigned?.Invoke(fixedSkill);
-            if (skillSlot1 != null) OnSkill1Assigned?.Invoke(skillSlot1);
-        }
+        [Header("Skill Slots")]
+        [SerializeField] SkillSlot fixedSkill;
+        public SkillSlot FixedSkill => fixedSkill;
+        [SerializeField] SkillSlot skillSlot1;
+        public SkillSlot SkillSlot1 => skillSlot1;
 
         void Update() {
             if (Time.deltaTime == 0f) return;
-            fixedSkill?.Tick(Time.unscaledDeltaTime);
-            skillSlot1?.Tick(Time.unscaledDeltaTime);
+            float dt = Time.unscaledDeltaTime;
+            fixedSkill?.asset?.Tick(fixedSkill, dt);
+            skillSlot1?.asset?.Tick(skillSlot1, dt);
         }
 
         #region Input
         public void OnFire(InputValue value) {
-            if (!value.isPressed || !fixedSkill.IsReady) { return; }
+            if (!value.isPressed) return;
 
-            if (fixedSkill == null) {
-                Debug.LogWarning($"[{name}] No fixed skill assigned to PlayerSkillController.");
-                return;
-            }
+            if (fixedSkill?.asset == null) return;
 
-            //Attack animation
+            //Attack animation and call skill execution
             Player player = PlayerManager.Instance.playerInstance;
-            player.anim.SetTrigger(player.AttackHash);              // Skill executed in animation event, right ?
-
-            // Moving animation trigger and sfx in skill execution.
-            // Sfx moved to Skill.cs ActivateSpell method, the settings in ScriptableObject
-            // And maybe for animation trigger, we can also set it in individual skill if needed.
-            // - Thyyn
-
-            // TODO: call sound effect when casting skill
-            // if (_fireballSkill != SfxID.None) AudioManager.Instance.PlaySFX(_fireballSkill);
+            player.anim.SetTrigger(player.AttackHash);
         }
 
         public void OnSubFire(InputValue value) { // For now its right click to use skill in slot 1
             if (!value.isPressed) { return; }
 
-            if (skillSlot1 == null) {
-                Debug.LogWarning($"[{name}] No skill assigned to Skill Slot 1.");
-                return;
-            }
-
-            skillSlot1.ActivateSpell(this.gameObject);
+            skillSlot1?.asset?.ActivateSpell(gameObject, skillSlot1);
         }
         #endregion
 
         public void ExecuteSkill() {
-            fixedSkill.ActivateSpell(this.gameObject);
+            fixedSkill?.asset?.ActivateSpell(gameObject, fixedSkill);
         }
 
-        public void AssignSlot1Skill(Skill newSkill) {
-            skillSlot1 = newSkill;
-            OnSkill1Assigned?.Invoke(skillSlot1);
+        public void AssignSlot1Skill(BaseSkill newSkill) {
+            skillSlot1 = new SkillSlot { asset = newSkill, level = 1, cooldownTimer = 0f };
+            OnSkill1Assigned?.Invoke(newSkill);
         }
 
         void OnDestroy() {
-            if (fixedSkill != null) fixedSkill.OnSkillCooldownUpdate = null;
-            if (skillSlot1 != null) skillSlot1.OnSkillCooldownUpdate = null;
+            OnSkill1Assigned = null;
         }
     }
 }
