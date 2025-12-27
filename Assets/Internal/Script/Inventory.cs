@@ -10,4 +10,5 @@ public class Inventory
 {
     public CurrencyType currencyType;
     public int itemCount;
+   
 }

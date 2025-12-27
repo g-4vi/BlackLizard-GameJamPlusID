@@ -13,6 +13,9 @@ public abstract class ObstacleProperties : MonoBehaviour
     protected Vector3 _direction;
     protected ObstacleSlot _obstacleSlot;
 
+    [Header("Item Drops")]
+    [SerializeField] protected MaterialData[] _materials;
+
     [Header("Knockback")]
     [SerializeField] protected float knockbackForce = 5f;
     [SerializeField] protected float knockbackDuration = 0.2f;
@@ -66,13 +69,16 @@ public abstract class ObstacleProperties : MonoBehaviour
         // TODO: Play destroy anim
         // TODO: Play destroy SFX
         AudioManager.Instance.StopSFX(_entrySound);
-        ;
+        
         if (_destroyedSound != SfxID.None) AudioManager.Instance.PlaySFX(_destroyedSound);
 
+        if (_materials != null && _materials.Length > 0)DropManager.Instance.RandomizeDrop(_materials, transform.localPosition);
 
         if (_obstacleSlot != null) _obstacleSlot.ChangeOccupyStatus(false);
         Destroy(this.gameObject);
     }
+
+
 
 
     void DealDamageToPlayer(int damage)
