@@ -1,51 +1,45 @@
 using System.Collections;
+using GameJamPlus.SkillModules.Common;
 using UnityEngine;
 
-namespace GameJamPlus.SkillModules
-{
+namespace GameJamPlus.SkillModules {
     [CreateAssetMenu(fileName = "Slow Time Skill", menuName = "Skill Modules/Slow Time")]
-    public class SlowTimeSkill : Common.Skill
-    {
+    public class SlowTimeSkill : BaseSkill {
         [Header("Slow Time Settings")]
         [SerializeField] float slowFactor = 0.5f;
-        [SerializeField] float slowDuration = 3f;
 
-        protected override void Execute(GameObject user)
-        {
-            if (user.TryGetComponent(out PlayerMovement pm))
-            {
-                pm.StartCoroutine(SlowTimeSkillCourotine(pm));
-            }
-            else
-            {
-                Debug.LogWarning($"[{name}] The user does not have a PlayerMovement component.");
+        protected override void Execute(GameObject owner, SkillSlot slot) {
+            if (owner.TryGetComponent(out PlayerMovement pm)) {
+                // Player object
+                pm.StartCoroutine(SlowTimeSkillCourotine(slot, pm));
+            } else if (owner.TryGetComponent(out MonoBehaviour mb)) {
+                // Fallback for non-player objects
+                mb.StartCoroutine(SlowTimeSkillCourotine(slot, null));
             }
         }
 
-        IEnumerator SlowTimeSkillCourotine(PlayerMovement pm)
-        {
+        IEnumerator SlowTimeSkillCourotine(SkillSlot slot, PlayerMovement pm) {
+            var data = Progression.GetLevel(slot.level);
+
+            // Start slowing time
             yield return new WaitForFixedUpdate();
-            Time.fixedDeltaTime = 0.02f * slowFactor;
-            Time.timeScale = slowFactor;
-            pm.ComputeGravityByTimeScale(slowFactor);
             pm.RescaleVelocityY(1f / slowFactor);
+            SlowTime(slowFactor, pm);
 
-            yield return new WaitForSeconds(slowDuration * slowFactor);
+            // Wait for duration
+            yield return new WaitForSeconds(data.duration * slowFactor);
 
+            // Restore time
             yield return new WaitForFixedUpdate();
-            Time.fixedDeltaTime = 0.02f;
-            Time.timeScale = 1f;
-            pm.ComputeGravityByTimeScale(1f);
             pm.RescaleVelocityY(slowFactor);
+            SlowTime(1f, pm);
+        }
+
+        void SlowTime(float targetSlow, PlayerMovement pm = null) {
+            Time.fixedDeltaTime = 0.02f * targetSlow;
+            Time.timeScale = targetSlow;
+            pm?.ComputeGravityByTimeScale(Time.timeScale);
         }
 
     }
 }
-
-/*
-    Ok indo aja kali ya, ini skill slow time nya manfaatin Time.timeScale buat nge-slow nya.
-    Jadi kalau misal mau ada objek yang ga ke slow pergerakannya, pake aja Time.unscaledDeltaTime.
-    Kecuali kalau pakai physics (RigidBody), harus handle manual itungannya.
-    Beberapa script udah ku update dikit buat nyesuain skill ini.
-    - Thyyn
-*/

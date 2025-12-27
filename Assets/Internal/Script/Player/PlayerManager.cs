@@ -1,4 +1,5 @@
 using GameJamPlus;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,11 +22,13 @@ public class PlayerManager : Singleton<PlayerManager> {
         playerProperties = playerInstance.playerProperties ?? go.GetComponent<PlayerProperties>();
     }
 
-    public void SpawnPlayerLimitMovement() {
+    public void SpawnPlayerLimitMovement() {//Used in Stage Select Menu
         SpawnPlayer();
         SetInputActionMap("Player");
 
-        playerInstance.GetComponent<PlayerMovement>().LimitMovement(true);
+        playerMovement.LimitMovement(true);
+
+        CinemachineControl.Instance.SetTarget(playerInstance.transform);
     }
 
     public void TakeDamage(int damage) {
@@ -38,13 +41,13 @@ public class PlayerManager : Singleton<PlayerManager> {
 
     public void HealPlayer(int healAmount) {
         if (playerInstance != null) {
-            playerInstance.playerProperties.UpdateHealth(healAmount);
+            playerProperties.UpdateHealth(healAmount);
         }
     }
 
     public int GetMana() {
         if (playerInstance != null) {
-            return playerInstance.playerProperties.mana;
+            return playerProperties.mana;
         }
         return 0;
     }

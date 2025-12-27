@@ -24,21 +24,21 @@ public class StagePanelHandler : Singleton<StagePanelHandler>
         PlayerManager.Instance.SetInputActionMap("Player");
         interactButton.onClick.RemoveAllListeners();
     }
-
-    public void SetupPanel(string title, Sprite image, int requiredMana, int highscore, bool isUnlocked)
+    //string title, Sprite image, int requiredMana, int highscore, bool isUnlocked
+    public void SetupPanel(LevelDisplay level)
     {
-        stageTitle.text = title;
-        stageImage.sprite = image;
-        highscoreText.text = $"High score: {highscore}";
+        stageTitle.text = level.stageName;
+        stageImage.sprite = level.stagePreview;
+        highscoreText.text = $"High score: {level.highScore}";
 
-        if (isUnlocked)
+        if (level.IsUnlocked)
         {
             requirementText.text = "";
             interactButton.GetComponentInChildren<TextMeshProUGUI>().text = "Enter";
         }
         else
         {
-            requirementText.text = $"Unlock for {requiredMana} <sprite=0>";
+            requirementText.text = $"Unlock for {level.requiredMana.itemCount} <sprite=0>";
             interactButton.GetComponentInChildren<TextMeshProUGUI>().text = "Unlock";
         }
 

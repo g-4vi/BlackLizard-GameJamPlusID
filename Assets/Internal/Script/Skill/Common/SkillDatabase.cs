@@ -8,13 +8,13 @@ namespace GameJamPlus.SkillModules.Common {
     /// </summary>
     [CreateAssetMenu(fileName = "Skill Database", menuName = "GameJamPlus/Skill Database")]
     public class SkillDatabase : ScriptableObject {
-        public List<Skill> allSkills;
+        public List<BaseSkill> allSkills;
 
 #if UNITY_EDITOR
         // Helper method to find all Skill assets in the project
         [ContextMenu("Find All Skills in Project")]
         void FindAllSkills() {
-            allSkills = new List<Skill>();
+            allSkills = new List<BaseSkill>();
             string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Skill");
 
             if (guids.Length == 0) {
@@ -24,7 +24,7 @@ namespace GameJamPlus.SkillModules.Common {
 
             foreach (string guid in guids) {
                 string path = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-                Skill skill = UnityEditor.AssetDatabase.LoadAssetAtPath<Skill>(path);
+                BaseSkill skill = UnityEditor.AssetDatabase.LoadAssetAtPath<BaseSkill>(path);
                 if (skill != null) {
                     allSkills.Add(skill);
                 }

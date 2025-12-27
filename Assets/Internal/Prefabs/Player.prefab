@@ -220,7 +220,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &4425689346892090126
 BoxCollider2D:
@@ -371,5 +371,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fac3d6b9cc08eb4a8200daeb0185f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.Common.PlayerSkillController
-  fixedSkill: {fileID: 11400000, guid: fc69f58e76090a840a4ec9d86c99ec1a, type: 2}
-  skillSlot1: {fileID: 0}
+  fixedSkill:
+    asset: {fileID: 11400000, guid: fc69f58e76090a840a4ec9d86c99ec1a, type: 2}
+    level: 1
+    cooldownTimer: 0
+  skillSlot1:
+    asset: {fileID: 0}
+    level: 1
+    cooldownTimer: 0

@@ -12,10 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b80b86ea4df69d4481cee3a1200b6d5, type: 3}
   m_Name: Slow Time Skill
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SkillModules.SlowTimeSkill
-  CastSfx: 8
   SkillIcon: {fileID: -7451960222840032586, guid: 97f3d78ee40b085408187457e6d7c64d, type: 3}
   SkillName: Slow Time
-  Cooldown: 3
-  ManaCost: 0
+  SkillDescription: 
+  Progression:
+    levels:
+    - level: 1
+      cooldown: 15
+      duration: 3
+      manaCost: 0
+      upgradeCost: 10
+    - level: 2
+      cooldown: 13
+      duration: 3
+      manaCost: 15
+      upgradeCost: 20
+    - level: 3
+      cooldown: 11
+      duration: 3
+      manaCost: 25
+      upgradeCost: 30
+    - level: 4
+      cooldown: 11
+      duration: 4
+      manaCost: 50
+      upgradeCost: 40
+    - level: 5
+      cooldown: 10
+      duration: 5
+      manaCost: 100
+      upgradeCost: 50
+  CastSfx: 8
   slowFactor: 0.1
-  slowDuration: 3
