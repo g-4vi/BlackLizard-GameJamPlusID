@@ -32,6 +32,11 @@ public class LevelSelectionManager : Singleton<LevelSelectionManager>
         else
         {
             // Locked state
+            if(InteractedLevel.requiredMana.itemCount <= 0) //free stage
+            { 
+                InteractedLevel.IsUnlocked = true;
+                RefreshStagePanel();
+            }
             StagePanelHandler.Instance.OnInteractStage = () =>
             {
                 if (!InteractedLevel.CheckRequirements()) return; //requirements unfulfilled
@@ -53,7 +58,7 @@ public class LevelSelectionManager : Singleton<LevelSelectionManager>
     {
         foreach (var requirement in InteractedLevel.requirements)
         {
-            InteractedLevel.ownedMana -= requirement.requiredNumber;
+            InteractedLevel.ownedMana -= requirement.itemCount;
         }
     }
 }

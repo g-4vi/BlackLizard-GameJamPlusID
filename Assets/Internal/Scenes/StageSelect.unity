@@ -4200,6 +4200,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5631435988392160121, guid: 15d9e905dff585845975564aa9fbdf68, type: 3}
+      propertyPath: requiredMana.itemCount
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5631435988392160121, guid: 15d9e905dff585845975564aa9fbdf68, type: 3}
+      propertyPath: requirements.Array.data[0].itemCount
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7726619013824114037, guid: 15d9e905dff585845975564aa9fbdf68, type: 3}
       propertyPath: m_Name
       value: Level2

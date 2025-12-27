@@ -6,8 +6,8 @@ public enum CurrencyType
 }
 
 [System.Serializable]
-public class Requirement
+public class Inventory
 {
     public CurrencyType currencyType;
-    public int requiredNumber;
+    public int itemCount;
 }

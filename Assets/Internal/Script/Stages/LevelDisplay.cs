@@ -11,7 +11,8 @@ public class LevelDisplay : MonoBehaviour
     public Sprite stagePreview;
     public int highScore;
 
-    [SerializeField] public Requirement[] requirements;
+    [SerializeField] public Inventory[] requirements;
+    [SerializeField] public Inventory requiredMana;
     public bool IsUnlocked { get; set; }
 
     //temporary player data
@@ -21,7 +22,7 @@ public class LevelDisplay : MonoBehaviour
     {
         foreach (var requirement in requirements)
         {
-            if(requirement.requiredNumber >= ownedMana)
+            if(requirement.itemCount >= ownedMana)
             {
                Debug.Log("Unfulfilled Requirements");
                return false;
@@ -31,80 +32,6 @@ public class LevelDisplay : MonoBehaviour
         Debug.Log("All requirements fulfilled");
         return true;
     }
-
-    /*void InteractStage()//Player interacts with stage
-    {
-        HUDStageSelectHandler.Instance.ToggleStagePanel();
-
-        if(!IsUnlocked)
-        {
-            //Display requirements
-            //button should display Unlock with call for checkrequirement when clicked
-            //StagePanelHandler.Instance.SetupPanel(stageName, stagePreview, requirements[0].requiredNumber, highScore,false);
-            StagePanelHandler.Instance.SetupPanel(this);
-
-            StagePanelHandler.Instance.OnInteractStage= () =>
-            {
-                if (CheckRequirements() && !IsUnlocked)
-                {
-                    //Reduce the resources
-                    foreach (var requirement in requirements)
-                    {
-                        ownedMana -= requirement.requiredNumber;
-                    }
-                    
-                    IsUnlocked = true;
-
-                    //Update Panel
-                    UnlockedStageInteraction();
-                }
-            };
-        }
-        else
-        {
-            UnlockedStageInteraction();
-        }
-        
-    }*/
-
-    /*public void DisplayRequirements()
-    {
-        //StagePanelHandler.Instance.SetupPanel(stageName, stagePreview, requirements[0].requiredNumber, highScore, false);
-        StagePanelHandler.Instance.SetupPanel(this);
-
-        StagePanelHandler.Instance.OnInteractStage = () =>
-        {
-            if (CheckRequirements() && !IsUnlocked)
-            {
-                //Reduce the resources
-                foreach (var requirement in requirements)
-                {
-                    ownedMana -= requirement.requiredNumber;
-                }
-
-                IsUnlocked = true;
-
-                //Update Panel
-                UnlockedStageInteraction();
-            }
-        };
-    }*/
-
-    /*public void UnlockedStageInteraction()
-    {
-        //dont display the requirements any more
-        //button shouldl display play
-
-        if (!IsUnlocked) return;
-
-        StagePanelHandler.Instance.OnInteractStage = () =>
-        {
-            SceneManager.LoadScene(stageBuildIndex);
-        };
-
-        StagePanelHandler.Instance.SetupPanel(this);
-
-    }*/
 
     void SetInteractionTrigger(bool isEntering, Player player)
     {
@@ -145,8 +72,6 @@ public class LevelDisplay : MonoBehaviour
 
                 SetInteractionTrigger(true, player);
             }
-
-            
         }
     }
 

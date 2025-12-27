@@ -38,7 +38,7 @@ public class StagePanelHandler : Singleton<StagePanelHandler>
         }
         else
         {
-            requirementText.text = $"Unlock for {level.requirements[0].requiredNumber} <sprite=0>";
+            requirementText.text = $"Unlock for {level.requiredMana.itemCount} <sprite=0>";
             interactButton.GetComponentInChildren<TextMeshProUGUI>().text = "Unlock";
         }
 
