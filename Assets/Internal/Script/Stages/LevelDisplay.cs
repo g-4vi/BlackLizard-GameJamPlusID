@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelDisplay : MonoBehaviour
 {
-    [SerializeField] int stageBuildIndex;
+    [SerializeField] public int stageBuildIndex;
     public string stageName;
     public Sprite stagePreview;
     public int highScore;
 
-    [SerializeField] Requirement[] requirements;
-    bool isUnlocked;
+    [SerializeField] public Inventory[] requirements;
+    [SerializeField] public Inventory requiredMana;
+    public bool IsUnlocked { get; set; }
 
     //temporary player data
     public int ownedMana = 100;
@@ -20,7 +22,7 @@ public class LevelDisplay : MonoBehaviour
     {
         foreach (var requirement in requirements)
         {
-            if(requirement.requiredNumber >= ownedMana)
+            if(requirement.itemCount >= ownedMana)
             {
                Debug.Log("Unfulfilled Requirements");
                return false;
@@ -31,54 +33,31 @@ public class LevelDisplay : MonoBehaviour
         return true;
     }
 
-    void InteractStage()//Player interacts with stage
+    void SetInteractionTrigger(bool isEntering, Player player)
     {
-        HUDStageSelectHandler.Instance.ToggleStagePanel();
-
-        if(!isUnlocked)
+        if (isEntering)
         {
-            //Display requirements
-            //button should display Unlock with call for checkrequirement when clicked
-            StagePanelHandler.Instance.SetupPanel(stageName, stagePreview, requirements[0].requiredNumber, highScore,false);
+            HUDStageSelectHandler.Instance.ToggleInteractStageText(true);
 
-            StagePanelHandler.Instance.OnInteractStage= () =>
+            player.canInteract = true;
+
+            if (player.TriggerInteract == null)
             {
-                if (CheckRequirements() && !isUnlocked)
+                player.TriggerInteract = () =>
                 {
-                    //Reduce the resources
-                    foreach (var requirement in requirements)
-                    {
-                        ownedMana -= requirement.requiredNumber;
-                    }
-                    
-                    isUnlocked = true;
-
-                    //Update Panel
-                    UnlockedStageInteraction();
-                }
-            };
+                    LevelSelectionManager.Instance.InteractedLevel = this;
+                    LevelSelectionManager.Instance.InteractStage();
+                };
+            }
         }
         else
         {
-            UnlockedStageInteraction();
+            HUDStageSelectHandler.Instance.ToggleInteractStageText(false);
+
+            player.canInteract = false;
+            player.TriggerInteract = null;
+            LevelSelectionManager.Instance.InteractedLevel = null;
         }
-        
-    }
-
-    void UnlockedStageInteraction()
-    {
-        //dont display the requirements any more
-        //button shouldl display play
-
-        if (!isUnlocked) return;
-
-        StagePanelHandler.Instance.OnInteractStage = () =>
-        {
-            SceneManager.LoadScene(stageBuildIndex);
-        };
-
-        StagePanelHandler.Instance.SetupPanel(stageName, stagePreview, requirements[0].requiredNumber, highScore, true);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -91,20 +70,8 @@ public class LevelDisplay : MonoBehaviour
             {
                 Debug.Log("Player can interact with: " + stageName);
 
-                HUDStageSelectHandler.Instance.ToggleInteractStageText(true);
-
-                player.canInteract = true;
-
-                if(player.TriggerInteract == null)
-                {
-                    player.TriggerInteract = () =>
-                    {
-                        InteractStage();
-                    };
-                }
+                SetInteractionTrigger(true, player);
             }
-
-            
         }
     }
 
@@ -114,10 +81,7 @@ public class LevelDisplay : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent(out Player player))
             {
-                HUDStageSelectHandler.Instance.ToggleInteractStageText(false);
-                
-                player.canInteract = false;
-                player.TriggerInteract = null;
+                SetInteractionTrigger(false, player);
             }
         }
     }
