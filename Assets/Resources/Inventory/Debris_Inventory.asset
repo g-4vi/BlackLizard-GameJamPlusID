@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffb61efdccc34f41935ec47b974bf8f, type: 3}
+  m_Name: Debris_Inventory
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryData
+  type: 2
+  inventoryName: Rock Shard
+  inventorySprite: {fileID: 3682734787062045483, guid: 1034bd9beb34c5248817a4408bbab989, type: 3}

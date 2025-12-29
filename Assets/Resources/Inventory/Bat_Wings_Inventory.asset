@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffb61efdccc34f41935ec47b974bf8f, type: 3}
+  m_Name: Bat_Wings_Inventory
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryData
+  type: 3
+  inventoryName: Bat Wing
+  inventorySprite: {fileID: -697763020151794088, guid: d8a170d16bfbbc94989fc6f1e988d2fd, type: 3}

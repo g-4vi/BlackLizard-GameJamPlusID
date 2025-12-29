@@ -22,7 +22,7 @@ public class LevelDisplay : MonoBehaviour
     {
         foreach (var requirement in requirements)
         {
-            if(requirement.itemCount >= ownedMana)
+            if(requirement.inventoryCount >= ownedMana)
             {
                Debug.Log("Unfulfilled Requirements");
                return false;

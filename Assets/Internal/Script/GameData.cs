@@ -22,7 +22,7 @@ public class PlayerResourcesData
 
     public void Initialize()
     {
-        manaResource = new Inventory { currencyType = CurrencyType.Mana, itemCount = 0 };
+        manaResource = new Inventory { inventoryType = CurrencyType.Mana, inventoryCount = 0 };
 
         materialResources ??= new List<Inventory>();
         materialResources.Clear();
@@ -31,8 +31,8 @@ public class PlayerResourcesData
         {
             materialResources.Add(new Inventory
             {
-                currencyType = type,
-                itemCount = 0
+                inventoryType = type,
+                inventoryCount = 0
             });
         }
     }
