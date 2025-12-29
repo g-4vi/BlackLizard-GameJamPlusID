@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f284486692dda468df8e387a7abd8a, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: Assembly-CSharp::MaterialData
-  _objectName: 
-  _icon: {fileID: 0}
-  _rarityValue: 0
+  _icon: {fileID: -697763020151794088, guid: d8a170d16bfbbc94989fc6f1e988d2fd, type: 3}
+  _rarityValue: 100
