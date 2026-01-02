@@ -14,6 +14,8 @@ public class PlayerProperties {
     public int mana = 0;
     public bool hasShield = false;
 
+    GameObject shield;
+
     [Header("Sound Effects")]
     [SerializeField] private SfxID _deathSound;
     [SerializeField] private SfxID _jumpSound;
@@ -30,7 +32,7 @@ public class PlayerProperties {
             health += incrementHealth;
             Debug.Log($"Player healed. Current health: {health}");
         } else {
-            if (hasShield) UpdateShield(false); // If has shield, absorb damage first
+            if (hasShield) UpdateShield(null); // If has shield, absorb damage first
             else health += incrementHealth; // otherwise reduce health
 
             if (health <= 0) { // Game over
@@ -53,8 +55,10 @@ public class PlayerProperties {
         onManaChanged?.Invoke(mana);
     }
 
-    public void UpdateShield(bool value) {
-        hasShield = value;
+    public void UpdateShield(GameObject shield) {
+        hasShield = shield != null;
+        if (this.shield != null) GameObject.Destroy(this.shield);
+        this.shield = shield;
         onShieldChanged?.Invoke(hasShield);
     }
 }
