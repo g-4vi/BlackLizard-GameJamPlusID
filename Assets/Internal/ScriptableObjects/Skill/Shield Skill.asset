@@ -43,3 +43,4 @@ MonoBehaviour:
       manaCost: 80
       upgradeCost: 50
   CastSfx: 0
+  shieldSfxPrefab: {fileID: 182643028383726238, guid: 0fe31fde4367b7d41add5e4c73d905ee, type: 3}

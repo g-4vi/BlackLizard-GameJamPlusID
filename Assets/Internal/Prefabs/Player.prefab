@@ -376,6 +376,6 @@ MonoBehaviour:
     level: 1
     cooldownTimer: 0
   skillSlot1:
-    asset: {fileID: 0}
+    asset: {fileID: 11400000, guid: 8a159be945f178d4f8e6f57fbf6ee094, type: 2}
     level: 1
     cooldownTimer: 0
