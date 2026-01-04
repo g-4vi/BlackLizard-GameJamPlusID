@@ -5,58 +5,45 @@ using UnityEngine;
 
 public class TwirlingFairyBehaviour : ObstacleProperties
 {
-    [Header("References")]
+    [SerializeField] private float _attackDelay = 2f;
+    [SerializeField] float _attackDuration = 1f;
+    [SerializeField] private int _numOfAttacks = 3;
+    [SerializeField] private float _attackColliderWidth = 3f;
 
-    [SerializeField] List<Vector3> _pathPoints;
+    BoxCollider2D _objectCollider;
+    Animator _objectAnimator;
 
-    protected override void Start()
+    SpriteRenderer _sprite;
+
+    void Awake()
     {
-        base.Start();
-        int pattern = Random.Range(0, 10);
-        StartCoroutine(FlyFixedPath(_pathPoints));
+        _objectCollider = GetComponent<BoxCollider2D>();
+        _objectAnimator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
+        _sprite.enabled = true;
+        _objectCollider.enabled = false;
+        StartCoroutine(AttackRoutine());
     }
 
-    public void EditPathPoint(List<Vector3> newPathPoints)
-    {
-        _pathPoints = newPathPoints;
-    }
 
-    IEnumerator FlyStraight(Vector3 direction)
+    IEnumerator AttackRoutine()
     {
-        // TODO: play fly Animation
-        while (true)
+        //Tremor Effect
+        _sprite.enabled = true; // temporary
+        _objectCollider.enabled = true;
+        //Play animation
+        float initialColliderWidth = _objectCollider.size.x;
+        for (int i = 0; i < _numOfAttacks; i++)
         {
-            transform.position = new Vector3(transform.position.x + direction.x * _objectSpeed * Time.deltaTime,
-                                             transform.position.y + direction.y * _objectSpeed * Time.deltaTime,
-                                             transform.position.z + direction.z * _objectSpeed * Time.deltaTime);
-            yield return null;
+            _objectAnimator.SetTrigger("Attack");
+            _objectCollider.size = new Vector2(_attackColliderWidth, _objectCollider.y);
+            yield return new WaitForSeconds(_attackDuration); 
+            _objectCollider.size = new Vector2(initialColliderWidth, _objectCollider.y);
+            yield return new WaitForSeconds(_attackDelay); 
         }
-    }
 
-    IEnumerator FlyFixedPath(List<Vector3> pathPoints)
-    {
-        int idx = 0;
-
-        Vector3 heading = pathPoints[idx] - transform.position;
-        Vector3 direction = heading / heading.magnitude;
-        // TODO: play fly Animation
-        while (true)
-        {
-            transform.Translate(direction*_objectSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(transform.position, pathPoints[idx]) < 0.1f && idx < pathPoints.Count-1)
-            {
-
-                yield return new WaitForSeconds(1f);
-                idx++;
-                heading = pathPoints[idx] - transform.position;
-                direction = heading / heading.magnitude;
-                
-            } else if (idx >= pathPoints.Count)
-            {
-                StartCoroutine(FlyStraight(Vector3.left));
-            }
-                yield return null;
-        }
+        _sprite.enabled = false; // temporary
+        _objectCollider.enabled = false;
+        Destroy(this.gameObject);
     }
 }

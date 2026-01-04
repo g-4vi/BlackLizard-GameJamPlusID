@@ -16,23 +16,41 @@ public class VineTrapBehaviour : ObstacleProperties
         _objectAnimator = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
         _sprite.enabled = true;
-        _objectCollider.enabled = false;
-        Appear();
+
+        //Appear();
     }
 
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Player hit obstacle!");
+        Appear();
+        DealDamageToPlayer(_objectDamage);
+        Collider2D[] playerColliders = collision.GetComponentsInParent<Collider2D>();
+        foreach (var col in playerColliders)
+            Physics2D.IgnoreCollision(col, GetComponent<Collider2D>());
+
+        Transform player = collision.gameObject.transform;
+        Vector2 direction = (player.position - transform.position).normalized;//direction of obstacle, + is from left
+        direction = new Vector2(Mathf.Sign(direction.x), 0);//only horizontal knockback
+        player.GetComponent<PlayerMovement>().OnDamaged(direction, knockbackForce, knockbackDuration);
+
+        if (gameObject.name.ToLower().Contains("boulder")) return;//boulder objects dont get destroyed when hit player
+
+        StartCoroutine(DelayedDestroy());
+    }
 
     void Appear()
     {
         //Tremor Effect
         _sprite.enabled = true; // temporary
-        _objectCollider.enabled = true;
-        //Play animation
+        _objectAnimator.SetTrigger("Appear");
+        
+    }
 
-        //yield return new WaitForSeconds(_persistTime);
-
-        //_sprite.enabled = false; // temporary
-        //_objectCollider.enabled = false;
-        //Destroy(this.gameObject);
+    IEnumerator DelayedDestroy()
+    {
+        yield return new WaitForSeconds(_persistTime);
+        DestroyObstacle();
     }
 
     

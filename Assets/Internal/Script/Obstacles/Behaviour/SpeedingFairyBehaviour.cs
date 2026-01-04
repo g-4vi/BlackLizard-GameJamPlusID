@@ -12,8 +12,7 @@ public class SpeedingFairyBehaviour : ObstacleProperties
     protected override void Start()
     {
         base.Start();
-        int pattern = Random.Range(0, 10);
-        StartCoroutine(FlyFixedPath(_pathPoints));
+        StartCoroutine(FlyStraight(_direction));
     }
 
     public void EditPathPoint(List<Vector3> newPathPoints)
