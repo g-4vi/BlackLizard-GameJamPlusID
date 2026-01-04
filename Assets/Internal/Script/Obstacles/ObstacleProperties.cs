@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -133,6 +134,10 @@ public abstract class ObstacleProperties : MonoBehaviour
     {
         _direction = newDirection;
     }
+
+    //public abstract IEnumerator Move();
+
+
     public void AssignSlot(ObstacleSlot slotObj)
     {
         _obstacleSlot = slotObj;
