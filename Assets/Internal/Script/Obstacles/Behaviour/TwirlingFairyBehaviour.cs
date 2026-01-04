@@ -36,9 +36,9 @@ public class TwirlingFairyBehaviour : ObstacleProperties
         for (int i = 0; i < _numOfAttacks; i++)
         {
             _objectAnimator.SetTrigger("Attack");
-            _objectCollider.size = new Vector2(_attackColliderWidth, _objectCollider.y);
+            _objectCollider.size = new Vector2(_attackColliderWidth, _objectCollider.size.y);
             yield return new WaitForSeconds(_attackDuration); 
-            _objectCollider.size = new Vector2(initialColliderWidth, _objectCollider.y);
+            _objectCollider.size = new Vector2(initialColliderWidth, _objectCollider.size.y);
             yield return new WaitForSeconds(_attackDelay); 
         }
 
