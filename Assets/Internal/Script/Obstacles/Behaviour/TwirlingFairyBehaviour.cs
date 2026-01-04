@@ -44,6 +44,8 @@ public class TwirlingFairyBehaviour : ObstacleProperties
 
         _sprite.enabled = false; // temporary
         _objectCollider.enabled = false;
+        _objectAnimator.SetTrigger("Exit");
+        yield return new WaitForSeconds(0.5f); // insert exit animation duration
         Destroy(this.gameObject);
     }
 }
