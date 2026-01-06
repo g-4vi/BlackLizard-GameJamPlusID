@@ -7,6 +7,8 @@ public class GameManager : Singleton<GameManager> {
     public GameObject pauseMenuUI;
     public GameObject gameOverUI;
 
+    
+
     public bool IsGameOver { get; private set; }
     protected override void Awake() {
         base.Awake();
@@ -44,6 +46,9 @@ public class GameManager : Singleton<GameManager> {
         PlayerManager.Instance.SetInputActionMap("UI");
         IsGameOver = true;
         gameOverUI.SetActive(true);
+
+        //Save game, overwrite all resources collected
+        DataPersistenceManager.Instance.SaveGame();
     }
 
     public void BackToMainMenu(string mainMenuSceneName) {

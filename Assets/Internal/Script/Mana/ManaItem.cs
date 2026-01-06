@@ -1,3 +1,4 @@
+using UnityEditor.Overlays;
 using UnityEngine;
 
 namespace GameJamPlus.ManaModules {
@@ -8,7 +9,6 @@ namespace GameJamPlus.ManaModules {
 
 
         bool isCollected;
-
 
         void OnTriggerEnter2D(Collider2D collision) {
             if (isCollected) return;
@@ -27,6 +27,8 @@ namespace GameJamPlus.ManaModules {
                 Destroy(gameObject);
             }
         }
+
+        
 
     }
 }
