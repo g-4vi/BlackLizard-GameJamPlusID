@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,11 +10,27 @@ public class StagePanelHandler : Singleton<StagePanelHandler>
 {
     [SerializeField] TextMeshProUGUI stageTitle;
     [SerializeField] Image stageImage;
-    [SerializeField] TextMeshProUGUI requirementText;
     [SerializeField] TextMeshProUGUI highscoreText;
     [SerializeField] Button interactButton;
 
+    [SerializeField] GameObject detailsHolder;
+    [SerializeField] TextMeshProUGUI detailsText;
+
     public UnityAction OnInteractStage;
+
+    List<GameObject> detailItems = new List<GameObject>();
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        foreach(Transform detailTransform in detailsHolder.transform)
+        {
+            GameObject detailObject = detailTransform.gameObject;
+            detailObject.SetActive(false);
+            detailItems.Add(detailObject);
+        }
+    }
 
     private void OnEnable()
     {
@@ -33,13 +51,16 @@ public class StagePanelHandler : Singleton<StagePanelHandler>
 
         if (level.IsUnlocked)
         {
-            requirementText.text = "";
+            detailsText.text = "Obtainables: ";
             interactButton.GetComponentInChildren<TextMeshProUGUI>().text = "Enter";
         }
         else
         {
-            requirementText.text = $"Unlock for {level.requiredMana.itemCount} <sprite=0>";
-            interactButton.GetComponentInChildren<TextMeshProUGUI>().text = "Unlock";
+            detailsText.text = "Requirements: ";
+            interactButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Unlock for {level.requiredMana.inventoryCount} <sprite=0>";
+
+            UpdateDetailContainers();
+
         }
 
         //Refresh button listener methods
@@ -47,8 +68,36 @@ public class StagePanelHandler : Singleton<StagePanelHandler>
         interactButton.onClick.AddListener(() => OnInteractStage?.Invoke());
     }
 
+    void UpdateDetailContainers()
+    {
+        LevelDisplay selectedLevel = LevelSelectionManager.Instance.InteractedLevel;
+
+        if(!selectedLevel.IsUnlocked)//level locked
+        {
+            if (selectedLevel.requirements.Length > 0)//has requirement(s)
+            {
+                for(int i = 0; i < selectedLevel.requirements.Length; i++)
+                {
+                    Image detailImage = detailItems[i].GetComponentInChildren<Image>();
+                    TextMeshProUGUI detailAmount = detailItems[i].GetComponentInChildren<TextMeshProUGUI>();
+                    
+                    detailImage.sprite = InventoryDatabase.GetData(selectedLevel.requirements[i].inventoryType).inventorySprite;
+                    detailAmount.text = $"x{selectedLevel.requirements[i].inventoryCount.ToString()}";
+
+                    detailItems[i].SetActive(true);
+                }
+            }
+        }
+        
+    }
+
     public void ClosePanel()
     {
+        foreach(Transform detailTransform in detailsHolder.transform)
+        {
+            detailTransform.gameObject.SetActive(false);
+        }
+
         gameObject.SetActive(false);
     }
 }
