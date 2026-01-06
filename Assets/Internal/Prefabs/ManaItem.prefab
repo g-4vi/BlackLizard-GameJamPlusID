@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 680667051264699129}
   - component: {fileID: 8659851885180383926}
   - component: {fileID: 4937667520072197985}
+  - component: {fileID: -353552486194691041}
   m_Layer: 8
   m_Name: ManaItem
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +84,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.ManaModules.ManaItem
   _collectSFX: 13
+--- !u!114 &-353552486194691041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558863544412593706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe0f0483f338d247865cad392c8a580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryObj
+  inventory:
+    inventoryType: 0
+    inventoryCount: 1
 --- !u!1 &7587843199209389647
 GameObject:
   m_ObjectHideFlags: 0

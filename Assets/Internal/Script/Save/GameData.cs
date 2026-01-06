@@ -6,7 +6,7 @@ using System;
 [System.Serializable]
 public class GameData
 {
-    PlayerResourcesData playerResourcesData;
+    public PlayerResourcesData playerResourcesData;
     public void Initialize()
     {
         playerResourcesData ??= new PlayerResourcesData();
@@ -27,8 +27,11 @@ public class PlayerResourcesData
         materialResources ??= new List<Inventory>();
         materialResources.Clear();
 
+        //Adds each available materials types
         foreach (CurrencyType type in Enum.GetValues(typeof(CurrencyType)))
         {
+            if (type.Equals(CurrencyType.Mana)) continue;
+
             materialResources.Add(new Inventory
             {
                 inventoryType = type,
