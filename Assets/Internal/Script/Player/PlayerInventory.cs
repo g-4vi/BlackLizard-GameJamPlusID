@@ -24,7 +24,6 @@ public class PlayerInventory : Singleton<PlayerInventory>, IDataPersistence
             inventoryCount = 0
         };
 
-        //MaterialsCollected = new Dictionary<CurrencyType, Inventory>();
         MaterialsCollected = new List<Inventory>();
     }
 
@@ -34,7 +33,6 @@ public class PlayerInventory : Singleton<PlayerInventory>, IDataPersistence
         if(resourceCollected.inventoryType == CurrencyType.Mana)
         {
             ManaCollected.inventoryCount += resourceCollected.inventoryCount;
-            Debug.Log("Collected " + resourceCollected.inventoryCount + " mana");
         }
         else //add material resource
         {

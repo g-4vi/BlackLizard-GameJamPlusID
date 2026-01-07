@@ -15,7 +15,6 @@ public class InventoryObj : MonoBehaviour
         {
             collected = true;
             PlayerInventory.Instance.AddResource(inventory);
-            Debug.Log("Collected by " + collision.name);
 
             if (gameObject != null)
             {
