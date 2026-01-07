@@ -13,6 +13,8 @@ public class LevelDisplay : MonoBehaviour
 
     [SerializeField] public Inventory[] requirements;
     [SerializeField] public Inventory requiredMana;
+
+    [SerializeField] public Inventory[] materialDrops;
     public bool IsUnlocked { get; set; }
 
     //temporary player data
