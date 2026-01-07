@@ -23,8 +23,6 @@ public class PlayerProperties {
     [SerializeField] private SfxID _hurtSound;
     [SerializeField] private SfxID _moveSound;
 
-    [SerializeField] private ItemData itemData;
-    public ItemData ItemData => itemData;
 
     public SfxID DeathSound => _deathSound;
     public SfxID JumpSound => _jumpSound;

@@ -17,9 +17,13 @@ public class MaterialBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log($"Player collected material: {gameObject.name}");
-            InventorySystem.Instance.AddMaterial(_material, 1);
-            
-            
+            PlayerInventory.Instance.AddResource(new Inventory
+            {
+                inventoryType = _material.MaterialType,
+                inventoryCount = 1
+            });
+
+
             Destroy(gameObject);
         }
     }

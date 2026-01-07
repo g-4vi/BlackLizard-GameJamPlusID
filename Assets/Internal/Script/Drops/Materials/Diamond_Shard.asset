@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4f284486692dda468df8e387a7abd8a, type: 3}
-  m_Name: Silk
+  m_Name: Diamond_Shard
   m_EditorClassIdentifier: Assembly-CSharp::MaterialData
-  _icon: {fileID: 0}
-  _rarityValue: 0
+  _icon: {fileID: -697763020151794088, guid: d8a170d16bfbbc94989fc6f1e988d2fd, type: 3}
+  _rarityValue: 100
+  _materialType: 1

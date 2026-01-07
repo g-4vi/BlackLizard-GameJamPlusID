@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class BoarBehaviour : ObstacleProperties
 {
-    float _rotationSpeed = 200f;
-
-    
-
     protected override void Start()
     {
         base.Start();
