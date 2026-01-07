@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour {
     public PlayerProperties playerProperties;
+    
     public LayerMask obstacleLayer;
 
     public bool IsInvisible { get; set; }

@@ -337,6 +337,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   playerProperties:
+    testing:
+      m_PersistentCalls:
+        m_Calls: []
     health: 3
     speed: 8
     jumpForce: 12
@@ -347,6 +350,10 @@ MonoBehaviour:
     _jumpSound: 9
     _hurtSound: 7
     _moveSound: 10
+    itemData:
+      ItemA_num: 2
+      ItemB_num: 3
+      ItemC_num: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128

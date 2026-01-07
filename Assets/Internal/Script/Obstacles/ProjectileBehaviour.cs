@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpiderWebBehaviour : ObstacleProperties
+public class ProjectileBehaviour : ObstacleProperties
 {
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

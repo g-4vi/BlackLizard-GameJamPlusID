@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -10,8 +11,11 @@ public abstract class ObstacleProperties : MonoBehaviour
     [SerializeField] protected float _objectSpeed = 5f;
     [SerializeField] protected float _objectHealth = 1f;
     [SerializeField] protected int _objectDamage = 1;
-    protected Vector3 _direction;
+    [SerializeField] protected Vector3 _direction;
     protected ObstacleSlot _obstacleSlot;
+
+    [Header("Item Drops")]
+    [SerializeField] protected MaterialData[] _materials;
 
     [Header("Knockback")]
     [SerializeField] protected float knockbackForce = 5f;
@@ -61,21 +65,24 @@ public abstract class ObstacleProperties : MonoBehaviour
         return screenPoint.x < -0.3 || screenPoint.x > 1.3 || screenPoint.y < -0.3 || screenPoint.y > 1.3;
     }
 
-    void DestroyObstacle()
+    protected void DestroyObstacle()
     {
         // TODO: Play destroy anim
         // TODO: Play destroy SFX
         AudioManager.Instance.StopSFX(_entrySound);
-        ;
+        
         if (_destroyedSound != SfxID.None) AudioManager.Instance.PlaySFX(_destroyedSound);
 
+        if (_materials != null && _materials.Length > 0)DropManager.Instance.RandomizeDrop(_materials, transform.localPosition);
 
         if (_obstacleSlot != null) _obstacleSlot.ChangeOccupyStatus(false);
         Destroy(this.gameObject);
     }
 
 
-    void DealDamageToPlayer(int damage)
+
+
+    protected void DealDamageToPlayer(int damage)
     {
         // Access Player Health Component
         // Subtract Damage from Player Health
@@ -96,7 +103,7 @@ public abstract class ObstacleProperties : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Fireball"))
         {
@@ -127,6 +134,10 @@ public abstract class ObstacleProperties : MonoBehaviour
     {
         _direction = newDirection;
     }
+
+    //public abstract IEnumerator Move();
+
+
     public void AssignSlot(ObstacleSlot slotObj)
     {
         _obstacleSlot = slotObj;
