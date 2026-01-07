@@ -108,6 +108,11 @@ MonoBehaviour:
   _objectSpeed: 5
   _objectHealth: 1
   _objectDamage: 1
+  _direction: {x: 0, y: 0, z: 0}
+  _materials:
+  - {fileID: 11400000, guid: d034ac633f374ae4eba878ebdd5bb2b3, type: 2}
+  - {fileID: 11400000, guid: 0d445500bc549a34c9b88a390adb9a25, type: 2}
+  - {fileID: 11400000, guid: d7239709e483dad4a995165225607dda, type: 2}
   knockbackForce: 7
   knockbackDuration: 0.2
   _destroyedSound: 1

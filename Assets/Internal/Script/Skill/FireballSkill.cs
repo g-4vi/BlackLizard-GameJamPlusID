@@ -15,7 +15,7 @@ namespace GameJamPlus.SkillModules {
             GameObject fireball = Instantiate(prefab, owner.transform.position, Quaternion.identity);
 
             // Get ProjectileBehaviour and set direction & speed
-            ProjectileBehaviour projectile = fireball.GetComponent<ProjectileBehaviour>();
+            Behaviour.ProjectileBehaviour projectile = fireball.GetComponent<Behaviour.ProjectileBehaviour>();
             Vector2 targetDir = Vector2.right * Mathf.Sign(owner.transform.localScale.x);
             projectile.SetDirection(targetDir);
             projectile.SetSpeed(projectileSpeed);
@@ -24,7 +24,7 @@ namespace GameJamPlus.SkillModules {
 #if UNITY_EDITOR
         // Validation to ensure prefab has ProjectileBehaviour component
         void OnValidate() {
-            if (prefab != null && prefab.GetComponent<ProjectileBehaviour>() == null) {
+            if (prefab != null && prefab.GetComponent<Behaviour.ProjectileBehaviour>() == null) {
                 Debug.LogError($"[{name}] Assigned prefab does not contain a ProjectileBehaviour component. Clearing the reference.");
                 prefab = null;
             }

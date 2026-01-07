@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class PlayerProperties {
@@ -21,6 +22,7 @@ public class PlayerProperties {
     [SerializeField] private SfxID _jumpSound;
     [SerializeField] private SfxID _hurtSound;
     [SerializeField] private SfxID _moveSound;
+
 
     public SfxID DeathSound => _deathSound;
     public SfxID JumpSound => _jumpSound;

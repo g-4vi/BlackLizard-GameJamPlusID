@@ -246,6 +246,23 @@ public class ObstacleManager : MonoBehaviour
         );
     }
 
+    //FOR DEBUGGING PURPOSES
+    [ContextMenu("Spawn Boulder")]
+    void SpawnBoulder()
+    {
+        GameObject obj;
+        for (int i = 0; i < 2; i++)
+        {
+            obj = _boulderSpawnArea[Random.Range(0, _boulderSpawnArea.Count)];
+            if (obj.TryGetComponent<ObstacleSlot>(out ObstacleSlot obsSlot) && obsSlot.OccupiedStatus) continue;
+            
+            Debug.Log("Spawning Boulder manually!");
+            StartCoroutine(SpawnBoulder(obj.transform.position));
+
+            break;
+        }
+    }
+
     IEnumerator SpawnSpike(Vector3 targetPoint, ObstacleSlot obsSlot) {
 
         GameObject indicator = SpawnIndicator(_indicatorObject , targetPoint);

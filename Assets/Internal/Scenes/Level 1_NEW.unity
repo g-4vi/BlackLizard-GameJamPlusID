@@ -2777,10 +2777,6 @@ MonoBehaviour:
     _jumpSound: 0
     _hurtSound: 0
     _moveSound: 0
-    itemData:
-      ItemA_num: 0
-      ItemB_num: 0
-      ItemC_num: 0
   playerMovement: {fileID: 0}
   playerInput: {fileID: 0}
   playerSkillController: {fileID: 0}
@@ -2808,11 +2804,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 632593109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef385d38f6fa3f14a911a7d33050b577, type: 3}
+  m_Script: {fileID: 11500000, guid: f54608e571e7b0e4e84281611e5b19cf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySystem
-  manaCount: 0
-  materials: []
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
+  MaterialsCollected: []
 --- !u!1 &638717649
 GameObject:
   m_ObjectHideFlags: 0
@@ -9197,7 +9192,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1737479421}
   - component: {fileID: 1737479420}
-  - component: {fileID: 1737479423}
   - component: {fileID: 1737479422}
   m_Layer: 0
   m_Name: GameManager
@@ -9248,21 +9242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropManager
   _itemPrefab: {fileID: 8385001605287105122, guid: 4ce13cf525aeeea4882019f303088f98, type: 3}
---- !u!114 &1737479423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737479419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba504f38a028bf642a28d6f32fbcbf52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemDatabase
-  _materials:
-  - {fileID: 11400000, guid: d7239709e483dad4a995165225607dda, type: 2}
-  - {fileID: 11400000, guid: 0d445500bc549a34c9b88a390adb9a25, type: 2}
 --- !u!1 &1750344566
 GameObject:
   m_ObjectHideFlags: 0
