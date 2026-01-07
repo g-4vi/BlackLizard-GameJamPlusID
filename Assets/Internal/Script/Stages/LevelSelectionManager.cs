@@ -42,7 +42,11 @@ public class LevelSelectionManager : Singleton<LevelSelectionManager>
                 if (!InteractedLevel.CheckRequirements()) return; //requirements unfulfilled
 
                 Debug.Log($"Stage {InteractedLevel.stageName} Unlocked");
+
+                //Save inventory data
                 UpdateRequirementInventory();
+
+                //Save level progress data
                 InteractedLevel.IsUnlocked = true;
 
                 //Re-render after state change
@@ -56,9 +60,13 @@ public class LevelSelectionManager : Singleton<LevelSelectionManager>
 
     void UpdateRequirementInventory()
     {
+        //Spend Mana
+        PlayerInventory.Instance.TrySpendResource(CurrencyType.Mana, InteractedLevel.requiredMana.inventoryCount);
+
+        //Spend Materials
         foreach (var requirement in InteractedLevel.requirements)
         {
-            InteractedLevel.ownedMana -= requirement.inventoryCount;
+            PlayerInventory.Instance.TrySpendResource(requirement.inventoryType, requirement.inventoryCount);
         }
     }
 }

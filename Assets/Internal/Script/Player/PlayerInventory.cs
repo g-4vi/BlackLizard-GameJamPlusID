@@ -63,6 +63,9 @@ public class PlayerInventory : Singleton<PlayerInventory>, IDataPersistence
 
         inv.inventoryCount -= amount;
 
+        //Save Game
+        DataPersistenceManager.Instance.SaveGame();
+
         return true;
     }
 

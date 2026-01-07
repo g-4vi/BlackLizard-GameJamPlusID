@@ -22,9 +22,17 @@ public class LevelDisplay : MonoBehaviour
 
     public bool CheckRequirements()//need player data
     {
+        PlayerInventory inventory = PlayerInventory.Instance;
+        if (requiredMana.inventoryCount > inventory.ManaCollected.inventoryCount)
+        {
+            Debug.Log("Not enough Mana");
+            return false;
+        }
+
         foreach (var requirement in requirements)
         {
-            if(requirement.inventoryCount >= ownedMana)
+            if(requirement.inventoryCount > PlayerInventory.Instance.MaterialsCollected.Find
+                (m => m.inventoryType == requirement.inventoryType).inventoryCount)
             {
                Debug.Log("Unfulfilled Requirements");
                return false;
