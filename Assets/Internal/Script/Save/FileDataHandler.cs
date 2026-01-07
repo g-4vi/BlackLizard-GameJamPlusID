@@ -9,7 +9,7 @@ public class FileDataHandler
     string dataFileName = "";
 
     bool useEncryption = false;
-    readonly string encryptionKey = "d0_n0t_t0uch";
+    readonly string encryptionKey = "d0_n0t_t0uch_1137blz";
 
     public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
     {
@@ -42,10 +42,11 @@ public class FileDataHandler
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
-
+                Debug.Log("Encryption: " + useEncryption);
                 if(useEncryption)
                 {
                     //decrypt the data
+                    dataToLoad = EncryptDecrypt(dataToLoad);
                 }
 
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
@@ -75,6 +76,7 @@ public class FileDataHandler
             if(useEncryption)
             {
                 //Encrypt the data
+                dataToStore = EncryptDecrypt(dataToStore);
             }
 
             using(FileStream stream = new FileStream(fullPath, FileMode.Create))
@@ -89,5 +91,17 @@ public class FileDataHandler
         {
             Debug.LogError($"Saving data failed at path: {fullPath} \n {e}");
         }
+    }
+
+    //XOR encryption
+    string EncryptDecrypt(string data)
+    {
+        string modifiedData = "";
+        for(int i = 0; i < data.Length; i++)
+        {
+            modifiedData += (char)(data[i] ^ encryptionKey[i % encryptionKey.Length]);
+        }
+
+        return modifiedData;
     }
 }

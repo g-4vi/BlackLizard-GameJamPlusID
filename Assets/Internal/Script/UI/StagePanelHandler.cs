@@ -58,10 +58,9 @@ public class StagePanelHandler : Singleton<StagePanelHandler>
         {
             detailsText.text = "Requirements: ";
             interactButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Unlock for {level.requiredMana.inventoryCount} <sprite=0>";
-
-            UpdateDetailContainers();
-
         }
+
+        UpdateDetailContainers();
 
         //Refresh button listener methods
         interactButton.onClick.RemoveAllListeners();
@@ -72,19 +71,42 @@ public class StagePanelHandler : Singleton<StagePanelHandler>
     {
         LevelDisplay selectedLevel = LevelSelectionManager.Instance.InteractedLevel;
 
-        if(!selectedLevel.IsUnlocked)//level locked
+        for(int i = 0; i < detailItems.Count; i++)//Deactivate all detail items
+        {
+            detailItems[i].SetActive(false);
+        }
+
+        if(!selectedLevel.IsUnlocked)//level locked, show required materials
         {
             if (selectedLevel.requirements.Length > 0)//has requirement(s)
             {
                 for(int i = 0; i < selectedLevel.requirements.Length; i++)
                 {
                     Image detailImage = detailItems[i].GetComponentInChildren<Image>();
-                    TextMeshProUGUI detailAmount = detailItems[i].GetComponentInChildren<TextMeshProUGUI>();
+                    TextMeshProUGUI detailAmount = detailItems[i].GetComponentInChildren<TextMeshProUGUI>(true);
                     
                     detailImage.sprite = InventoryDatabase.GetData(selectedLevel.requirements[i].inventoryType).inventorySprite;
-                    detailAmount.text = $"x{selectedLevel.requirements[i].inventoryCount.ToString()}";
+                    detailAmount.text = $"x{selectedLevel.requirements[i].inventoryCount}";
 
                     detailItems[i].SetActive(true);
+                    detailItems[i].GetComponentInChildren<TextMeshProUGUI>(true).gameObject.SetActive(true);
+                }
+            }
+        }
+        else//unlocked, show material drops
+        {
+            if (selectedLevel.materialDrops.Length > 0)//has requirement(s)
+            {
+                for (int i = 0; i < selectedLevel.materialDrops.Length; i++)
+                {
+                    Image detailImage = detailItems[i].GetComponentInChildren<Image>();
+                    TextMeshProUGUI detailAmount = detailItems[i].GetComponentInChildren<TextMeshProUGUI>(true);
+
+                    detailImage.sprite = InventoryDatabase.GetData(selectedLevel.materialDrops[i].inventoryType).inventorySprite;
+                    detailAmount.text = "";
+
+                    detailItems[i].SetActive(true);
+                    detailItems[i].GetComponentInChildren<TextMeshProUGUI>(true).gameObject.SetActive(false);
                 }
             }
         }

@@ -41,8 +41,11 @@ public class DataPersistenceManager : Singleton<DataPersistenceManager>
 
     public void NewGame()
     {
+        Debug.Log("Creating new safe file...");
         gameData = new GameData();
         gameData.Initialize();
+
+        SaveGame();
     }
 
     public void SaveGame()
