@@ -53,8 +53,9 @@ namespace GameJamPlus.SkillModules.UI {
                 Destroy(child.gameObject);
             }
 
-            CreateSkillSlotUI(playerSkillController.FixedSkill);
-            CreateSkillSlotUI(playerSkillController.SkillSlot1);
+            foreach (var skillSlot in playerSkillController.AllSkillSlots) {
+                CreateSkillSlotUI(skillSlot);
+            }
         }
 
         void CreateSkillSlotUI(SkillSlot skillSlot) {
