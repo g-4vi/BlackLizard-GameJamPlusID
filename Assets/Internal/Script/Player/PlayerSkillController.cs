@@ -34,7 +34,7 @@ namespace GameJamPlus {
             player.anim.SetTrigger(player.AttackHash);
         }
 
-        public void OnSubFire(InputValue value) { // For now its right click to use skill in slot 1
+        public void OnSubFire(InputValue value) { // See InputAction for the binding
             if (!value.isPressed) { return; }
 
             skillSlot1?.ActivateSpell(gameObject);
@@ -51,11 +51,11 @@ namespace GameJamPlus {
         }
 
         #region Skill Upgrade Service Methods
-        public void DoUpgradeFixedSkill(PlayerProperties resource) {
+        public void DoUpgradeFixedSkill(PlayerInventory resource) {
             SkillUpgradeService.LevelUp(fixedSkill, resource);
         }
 
-        public void DoUpgradeSkillSlot1(PlayerProperties resource) {
+        public void DoUpgradeSkillSlot1(PlayerInventory resource) {
             SkillUpgradeService.LevelUp(skillSlot1, resource);
         }
         #endregion
