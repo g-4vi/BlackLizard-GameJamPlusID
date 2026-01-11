@@ -38,7 +38,7 @@ namespace GameJamPlus.SkillModules.UI {
         SkillSlot skill;
         Action<SkillSlot> backCallback;
 
-        PlayerProperties playerProperties => PlayerManager.Instance.playerProperties;
+        PlayerInventory playerInventory => PlayerInventory.Instance;
 
         void OnEnable() {
             WireNewEvents();
@@ -107,7 +107,7 @@ namespace GameJamPlus.SkillModules.UI {
         }
 
         void OnUpgradeButtonClicked() {
-            SkillUpgradeService.LevelUp(skill, playerProperties);
+            SkillUpgradeService.LevelUp(skill, playerInventory);
             UpdateUI(skill);
         }
 
