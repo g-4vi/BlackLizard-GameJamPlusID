@@ -50,7 +50,7 @@ namespace GameJamPlus {
 
             UpdateSkillIcons(skillSlot1?.asset);
             skillCooldownImage.fillAmount = 1f;
-            skill1CooldownImage.fillAmount = 1f;
+            if (skill1CooldownImage != null) skill1CooldownImage.fillAmount = 1f;
         }
 
         void Update() {
@@ -75,6 +75,8 @@ namespace GameJamPlus {
         }
 
         void UpdateSkillIcons(BaseSkill newSkill) {
+            if (skill1CooldownImage == null) return;
+
             skillSlot1 = skillController.SkillSlot1;
             if (skillSlot1?.asset != null) {
                 skill1CooldownImage.gameObject.SetActive(true);
@@ -85,6 +87,7 @@ namespace GameJamPlus {
         }
 
         void UpdateCooldownVisual(SkillSlot slot, Image img) {
+            if (img == null) return;
             if (slot == null || slot.asset == null) {
                 img.fillAmount = 1f;
                 return;

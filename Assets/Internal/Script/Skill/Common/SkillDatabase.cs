@@ -15,7 +15,7 @@ namespace GameJamPlus.SkillModules.Common {
         [ContextMenu("Find All Skills in Project")]
         void FindAllSkills() {
             allSkills = new List<BaseSkill>();
-            string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Skill");
+            string[] guids = UnityEditor.AssetDatabase.FindAssets("t:BaseSkill");
 
             if (guids.Length == 0) {
                 Debug.LogWarning("No 'Skill' assets found in project.");
