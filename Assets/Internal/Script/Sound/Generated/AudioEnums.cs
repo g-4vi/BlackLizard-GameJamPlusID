@@ -19,5 +19,7 @@ public enum SfxID {
 public enum MusicID {
 	None,
 	MainMenu,
-	InGame,
+	LevelSelect,
+	Stage1,
+	Stage2,
 }

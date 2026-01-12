@@ -2369,7 +2369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 361.5625, y: -354.57916}
+  m_AnchoredPosition: {x: 361.5625, y: -355.27008}
   m_SizeDelta: {x: 311.89, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699837797
@@ -6237,6 +6237,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7340301546605926167, guid: 5244ef506e2c574459a29a3e537adba2, type: 3}
+      propertyPath: musics.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340301546605926167, guid: 5244ef506e2c574459a29a3e537adba2, type: 3}
+      propertyPath: 'musics.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7482fa48d02aebf499a0c8577e9d23c6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6384,7 +6392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5086062286238934528, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level
+      value: StageSelect
       objectReference: {fileID: 0}
     - target: {fileID: 5086062286238934528, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SFX_CollectMana
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SoundData
   clips:
-  - {fileID: 8300000, guid: 4ec848fb49a77b543a0fc484b202a7f2, type: 3}
+  - {fileID: 8300000, guid: 72b81634c2fa08d4296d4c8d8c2057c9, type: 3}
   mixerGroup: {fileID: 1483950937324876890, guid: d59769f781ece3948b2971094dcb6aa2, type: 2}
-  volume: 1
+  volume: 0.7
   pitch: 1
   useRandomPitch: 1
   randomPitchRange: 0.2

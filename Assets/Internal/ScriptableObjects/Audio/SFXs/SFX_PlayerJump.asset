@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_PlayerJump
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SoundData
   clips:
-  - {fileID: 8300000, guid: b79cb2b5d21a79642a06c3c68304cee4, type: 3}
+  - {fileID: 8300000, guid: b78257ea917f84b40b264d4b0615c23b, type: 3}
   mixerGroup: {fileID: 1483950937324876890, guid: d59769f781ece3948b2971094dcb6aa2, type: 2}
   volume: 0.3
   pitch: 1

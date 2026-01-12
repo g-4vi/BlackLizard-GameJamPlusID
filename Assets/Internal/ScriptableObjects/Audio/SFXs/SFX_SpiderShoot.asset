@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_SpiderShoot
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SoundData
   clips:
-  - {fileID: 8300000, guid: 644816ee837147a498cbb3fa673e6a38, type: 3}
+  - {fileID: 8300000, guid: f12c4e6bc9b14694794ac09ab2a9ee20, type: 3}
   mixerGroup: {fileID: 1483950937324876890, guid: d59769f781ece3948b2971094dcb6aa2, type: 2}
   volume: 1
   pitch: 1

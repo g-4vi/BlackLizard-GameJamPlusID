@@ -41,6 +41,12 @@ public class GameManager : Singleton<GameManager> {
         PlayerManager.Instance.SetInputActionMap("Player");
     }
 
+    public void RestartScene()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void EndGame() {
         Time.timeScale = 0f;
         PlayerManager.Instance.SetInputActionMap("UI");

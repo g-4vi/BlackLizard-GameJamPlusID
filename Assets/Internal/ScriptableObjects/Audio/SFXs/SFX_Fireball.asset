@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_Fireball
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SoundData
   clips:
-  - {fileID: 8300000, guid: 7f79d1a4570234440af3f6f7c69e8776, type: 3}
+  - {fileID: 8300000, guid: c1e0304444c9fd54588d8d026c9f5680, type: 3}
   mixerGroup: {fileID: 1483950937324876890, guid: d59769f781ece3948b2971094dcb6aa2, type: 2}
   volume: 1
   pitch: 1

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cbc7c9c63b36044591a55e21ca9bbd5, type: 3}
-  m_Name: MainMenu
+  m_Name: LevelSelect
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.AudioModules.MusicTrackData
-  clip: {fileID: 8300000, guid: cfc1a4f1ef3a71a4893f23c0421d3c22, type: 3}
+  clip: {fileID: 8300000, guid: 1a85225171cd3fc49ac331b23fb8e963, type: 3}
   mixerGroup: {fileID: 5744873938203986195, guid: d59769f781ece3948b2971094dcb6aa2, type: 2}
-  loopStart: 5
-  loopEnd: 117.096
-  volume: 1
+  loopStart: 0
+  loopEnd: 86
+  volume: 0.5

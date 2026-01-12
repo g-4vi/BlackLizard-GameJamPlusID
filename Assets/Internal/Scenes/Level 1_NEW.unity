@@ -2807,7 +2807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54608e571e7b0e4e84281611e5b19cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
-  MaterialsCollected: []
 --- !u!1 &638717649
 GameObject:
   m_ObjectHideFlags: 0
@@ -5992,7 +5991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5086062286238934528, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5086062286238934528, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6004,7 +6003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5086062286238934528, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: RestartScene
       objectReference: {fileID: 0}
     - target: {fileID: 5086062286238934528, guid: ce80022a9e331b74aa44d208609a9421, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -9362,9 +9361,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 300b8df0caabb414a979a3c583f85bc2, type: 2}
   - {fileID: 11400000, guid: 8a2f35d61a6e1ad4490d103b163e00ab, type: 2}
   musics:
-  - {fileID: 11400000, guid: 74234c591dd77c645a1e50df9bfff641, type: 2}
-  - {fileID: 11400000, guid: 2c414d1c900b46841a35a5af24ca3ee2, type: 2}
-  BGM: 2
+  - {fileID: 11400000, guid: 286454f37e40ab14b98fcc9387d1a0e5, type: 2}
+  - {fileID: 11400000, guid: 7482fa48d02aebf499a0c8577e9d23c6, type: 2}
+  - {fileID: 11400000, guid: af82925520544784cbc561a639c27f09, type: 2}
+  - {fileID: 11400000, guid: e126c1767c3aafb4096045239bd1917c, type: 2}
+  BGM: 3
   buttonSFX: 14
 --- !u!4 &1755608460
 Transform:
@@ -10724,7 +10725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6530924396761622653, guid: cd2d9543f93192d4a85b84d51b1d4236, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: -0.55
       objectReference: {fileID: 0}
     - target: {fileID: 6530924396761622653, guid: cd2d9543f93192d4a85b84d51b1d4236, type: 3}
       propertyPath: m_LocalPosition.z

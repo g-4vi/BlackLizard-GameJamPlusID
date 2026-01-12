@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_PlayerDamaged
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SoundData
   clips:
-  - {fileID: 8300000, guid: f960a250c487afd46a554cb5fab05dff, type: 3}
+  - {fileID: 8300000, guid: bb5fddd44035f6a408b7e685caf847f0, type: 3}
   mixerGroup: {fileID: 1483950937324876890, guid: d59769f781ece3948b2971094dcb6aa2, type: 2}
   volume: 0.5
   pitch: 1

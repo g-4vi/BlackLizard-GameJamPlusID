@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_PlayerDeath
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SoundData
   clips:
-  - {fileID: 8300000, guid: 614824bc39d27c245a457a936b8b8630, type: 3}
+  - {fileID: 8300000, guid: 5aef6dc40d98a6040868a066386d77af, type: 3}
   mixerGroup: {fileID: 1483950937324876890, guid: d59769f781ece3948b2971094dcb6aa2, type: 2}
   volume: 1
   pitch: 1

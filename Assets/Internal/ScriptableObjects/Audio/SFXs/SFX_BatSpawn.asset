@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_BatSpawn
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SoundData
   clips:
-  - {fileID: 8300000, guid: edc5bfd7f4820964e944c30fd921b6fc, type: 3}
+  - {fileID: 8300000, guid: 6785d6626bb0a874280a6e334b4693ca, type: 3}
   mixerGroup: {fileID: 1483950937324876890, guid: d59769f781ece3948b2971094dcb6aa2, type: 2}
   volume: 1
   pitch: 1

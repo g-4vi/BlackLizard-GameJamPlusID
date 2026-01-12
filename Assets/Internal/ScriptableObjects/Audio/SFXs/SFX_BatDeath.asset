@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_BatDeath
   m_EditorClassIdentifier: Assembly-CSharp::GameJamPlus.SoundData
   clips:
-  - {fileID: 8300000, guid: 2ed0f0670c1065b4e94ff595632ff52e, type: 3}
+  - {fileID: 8300000, guid: d37d85cccd24c65419402a63f9ef92b9, type: 3}
   mixerGroup: {fileID: 1483950937324876890, guid: d59769f781ece3948b2971094dcb6aa2, type: 2}
   volume: 1
   pitch: 1
